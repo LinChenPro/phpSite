@@ -264,7 +264,7 @@ function getPageDescription(){
 }
 
 function getCssFile(){
-	return "/css/abc.css";
+	return "/css/mainstyle.css";
 }
 ?>
 
@@ -298,16 +298,16 @@ if(isMobile()){
 	<?php
 	include 'topMenu.php';
 	?>
-	<?php
-	include 'leftMenu.php';
-	?>
 	<div id="middle_area">
+		<?php
+		include 'leftMenu.php';
+		?>
 		<div id="main_content_out">
-		
 			<?php
 			include $contentFilePath;
 			?>
 		</div>
+		<div class="FCL"></div>
 	</div>
 	<?php
 	include 'foot.php';

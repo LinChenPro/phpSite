@@ -4,8 +4,13 @@ body{
 	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
+.FCL{
+	clear:both;
+}
+
 #head{
 	width:100%;
+	min-width:970px;
 	background: url(/head_bg.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -108,16 +113,15 @@ display: inline-block;
 	text-decoration: none;
 }
 
-
-
 #middle_area{
-	background-color:rgba(77,149,221,0.5);
 	margin-top:2px;
-	padding-left:350px;
+	border-left:350px solid rgba(77,149,221,0.5);
 }
 
 #main_content_out{
 	background-color:white;
+	width:100%;
+	float:left;
 }
 
 .main_content{
@@ -137,21 +141,20 @@ display: inline-block;
 	padding:0 5px 0 0;
 }
 
-#leftmenu_area{
-	height:100%;
+#left_area{
 	width:350px;
-    position:absolute;
-    top: 245px;
-	background-color:rgba(77,149,221,0.5);
-	position:absolute;
+	margin-left:-350px;
+    float:left;
 }
 
-
+#left_menu{
+}
 
 #foot{
-	background-color:rgba(77,149,221,0.5);
+	min-width:620px;
 	margin-top:2px;
 	padding-left:350px;
+	background-color:rgba(77,149,221,0.5);
 	border-top:2px solid rgb(77,149,221);
 }
 
