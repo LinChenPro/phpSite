@@ -1,19 +1,10 @@
-﻿<?php 
-function isMobile() {
-    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-}
-// If the user is on a mobile device, redirect them
-if(isMobile()){
-    header("Location: http://m.iriso-service.com/");
-}
-?>
-
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="/css/abc.css">
 		<title>睿思国际</title>
 	</head>
-	<body style="margin-top:30px;text-align:center">
+	<body style="margin-top:30px;text-align:center">		
 		<div style="color:#6666FF">
 			<h1>
 				Iriso Service International
@@ -32,6 +23,10 @@ if(isMobile()){
 			<h3>
 				Site in building...
 			</h3>
+			<div>
+				<a href="/iriso_status.pdf"><img src="/pdf_icon.gif"/>Download statuts</a>
+			</div>
 		</div>
+
 	</body>
 </html>
