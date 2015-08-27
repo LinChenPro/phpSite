@@ -1,6 +1,7 @@
 <?php
-//content stucture corresponds au $contentPosition
-// secteurs
+include "node.php";
+
+
 $contents = array(
 	"defaultSecteurIndex"=>0,
 	"secteurs"=>array(
@@ -177,8 +178,22 @@ function getCurrentArticle(){
 	return searchItemObjectByAtt($crtMenus["articles"], "name", $GLOBALS["contentName"]);
 }
 
-class Item
-{
+$secteurTranslation = new Node(Node::TYPE_SECTEUR, "translation", "/translation/index");
+$secteurTranslation->addSecteurNodes(array(
+	new Node("M","simultaneus","/translation/simultaneus"),
+	new Node("M","consecutive","/translation/consecutive"),
+	new Node("M","exposition","/translation/exposition"),
+	new Node("M","compagny","/translation/compagny"),
+	new Node("M","contact", "/translation/contact"),
+	new Node("A","test/article/exemple", "/translation/testArticle"),
+	new Node("M","test/menu/exemple", "/translation/testMenu")
+));
+
+$secteurs = array(
+	"translation"=>$secteurTranslation
+);
+
+class Item{
 	var $color;
 	var $name;
 	var $isCurrent;
