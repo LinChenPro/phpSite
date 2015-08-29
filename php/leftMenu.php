@@ -3,7 +3,7 @@ $leftMenu = getLeftMenu();
 if($leftMenu != null){
 ?>
 <div id="left_area">
-	<div id="left_menu">
+	<div id="left_menu_inner">
 <?php
 	showSubMenu($leftMenu);
 ?>

@@ -147,12 +147,44 @@ display: inline-block;
     float:left;
 }
 
-#left_menu{
+#left_menu_inner{
+	padding:20px 0 20px 50px;
 }
 
-#left_menu ul{
+#left_menu_inner ul{
 	list-style: none;
 	margin:0px;
+	padding:0px;
+}
+
+#left_menu_inner a{
+	display:inline-block;
+	padding:3px 5px;
+	min-width:100px;
+	text-decoration: none;
+	color:white;
+	text-align:center;
+	margin: 1px;
+}
+
+#left_menu_inner .left_ui_article[data-level="3"], #left_menu_inner .left_ui_menu[data-level="3"]{
+	padding-left: 30px;
+}
+
+.left_article>a{
+	background-color:#4D95DD;
+}
+
+.left_article_active>a{
+	background-color:#B73847;
+}
+
+.left_menu>a{
+	background-color:#4D95DD;
+}
+
+.left_menu_active>a{
+	background-color:#B73847;
 }
 
 #foot{
