@@ -1,281 +1,223 @@
 <?php
 include "node.php";
 
-
-$contents = array(
-	"defaultSecteurIndex"=>0,
-	"secteurs"=>array(
-		//secteur translation
-		array(
-			"name"=>"translation",
-			"defaultMenuIndex"=>-1,
-			"defaultArticleIndex"=>0,			
-			"menuPosition"=>"top",
-			// secteur translation, menu level 1
-			"menus"=>array(
-				
-				// top menu 1
-				array(
-					"name"=>"main",
-					"level"=>1,
-					"showLink"=>true,
-					"defaultMenuIndex"=>-1,
-					"defaultArticleIndex"=>0,			
-					"menuPosition"=>"left",
-
-					// secteur translation, menu 1, articles
-					"articles"=>array(
-						array(				
-							"name"=>"index",
-							"showLink"=>false			
-						)
-					)					
-				),
-				array(
-					"name"=>"simultaneus",
-					"level"=>1,
-					"showLink"=>true,
-					"defaultMenuIndex"=>-1,
-					"defaultArticleIndex"=>0,			
-					"menuPosition"=>"left",
-
-					// secteur translation, menu 1, articles
-					"articles"=>array(
-						array(				
-							"name"=>"simultaneus",
-							"showLink"=>false			
-						)
-					)					
-				),
-				array(
-					"name"=>"consecutive",
-					"level"=>1,
-					"showLink"=>true,
-					"defaultMenuIndex"=>-1,
-					"defaultArticleIndex"=>0,			
-					"menuPosition"=>"left",
-
-					// secteur translation, menu 1, articles
-					"articles"=>array(
-						array(				
-							"name"=>"consecutive",
-							"showLink"=>false			
-						)
-					)					
-				),
-				array(
-					"name"=>"exposition",
-					"level"=>1,
-					"showLink"=>true,
-					"defaultMenuIndex"=>-1,
-					"defaultArticleIndex"=>0,			
-					"menuPosition"=>"left",
-
-					// secteur translation, menu 1, articles
-					"articles"=>array(
-						array(				
-							"name"=>"exposition",
-							"showLink"=>false			
-						)
-					)					
-				),
-				array(
-					"name"=>"compagny",
-					"level"=>1,
-					"showLink"=>true,
-					"defaultMenuIndex"=>-1,
-					"defaultArticleIndex"=>0,			
-					"menuPosition"=>"left",
-
-					// secteur translation, menu 1, articles
-					"articles"=>array(
-						array(				
-							"name"=>"compagny",
-							"showLink"=>false			
-						)
-					)					
-				),
-				array(
-					"name"=>"contact",
-					"level"=>1,
-					"showLink"=>true,
-					"defaultMenuIndex"=>-1,
-					"defaultArticleIndex"=>0,			
-					"menuPosition"=>"left",
-
-					// secteur translation, menu 1, articles
-					"articles"=>array(
-						array(				
-							"name"=>"contact",
-							"showLink"=>false			
-						)
-					)					
-				)
-			),
-			// secteur translation, articles
-			"articles"=>null
-		)
-		
-		//secteur exposition:a venir
-	)
-);
-
-function searchItemByAtt($arr, $att, $value){
-	if($arr==null){
-		return null;
-	}
-	
-	for($i=0; $i<count($arr); $i++){
-		if($arr[$i][$att] == $value){
-			return $i;
-		}
-	}
-	
-	return null;
-}
-
-function searchItemObjectByAtt($arr, $att, $value){
-	if($arr==null){
-		return null;
-	}
-	
-	for($i=0; $i<count($arr); $i++){
-		if($arr[$i][$att] == $value){
-			return $arr[$i];
-		}
-	}
-	
-	return null;
-}
-
-function getCurrentTopMenu(){
-	$position_array = $GLOBALS["contentPosition"];
-	$crtMenu = searchItemByAtt($GLOBALS["contents"]["secteurs"], "name", $position_array[0]);
-	
-	for($i=1; $i<count($position_array); $i++){
-		if($crtMenu["menus"] != null){
-			$index = searchItemByAtt($crtMenu["menus"], "name", $position_array[$i]);
-			if($index == null){
-				$index = $crtMenu["menus"]["defaultMenuIndex"];
-			}
-			$crtMenuIndex = $index;
-			$crtMenu = $crtMenu["menus"][$index];
-		}
-	}
-}
-
-function getCurrentArticle(){
-	$position_array = $GLOBALS["contentPosition"];
-	$crtMenus = searchItemObjectByAtt($GLOBALS["contents"]["secteurs"], "name", $position_array[0]);
-	for($i=1; $i<count($position_array); $i++){
-		$name = $position_array[$i];
-		$crtMenus = searchItemObjectByAtt($crtMenus["menus"], "name", $name);
-		if($crtMenus==null){
-			return null;
-		}
-	}
-
-	return searchItemObjectByAtt($crtMenus["articles"], "name", $GLOBALS["contentName"]);
-}
-
 $secteurTranslation = new Node(Node::TYPE_SECTEUR, "translation", "/translation/index");
 $secteurTranslation->addSecteurNodes(array(
+	new Node("M","main","/translation/index"),
 	new Node("M","simultaneus","/translation/simultaneus"),
+	new Node("A","simultaneus/article1","/translation/article1"),
+	new Node("A","simultaneus/article2","/translation/article2"),
+	new Node("M","simultaneus/submenu1","/translation/submenu1"),
+	new Node("M","simultaneus/submenu2","/translation/submenu2"),
+	new Node("M","simultaneus/submenu2/submA","/translation/submA"),
+	new Node("M","simultaneus/submenu2/submB","/translation/submB"),
+	new Node("A","simultaneus/submenu2/subArtiA","/translation/subArtiA"),
+	new Node("A","simultaneus/submenu2/subArtiB","/translation/subArtiB"),
 	new Node("M","consecutive","/translation/consecutive"),
 	new Node("M","exposition","/translation/exposition"),
 	new Node("M","compagny","/translation/compagny"),
-	new Node("M","contact", "/translation/contact"),
-	new Node("A","test/article/exemple", "/translation/testArticle"),
-	new Node("M","test/menu/exemple", "/translation/testMenu")
+	new Node("M","contact", "/translation/contact")
+
+//	new Node("A","test/article/exemple", "/translation/testArticle"),
+//	new Node("M","test/menu/exemple", "/translation/testMenu")
 ));
 
 $secteurs = array(
-	"translation"=>$secteurTranslation
+	$secteurTranslation
 );
 
+$currentMenuNodes = getCurrentMenuNodes();
+$currentMenu = getCurrentMenu();
+$currentArticle = getCurrentArticle();
+$currentNode = getCurrentNode();
+$currentNodePosition = $currentMenu->nodePosition;
+
+function searchItemByAtt($arr, $att, $value, $useDefault = false){
+	if($arr==null){
+		return -1;
+	}
+	$defaultItemIndex = -1;
+	for($i=0; $i<count($arr); $i++){
+		$crtItem = $arr[$i];
+		if($crtItem->$att == $value){
+			return $i;
+		}
+		if($useDefault && $defaultItemIndex==null && $crtItem->isDefault){
+			$defaultItemIndex = $i;
+		}
+	}
+
+	return $defaultItemIndex;
+}
+
+function searchItemObjectByAtt($arr, $att, $value, $useDefault = false){
+	$index = searchItemByAtt($arr, $att, $value, $useDefault);
+	if($index==-1){
+		return null;
+	}
+	return $arr[$index];
+}
+
+// get current menuNode by level (0:secteur  1:topmenu  ... -1:last level)
+function getCurrentMenu($level = -1){
+	if($GLOBALS["currentMenuNodes"] = null){
+		$menus = $GLOBALS["$currentMenuNodes"];
+		$deeth = count($menus);
+		if($level==-1){
+			return $menus[$deeth-1];
+		}else if($level < $deeth){
+			return $menus[$level];
+		}else{
+			return null;
+		}
+	}else{
+		$crtMenu = searchItemObjectByAtt($GLOBALS["secteurs"], "isCurrent", true);
+		for($i=1; ($crtMenu->menuNodes!=null) && (($i<$level+1) || ($level==-1)); $i++){
+			$searchResult = searchItemObjectByAtt($crtMenu->menuNodes, "isCurrent", true);
+			if($searchResult==null){
+				break;
+			}else{
+				$crtMenu = $searchResult;
+			}
+		}
+		return $crtMenu;
+	}
+}
+
+function getCurrentMenuNodes(){
+	$menus = array();
+	$crtMenu = getCurrentMenu();
+	if($crtMenu != null){
+		array_unshift($menus, $crtMenu);
+		while($crtMenu->fNode != null){
+			array_unshift($menus, $crtMenu->fNode);
+			$crtMenu = $crtMenu->fNode;
+		}
+	}
+	return $menus;
+}
+
+function getCurrentArticle(){
+	$crtMenus = getCurrentMenu();
+	return searchItemObjectByAtt($crtMenus->articleNodes, "isCurrent", true);
+}
+
+function getCurrentNode(){
+	$crtMenu = getCurrentMenu();
+	if($crtMenu!=null && $crtMenu->pagePath == $GLOBALS["pagePath"]){
+		return $crtMenu;
+	}else{
+		$crtArticle = $GLOBALS["currentArticle"];
+		if($crtArticle!=null && $crtArticle->pagePath == $GLOBALS["pagePath"]){
+			return $crtArticle;
+		}
+	}
+	return null;
+}
+
 class Item{
-	var $color;
 	var $name;
 	var $isCurrent;
-	var $title;
 	var $href;
-	function Item(){}
+	var $type;
+	var $subItems;
+
+	function __construct(){}
+}
+
+class SubItems{
+	var $articles;
+	var $menus;
+
+	function __construct($articles, $menus){
+		$this->articles = $articles;
+		$this->menus = $menus;
+	}
 }
 
 function getTopMenu(){
-	$position_array = $GLOBALS["contentPosition"];
-	$crtMenuIndex = $GLOBALS["contents"]["defaultSecteurIndex"];
-	$crtMenu = $GLOBALS["contents"]["secteurs"][$crtMenuIndex];
-	$crtPageItem = $crtMenu["defaultMenuIndex"];
+	$crtSecteur = getCurrentMenu(0);
+	$crtMenuNodes = $crtSecteur->menuNodes;
+	$crtMenuItem = getCurrentMenu(1);
 
-	if(count($position_array)>1){
-		$index = searchItemByAtt($crtMenu["menus"], "name", $position_array[1]);
-			
-		if($index >-1){
-			$crtPageItem = $index;
-		}
-	}
-	 
-	$link = "/".implode("/",array($GLOBALS["lang_client"], $crtMenu["name"]))."/";
+	$link = "/".$GLOBALS["lang_client"];
 	
 	$topMenus = array();
-	for($i = 0; $i<count($crtMenu["menus"]); $i++){
+	for($i = 0; $i<count($crtMenuNodes); $i++){
 		$item = new Item();
-		$item->name = $crtMenu["menus"][$i]["name"];
-		$item->isCurrent = $i==$crtPageItem;
-		$item->title = $item->name;
-		$item->href = $link.$crtMenu["menus"][$i]["name"]."/".$crtMenu["menus"][$i]["articles"][$crtMenu["menus"][$i]["defaultArticleIndex"]]["name"].".html";
+		$item->name = $crtMenuNodes[$i]->rName;
+		$item->type = $crtMenuNodes[$i]->type;
+		$item->isCurrent = $crtMenuNodes[$i]->isCurrent;
+		$item->href = $link.$crtMenuNodes[$i]->pagePath.".html";
 		array_push($topMenus, $item);
 	}
 	
 	return $topMenus;
 }
 
-function getLeftArticleMenu(){
-	$position_array = $GLOBALS["contentPosition"];
-	$crtMenuIndex = $GLOBALS["contents"]["defaultSecteurIndex"];
-	$crtMenu = $GLOBALS["contents"]["secteurs"][$crtMenuIndex];
-	$crtPageItem = $crtMenu["defaultMenuIndex"];
 
-	if(count($position_array)>1){
-		$index = searchItemByAtt($crtMenu["menus"], "name", $position_array[1]);
-		if($index >-1){
-			$crtPageItem = $index;
-		}
-	}
-		
-	$link = "/".implode("/",array($GLOBALS["lang_client"], $crtMenu["name"]))."/";
+function getLeftMenu(){
+	return getDeepMenu(getCurrentMenu(1));
+}
+
+function getDeepMenu($node){
+	$crtMenuNodes = $node->menuNodes;
+	$crtArticleNodes = $node->articleNodes;
+	$link = "/".$GLOBALS["lang_client"];
 	
-	$leftArticleMenus = array();
-
-	if($crtPageItem!=-1 && count($crtMenu["menus"][$crtPageItem]["articles"]>1)){
-		foreach($crtMenu["menus"][$crtPageItem]["articles"] as $article){
-			if($article["showLink"]){
-				$item = new Item();
-				$item->name = $article["name"];
-				$item->isCurrent = $item->name == $GLOBALS["contentName"];
-				$item->title = $item->name;
-				$item->href = $link.$crtMenu["menus"][$crtPageItem]["name"]."/".$article["name"].".html";
-				array_push($leftArticleMenus, $item);
-			}
+	$articles = null;
+	if($crtArticleNodes != null){
+		$articles = array();
+		for($i = 0; $i<count($crtArticleNodes); $i++){
+			$item = new Item();
+			$item->name = $crtArticleNodes[$i]->rName;
+			$item->type = $crtArticleNodes[$i]->type;
+			$item->isCurrent = $crtArticleNodes[$i]->isCurrent;
+			$item->href = $link.$crtArticleNodes[$i]->pagePath.".html";
+			array_push($articles, $item);
 		}
 	}
-	return $leftArticleMenus;	
+	
+	$menus = null;
+	if($crtMenuNodes != null){
+		$menus = array();
+		for($i = 0; $i<count($crtMenuNodes); $i++){
+			$item = new Item();
+			$item->name = $crtMenuNodes[$i]->rName;
+			$item->type = $crtMenuNodes[$i]->type;
+			$item->isCurrent = $crtMenuNodes[$i]->isCurrent;
+			$item->href = $link.$crtMenuNodes[$i]->pagePath.".html";
+			$item->subItems = getDeepMenu($crtMenuNodes[$i]);
+			array_push($menus, $item);
+		}
+	}
+
+	if($articles == null && $menus == null){
+		return null;
+	}
+
+	return new SubItems($articles, $menus);
+}
+
+function getCrtNodeAttr($attrName){
+	$crtNode = $GLOBALS["currentNode"];
+	if($crtNode!=null){
+		return getResource($crtNode->rName.".$attrName");
+	}else{
+		return $attrName;
+	}
 }
 
 function getPageTitle(){
-	$crtArticle = getCurrentArticle();
-	return getResource($crtArticle["name"].".title");
+	return getCrtNodeAttr("title");
 }
 
 function getPageKeywords(){
-	$crtArticle = getCurrentArticle();
-	return getResource($crtArticle["name"].".keyswords");
+	return getCrtNodeAttr("keyswords");
 }
 
 function getPageDescription(){
-	$crtArticle = getCurrentArticle();
-	return getResource($crtArticle["name"].".description");
+	return getCrtNodeAttr("description");
 }
 
 function getCssFile(){

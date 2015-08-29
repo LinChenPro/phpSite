@@ -12,10 +12,11 @@ $source_support = array("js","css");
 $media_support = array("jpg","jpeg","png","gif","bmp", "ico");
 $doc_support = array("doc","docx","pdf");
 
-$urlOrigine = "/translation/main/index.html";
+$urlOrigine = "/translation/index.html";
 
 $contentPosition = array();
 $contentType = "html";
 $contentName = "index";
 $contentSuffix = "html";
+$pagePath = "/translation/index";
 ?>

@@ -150,6 +150,11 @@ display: inline-block;
 #left_menu{
 }
 
+#left_menu ul{
+	list-style: none;
+	margin:0px;
+}
+
 #foot{
 	min-width:620px;
 	margin-top:2px;

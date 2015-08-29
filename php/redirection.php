@@ -57,7 +57,7 @@ if(count($url_segms)>0){
 	}
 }
 
-
+$pagePath = "/".implode("/", $contentPosition)."/".$contentName;
 
 // content file
 function getContentFilePath(){

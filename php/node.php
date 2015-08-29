@@ -4,16 +4,18 @@ class Node{
 	const TYPE_MENU = "M";
 	const TYPE_ARTICLE = "A";
 
+	public $fNode = null;
 	public $type; // secteur, menu, article  
 	public $name;
 	public $nodePosition;
+	public $rName;
 	public $pagePath;
 	public $isDefault = false;
 	public $isCurrent = false;
 	public $showInMenu = true;
 	public $menuNodes;
 	public $articleNodes;
-	
+
 	function __construct($type, $nodePosition, $pagePath=null, $isDefault=false, $showInMenu = true, $isCurrent=false){
 		
 		$this->type = $type;
@@ -24,10 +26,18 @@ class Node{
 		$this->isDefault = $isDefault;
 		$this->isCurrent = $isCurrent;
 		$this->showInMenu = $showInMenu;
+		$this->updateRName();
 	}
 	
 	function toString(){
 		return $this->type.", ".$this->name.", ".$this->nodePosition.", ".$this->pagePath;
+	}
+
+	function setCurrent($crt){
+		$this->isCurrent = $crt;
+		if($crt && $this->fNode!=null && $crt){
+			$this->fNode->setCurrent($crt);
+		}
 	}
 
 	function addNode($node){
@@ -42,7 +52,8 @@ class Node{
 			}
 			array_push($this->articleNodes, $node);
 		}
-		
+
+		$node->fNode = $this;
 		return $node;
 	}
 	
@@ -64,7 +75,8 @@ class Node{
 			$positionArr = explode("/",$node->nodePosition);
 			$crtParent = $this;
 			$node->nodePosition = $this->nodePosition."/".$node->nodePosition;
-			
+			$node->updateRName();
+
 			$level = count($positionArr);
 			for($j=0; $j<$level; $j++){
 				if($j+1==$level){
@@ -73,7 +85,15 @@ class Node{
 					$crtParent = $crtParent->getOrCreateSubmenu($positionArr[$j]);
 				}
 			}
+
+			if($node->pagePath==$GLOBALS["pagePath"]){
+				$node->setCurrent(true);
+			}
 		}
+	}
+
+	function updateRName(){
+		$this->rName = str_replace("/", "_", $this->nodePosition);
 	}
 }
 ?>

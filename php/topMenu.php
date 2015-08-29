@@ -24,7 +24,7 @@ foreach($topMenuItems as $item){
 <?php
 	}
 ?>
-			<a href="<?=$item->href?>"><?=srs($item->title)?></a>
+			<a href="<?=$item->href?>"><?=srs($item->name)?></a>
 		</li>
 <?php
 }
