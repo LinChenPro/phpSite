@@ -21,10 +21,10 @@ $resource = array(
 "translation_simultaneus_article2" => "文章2",
 "translation_simultaneus_submenu1" => "菜单1",
 "translation_simultaneus_submenu2" => "菜单2",
-"translation_simultaneus_submenu2_subArtiA" => "子文章1",
-"translation_simultaneus_submenu2_subArtiB" => "子文章2",
-"translation_simultaneus_submenu2_submA" => "子菜单1",
-"translation_simultaneus_submenu2_submB" => "子菜单2",
+"translation_simultaneus_submenu1_subArtiA" => "子文章1",
+"translation_simultaneus_submenu1_subArtiB" => "子文章2",
+"translation_simultaneus_submenu1_submA" => "子菜单1",
+"translation_simultaneus_submenu1_submB" => "子菜单2",
 
 
 "translation_consecutive" => "中法交传",
