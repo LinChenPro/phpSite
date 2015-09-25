@@ -4,22 +4,18 @@ include "node.php";
 $secteurTranslation = new Node(Node::TYPE_SECTEUR, "translation", "/translation/index");
 $secteurTranslation->addSecteurNodes(array(
 	new Node("M","main","/translation/index"),
-	new Node("M","simultaneus","/translation/simultaneus"),
-	new Node("A","simultaneus/article1","/translation/article1"),
-	new Node("A","simultaneus/article2","/translation/article2"),
-	new Node("M","simultaneus/submenu1","/translation/submenu1"),
-	new Node("M","simultaneus/submenu1/submA","/translation/submA"),
-	new Node("M","simultaneus/submenu1/submB","/translation/submB"),
-	new Node("A","simultaneus/submenu1/subArtiA","/translation/subArtiA"),
-	new Node("A","simultaneus/submenu1/subArtiB","/translation/subArtiB"),
-	new Node("M","simultaneus/submenu2","/translation/submenu2"),
-	new Node("M","consecutive","/translation/consecutive"),
-	new Node("M","exposition","/translation/exposition"),
-	new Node("M","compagny","/translation/compagny"),
+	new Node("M","aboutus", "/translation/aboutus"),
+	new Node("A","aboutus/ourcompany","/translation/ourcompany"),
+	new Node("A","aboutus/ourteam","/translation/ourteam"),
+	new Node("M","ourservices", "/translation/ourservices"),
+	new Node("A","ourservices/simultaneous","/translation/simultaneous"),
+	new Node("A","ourservices/consecutive","/translation/consecutive"),
+	new Node("A","ourservices/accompany","/translation/accompany"),
+	new Node("A","ourservices/exposition","/translation/exposition"),
+	new Node("A","ourservices/written","/translation/written"),
+	new Node("M","message", "/translation/message"),
+	new Node("M","joinus", "/translation/joinus"),
 	new Node("M","contact", "/translation/contact")
-
-//	new Node("A","test/article/exemple", "/translation/testArticle"),
-//	new Node("M","test/menu/exemple", "/translation/testMenu")
 ));
 
 $secteurs = array(
@@ -225,7 +221,7 @@ function getCssFile(){
 }
 ?>
 
-<!DOCTYPE>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<?=$lang_client?>">
 <head>
 <title><?=getPageTitle()?></title>
@@ -249,7 +245,14 @@ if(isMobile()){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Language" content="<?=$lang_client?>"/>
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="/js/datepicker-zh-CN.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link href="<?=getCssFile()?>" rel="stylesheet" type="text/css" />
+
 </head>
 	<body>
 	<?php

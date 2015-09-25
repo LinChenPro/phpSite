@@ -1,0 +1,93 @@
+<div class="main_content">
+<?php
+	if(array_key_exists("name", $_POST)){
+		$to = "contact@iriso-service.com";
+		$subject = "来自官网的询价信";
+		$txt = $_POST["name"];
+		$from = $_POST["email"];
+		$headers = "From:$from\r\nCC: somebodyelse@example.com";
+		echo $headers;
+		mail($to,$subject,$txt,$headers);
+?>
+	<p>
+		你的信息已成功发送，我们将尽快联系你。
+	</p>
+
+<?php
+	}else{
+?>
+	<p>
+		请根据您的情况填写表单，我们会尽快和您联系。您也可以直接电话或邮件联系我们。
+	</p>
+	<form action="message.html" method="post" name="message" id="message">
+		<div><span class="input_title">您的姓名：</span><input type="text" name="name" class="long_text"/><span>*</span></div>
+		<div><span class="input_title">您的邮箱地址：</span><input type="text" name="email" class="long_text"/><span>*</span></div>
+		<div><span class="input_title">您的联系电话：</span><input type="text" name="telephone" class="long_text"/><span>*</span></div>
+		<div><span class="input_title">
+			您代表：</span>
+			<span>
+				<input type="radio" name="client_type" value="person" id="person"/> 
+				<label for="person">个人</label>
+				<input type="radio" name="client_type" value="company" id="company"/>
+				<label for="company">公司企业</label>
+				<input type="radio" name="client_type" value="group" id="group"/>
+				<label for="group">部门团体</label>
+			</span>
+		</div>
+		<div><span class="input_title">公司名称：</span><input type="text" name="company_name" class="long_text"/><span>*</span></div>
+		<div><span class="input_title">
+			服务类型：</span>
+			<span id="service_type_span">
+				<input type="radio" name="service_type" value="simultaneous" id="simultaneous"> 
+				<label for="simultaneous">同声传译</label>
+				<input type="radio" name="service_type" value="consecutive" id="consecutive"> 
+				<label for="consecutive">交替传译</label>
+				<input type="radio" name="service_type" value="exposition" id="exposition">
+				<label for="exposition">展会翻译</label>
+				<br>
+				<input type="radio" name="service_type" value="accompany" id="accompany">
+				<label for="accompany">陪同翻译</label>
+				<input type="radio" name="service_type" value="written" id="written">
+				<label for="written">笔译</label>
+				<input type="radio" name="service_type" value="written" id="other_service">
+				<label for="written">其它</label>
+			</span>
+		</div>
+		<div><span class="input_title">活动名称：</span><input type="text" name="active_name" class="long_text"/></div>
+		<div><span class="input_title">活动地点：</span><input type="text" name="active_location" class="long_text"/></div>
+		<div><span class="input_title">展会名称：</span><input type="text" name="exposition_name" class="long_text"/></div>
+		<div>
+			<span class="input_title">起止日期：</span>
+			从<input type="text" name="date_from" id="date_from" class="datepicker" readonly="readonly"/>
+			到<input type="text" name="date_to" id="date_to" class="datepicker" readonly="readonly"/>
+		</div>
+		<div>
+			补充信息：
+			<textarea name="infos" id="service_infos" placeholder="您如果有认为重要的补充信息，请写在这里"></textarea>
+		</div>
+
+		<div id="submit_div"><input type="submit" value="发送"/></div>
+	</form>
+
+	<script>
+	  $(function() {
+		$.datepicker.regional["zh-CN"];
+	    $("#date_from").datepicker({
+		  minDate: 1
+		});
+	    $("#date_to").datepicker({
+		  minDate: 1
+		});
+	  });
+  </script>
+<?php		
+	}
+?>
+
+</div>
+
+
+ 
+
+
+

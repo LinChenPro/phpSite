@@ -4,6 +4,27 @@ body{
 	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
+.emph, em{
+	font-style:normal;
+	color:#4D95DD;
+	padding:0 5px;
+}
+
+.emph:first-child, em:first-child{
+	padding:0 5px 0 0;
+}
+
+h1{
+	
+}
+
+h2{
+	font-size: 16px;
+	padding-top:15px;	
+	padding-bottom:0px;	
+	line-height:100%
+}
+
 .FCL{
 	clear:both;
 }
@@ -132,15 +153,6 @@ display: inline-block;
 	min-height:250px;
 }
 
-.emph{
-	color:#4D95DD;
-	padding:0 5px;
-}
-
-.emph:first-child{
-	padding:0 5px 0 0;
-}
-
 #left_area{
 	width:350px;
 	margin-left:-350px;
@@ -256,4 +268,56 @@ display: inline-block;
 
 .bd{
 	font-weight:bold;
+}
+
+
+/* form message*/
+form[id="message"]{
+	width:440px;
+}
+
+form[id="message"]>div{
+    padding: 3px 10px;
+    border-bottom: 1px solid;
+}
+
+.input_title{
+	display:inline-block;
+	width:115px;
+}
+
+form[id="message"] .long_text{
+	width:250px;
+}
+
+form[id="message"] #service_type_span{
+	display: inline-block;
+	vertical-align:top;
+}
+
+form[id="message"] #service_infos{
+	display: inline-block;
+	width:365px;
+	height:100px;
+	resize: vertical;
+}
+
+form[id="message"] label{
+	display: inline-block;
+	width:70px;
+}
+
+form[id="message"] .datepicker{
+	width:104px;
+}
+
+#submit_div{
+    padding: 5px 0;
+    width:365;
+    text-align: right;
+    border-bottom: none;
+}
+
+.ui-widget{
+	font-size: 0.8em;
 }
