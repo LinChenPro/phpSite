@@ -23,7 +23,7 @@
 			</span>
 <br>
 			<span id="foot_address">
-			<span class="bd">Add :</span> 102 Avenue des Champs-Élysées - 75008 Paris
+			<span class="bd">Addr :</span> 102 Avenue des Champs-Élysées - 75008 Paris
 			</span>
 			<wbr>
 			<span id="foot_tel">

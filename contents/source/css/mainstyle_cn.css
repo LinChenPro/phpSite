@@ -56,6 +56,10 @@ em:first-child{
 	font-style: normal;
 }
 
+.bd{
+	font-weight: bold;
+}
+
 .total_container{
 	min-width:960px;
 	width:100%;

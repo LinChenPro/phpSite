@@ -13,7 +13,7 @@
 		"exposition_location",
 		"date_from",
 		"date_to",
-		"service_infos"
+		"infos"
 	);
 
 	function getMailContent(){
@@ -22,6 +22,9 @@
 			if(array_key_exists($input, $_POST)){
 				$val = $_POST[$input];
 				if($val != null && $val != ""){
+					if($input == "client_type" || $input == "service_type"){
+						$val = srs("translation_message_radiovalue_".$val);
+					}
 					$txt .= srs("translation_message_inputtitle_".$input) .":".$val."\r\n"; // todo: replace @
 				}
 			}
@@ -37,7 +40,14 @@
 		if($from==""){
 			$from="unknown@unknown.com";
 		}
-		$headers = "From:$from";
+		
+		$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
+		$client_name_utf = "=?UTF-8?B?".base64_encode($client_name)."?=";
+		$headers = "From:$client_name_utf <$from>\r\n";
+		$headers .= 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/plain; charset=uft-8' . "\r\n";
+		$headers .="Content-Transfer-Encoding: 8bit";
+
 		$mailContent = getMailContent();
 
 		//send mail
