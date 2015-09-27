@@ -4,10 +4,10 @@ include "node.php";
 $secteurTranslation = new Node(Node::TYPE_SECTEUR, "translation", "/translation/index");
 $secteurTranslation->addSecteurNodes(array(
 	new Node("M","main","/translation/index"),
-	new Node("M","aboutus", "/translation/aboutus"),
+	new Node("M","aboutus", "/translation/ourcompany"), // directly to ourcompany
 	new Node("A","aboutus/ourcompany","/translation/ourcompany"),
 	new Node("A","aboutus/ourteam","/translation/ourteam"),
-	new Node("M","ourservices", "/translation/ourservices"),
+	new Node("M","ourservices", "/translation/simultaneous"), // directly to simultaneous TODO: page ourservices
 	new Node("A","ourservices/simultaneous","/translation/simultaneous"),
 	new Node("A","ourservices/consecutive","/translation/consecutive"),
 	new Node("A","ourservices/accompany","/translation/accompany"),
@@ -258,16 +258,15 @@ if(isMobile()){
 	<?php
 	include 'topMenu.php';
 	?>
-	<div id="middle_area">
+	<div class="total_container" id="container_center">
+		<div id="center">
 		<?php
 		include 'leftMenu.php';
 		?>
-		<div id="main_content_out">
-			<?php
-			include $contentFilePath;
-			?>
+		<?php
+		include $contentFilePath;
+		?>
 		</div>
-		<div class="FCL"></div>
 	</div>
 	<?php
 	include 'foot.php';

@@ -3,9 +3,14 @@ DirectoryIndex /php/site.php
 RewriteEngine On
 RewriteBase /
 
+RewriteRule cn/translation/main/index.html /cn/translation/index.html [R=301,L]
+RewriteRule cn/translation/simultaneus/simultaneus.html /cn/translation/simultaneous.html [R=301,L]
+RewriteRule cn/translation/consecutive/consecutive.html /cn/translation/consecutive.html [R=301,L]
+RewriteRule cn/translation/exposition/exposition.html /cn/translation/exposition.html [R=301,L]
+RewriteRule cn/translation/compagny/compagny.html /cn/translation/accompany.html [R=301,L]
+RewriteRule cn/translation/contact/contact.html /cn/translation/contact.html [R=301,L]
 
 # RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /php/site.php [L]
-

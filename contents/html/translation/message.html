@@ -1,76 +1,146 @@
-<div class="main_content">
 <?php
-	if(array_key_exists("name", $_POST)){
+	$msgFormInputs = array(
+		"name",
+		"email",
+		"telephone",
+		"client_type",
+		"company_name",
+		"organization_name",
+		"service_type",
+		"active_name",
+		"active_location",
+		"exposition_name",
+		"exposition_location",
+		"date_from",
+		"date_to",
+		"service_infos"
+	);
+
+	function getMailContent(){
+		$txt = "";
+		foreach($GLOBALS["msgFormInputs"] as $input){
+			if(array_key_exists($input, $_POST)){
+				$val = $_POST[$input];
+				if($val != null && $val != ""){
+					$txt .= srs("translation_message_inputtitle_".$input) .":".$val."\r\n"; // todo: replace @
+				}
+			}
+		}
+		return $txt;
+	}
+
+	if(array_key_exists("name", $_POST)){// todo : change this condition 
 		$to = "contact@iriso-service.com";
-		$subject = "来自官网的询价信";
-		$txt = $_POST["name"];
+		$client_name = $_POST["name"];
+		$subject = "官网询价信 ".$client_name;
 		$from = $_POST["email"];
-		$headers = "From:$from\r\nCC: somebodyelse@example.com";
-		echo $headers;
-		mail($to,$subject,$txt,$headers);
+		if($from==""){
+			$from="unknown@unknown.com";
+		}
+		$headers = "From:$from";
+		$mailContent = getMailContent();
+
+		//send mail
+		mail($to, $subject, $mailContent, $headers);
 ?>
-	<p>
-		你的信息已成功发送，我们将尽快联系你。
-	</p>
+			<div class="content_parts">
+				<div id="part_left">
+					<p>
+						你的留言已成功提交，谢谢！
+					</p>
+					<p>
+						我们将在 1 个工作日内和您联系。
+					</p>
+				</div>
+
+				<div id="part_right">
+					<a class="big_button message_goto" href="index.html">回到首页</a>
+					<a class="big_button message_goto" href="message.html">发送新的询价表单</a>
+				</div>
+			</div>
 
 <?php
 	}else{
 ?>
-	<p>
-		请根据您的情况填写表单，我们会尽快和您联系。您也可以直接电话或邮件联系我们。
-	</p>
-	<form action="message.html" method="post" name="message" id="message">
-		<div><span class="input_title">您的姓名：</span><input type="text" name="name" class="long_text"/><span>*</span></div>
-		<div><span class="input_title">您的邮箱地址：</span><input type="text" name="email" class="long_text"/><span>*</span></div>
-		<div><span class="input_title">您的联系电话：</span><input type="text" name="telephone" class="long_text"/><span>*</span></div>
-		<div><span class="input_title">
-			您代表：</span>
-			<span>
-				<input type="radio" name="client_type" value="person" id="person"/> 
-				<label for="person">个人</label>
-				<input type="radio" name="client_type" value="company" id="company"/>
-				<label for="company">公司企业</label>
-				<input type="radio" name="client_type" value="group" id="group"/>
-				<label for="group">部门团体</label>
-			</span>
-		</div>
-		<div><span class="input_title">公司名称：</span><input type="text" name="company_name" class="long_text"/><span>*</span></div>
-		<div><span class="input_title">
-			服务类型：</span>
-			<span id="service_type_span">
-				<input type="radio" name="service_type" value="simultaneous" id="simultaneous"> 
-				<label for="simultaneous">同声传译</label>
-				<input type="radio" name="service_type" value="consecutive" id="consecutive"> 
-				<label for="consecutive">交替传译</label>
-				<input type="radio" name="service_type" value="exposition" id="exposition">
-				<label for="exposition">展会翻译</label>
-				<br>
-				<input type="radio" name="service_type" value="accompany" id="accompany">
-				<label for="accompany">陪同翻译</label>
-				<input type="radio" name="service_type" value="written" id="written">
-				<label for="written">笔译</label>
-				<input type="radio" name="service_type" value="written" id="other_service">
-				<label for="written">其它</label>
-			</span>
-		</div>
-		<div><span class="input_title">活动名称：</span><input type="text" name="active_name" class="long_text"/></div>
-		<div><span class="input_title">活动地点：</span><input type="text" name="active_location" class="long_text"/></div>
-		<div><span class="input_title">展会名称：</span><input type="text" name="exposition_name" class="long_text"/></div>
-		<div>
-			<span class="input_title">起止日期：</span>
-			从<input type="text" name="date_from" id="date_from" class="datepicker" readonly="readonly"/>
-			到<input type="text" name="date_to" id="date_to" class="datepicker" readonly="readonly"/>
-		</div>
-		<div>
-			补充信息：
-			<textarea name="infos" id="service_infos" placeholder="您如果有认为重要的补充信息，请写在这里"></textarea>
-		</div>
+			<div class="content_parts">
+				<div id="part_left">
+					<p>
+						请根据您的情况填写表单，我们会尽快和您联系。您也可以直接电话或邮件联系我们。
+					</p>
+				</div>
 
-		<div id="submit_div"><input type="submit" value="发送"/></div>
-	</form>
+				<div id="part_right">
+					<form action="message.html" method="post" name="message" id="message">
+						<div><span class="input_title">您的姓名：</span><input type="text" name="name" class="long_text required" data-requiredmsg="请填写您的姓名。"/><span class="obli_star"> *</span></div>
+						<div><span class="input_title">您的邮箱地址：</span><input type="text" name="email" class="long_text requiredgroup" data-requiredmsg="请至少填写邮箱地址和联系电话中的一项。" data-emailmsg="请检查邮件地址格式是否正确。"/><span class="obli_star"> *</span></div>
+						<div><span class="input_title">您的联系电话：</span><input type="text" name="telephone" class="long_text" data-verify-joinname="email"/><span class="obli_star"> *</span></div>
+						<div><span class="input_title">
+							您代表：</span>
+							<span>
+								<input type="radio" name="client_type" value="person" id="person"/> 
+								<label for="person">个人</label>
+								<input type="radio" name="client_type" value="company" id="company"/>
+								<label for="company">公司企业</label>
+								<input type="radio" name="client_type" value="organization" id="organization"/>
+								<label for="organization">部门团体</label>
+							</span>
+						</div>
+						<div id="message_optional_companyname">
+							<span class="input_title">公司名称：</span><input type="text" name="company_name" class="long_text required" data-requiredmsg="请填写您的公司名称。"/>
+							<span class="obli_star">*</span>
+						</div>
+						<div id="message_optional_organizationname">
+							<span class="input_title">部门或团体名称：</span><input type="text" name="organization_name" class="long_text required" data-requiredmsg="请填写您部门或团体的名称。"/>
+							<span class="obli_star">*</span>
+						</div>
+						<div><span class="input_title">
+							服务类型：</span>
+							<span id="service_type_span">
+								<input type="radio" name="service_type" value="simultaneous" id="simultaneous"> 
+								<label for="simultaneous">同声传译</label>
+								<input type="radio" name="service_type" value="consecutive" id="consecutive"> 
+								<label for="consecutive">交替传译</label>
+								<input type="radio" name="service_type" value="exposition" id="exposition">
+								<label for="exposition">展会翻译</label>
+								<br>
+								<input type="radio" name="service_type" value="accompany" id="accompany">
+								<label for="accompany">陪同翻译</label>
+								<input type="radio" name="service_type" value="written" id="written">
+								<label for="written">笔译</label>
+								<input type="radio" name="service_type" value="other" id="other_service">
+								<label for="other_service">其它</label>
+							</span>
+						</div>
+						<div id="message_optional_activename">
+							<span class="input_title">活动名称：</span><input type="text" name="active_name" class="long_text"/>
+						</div>
+						<div id="message_optional_activelocation">
+							<span class="input_title">活动地点：</span><input type="text" name="active_location" class="long_text"/>
+						</div>
+						<div id="message_optional_expositionname">
+							<span class="input_title">展会名称：</span><input type="text" name="exposition_name" class="long_text"/>
+						</div>
+						<div id="message_optional_expositionlocation">
+							<span class="input_title">展会名称：</span><input type="text" name="exposition_location" class="long_text"/>
+						</div>
+						<div id="message_optional_activedate">
+							<span class="input_title">起止日期：</span>
+							从<input type="text" name="date_from" id="date_from" class="datepicker"/>
+							到<input type="text" name="date_to" id="date_to" class="datepicker"/>
+						</div>
+						<div>
+							<textarea name="infos" id="service_infos" placeholder="您如果有其它需要说明的情况，请写在这里"></textarea>
+						</div>
+
+						<div id="submit_div"><input type="submit" id="message_submit" class="small_button" value="提交"/></div>
+					</form>
+
+				</div>
+				<div class="clearfloat"></div>
+			</div>
 
 	<script>
-	  $(function() {
+	$(function() {
 		$.datepicker.regional["zh-CN"];
 	    $("#date_from").datepicker({
 		  minDate: 1
@@ -78,15 +148,184 @@
 	    $("#date_to").datepicker({
 		  minDate: 1
 		});
-	  });
+		$(".datepicker").attr("readonly","readonly");
+
+		initClientType();
+		initServiceType();
+
+		$("[name='client_type']").change(initClientType);
+		$("[name='service_type']").change(initServiceType);
+
+	  	
+	  	$("#message").submit(function(){
+	  		// alert message 
+	  		if(verifyErrElm!=null && verifyErrMsg!=''){
+	  			alert(verifyErrMsg);
+	  			$(verifyErrElm).focus();
+		  		return false;
+	  		}
+
+	  		// for required elm
+	  		var $requiredObjs = $(".required");
+			for(var i=0; i<$requiredObjs.size(); i++){
+				var elm = $requiredObjs[i];
+				if(!elm.disabled && !notEmpty($(elm).val())){
+					return verifyBreak(elm, $(elm).data("requiredmsg"));
+				}else{
+					verifyClear(elm);
+				}
+			}
+
+			// email and telephone
+			var emailInput = $("input[name='email']")[0];
+	  		var emailVal=trim($(emailInput).val());
+	  		var telephoneInput = $("input[name='telephone']")[0];
+	  		var telephoneVal=trim($(telephoneInput).val());
+
+	  		if(!notEmpty(emailVal) && !notEmpty(telephoneVal)){
+				return verifyBreak(emailInput, $(emailInput).data("requiredmsg"), [telephoneInput]);
+	  		}else if(!isEmail(emailVal)){
+				return verifyBreak(emailInput, $(emailInput).data("emailmsg"));
+	  		}else{
+				verifyClear(emailInput);
+	  		}
+
+			return true;
+	  	});
+
+	});
+
+	var verifyErrElm = null;
+	var verifyErrMsg = '';
+	function verifyBreak(element, msg){
+		return verifyBreak(element, msg, null);
+	}
+
+	function verifyBreak(element, msg, otherElms){
+		verifyErrElm = element;
+		verifyErrMsg = msg;
+		verifyErrElm.setCustomValidity(verifyErrMsg);
+		verifyErrElm.oninput=function(){verifyClear(this);};
+		for(var i=0; otherElms!=null && i<otherElms.length; i++){
+			var elm = otherElms[i];
+			elm.oninput=function(){
+				verifyClear(this);
+				var joinName = $(this).data("verify-joinname");
+				verifyClear($("[name='"+joinName+"']")[0]);
+			};
+		}
+
+		setTimeout(function(){
+	  		$("#message_submit").click();
+		}, 20);
+	  		
+		return false;
+	}
+
+	function verifyClear(element){
+		if(verifyErrElm==element){
+			verifyErrElm = null;
+			verifyErrMsg = "";
+		}
+		element.setCustomValidity('');
+	}
+	function initEmailInput(){
+		$("[name='email']").each(function(){
+			if(jQuery.trim($(this).val())+jQuery.trim($("[name='telephone']").val())==''){
+				this.setCustomValidity($(this).data("requiredmsg"));
+			}
+			
+			this.oninput=function(){
+				this.setCustomValidity('');
+				if(!isEmail(jQuery.trim($(this).val()))){
+					this.setCustomValidity($(this).data("emailmsg"));
+				}else if(jQuery.trim($(this).val())+jQuery.trim($("[name='telephone']").val())==''){
+					this.setCustomValidity($(this).data("requiredmsg"));
+				}
+			};
+		});
+		$("[name='telephone']").each(function(){
+			this.oninput=function(){
+				var email = $("[name='email']")[0];
+				email.setCustomValidity('');
+				if(!isEmail(jQuery.trim($(email).val()))){
+					email.setCustomValidity($(email).data("emailmsg"));
+				}if(jQuery.trim($(this).val())+jQuery.trim($(email).val())==''){
+					email.setCustomValidity($(email).data("requiredmsg"));
+				}
+			};
+		});
+	}
+
+	var regemail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+	function isEmail(txt){
+		if(txt==""){
+			return true;
+		}
+		return regemail.test(txt);
+	}
+
+	function trim(txt){
+		if(txt==null){
+			return null;
+		}
+		return jQuery.trim(txt);
+	}
+
+	function notEmpty(txt){
+		return txt!=null && trim(txt)!='';
+	}
+
+	function initRequiredInputs(){
+			$(".required").each(function(){
+				if(!this.disabled){
+					$(this).attr("required", "required");
+					this.oninvalid=function(){this.setCustomValidity($(this).data("requiredmsg"));};
+					this.oninput=function(){this.setCustomValidity('');};
+				}else{
+					$(this).attr("required", null);
+					this.setCustomValidity('');
+				}
+			});
+
+	}
+	function initServiceType(){
+			var serviceType=$("[name='service_type']:checked").val();
+			setDisponible
+				($("#message_optional_activename"), ["simultaneous","consecutive","accompany"].indexOf(serviceType)!=-1);
+			setDisponible
+				($("#message_optional_activelocation"), ["simultaneous","consecutive","accompany"].indexOf(serviceType)!=-1);
+			setDisponible
+				($("#message_optional_expositionname"), ["exposition"].indexOf(serviceType)!=-1);
+			setDisponible
+				($("#message_optional_expositionlocation"), ["exposition"].indexOf(serviceType)!=-1);
+			setDisponible
+				($("#message_optional_activedate"), ["simultaneous","consecutive","exposition","accompany"].indexOf(serviceType)!=-1);
+	}
+	function initClientType(){
+			var clientType=$("[name='client_type']:checked").val();
+			setDisponible($("#message_optional_companyname"), clientType=="company");
+			setDisponible($("#message_optional_organizationname"), clientType=="organization");
+	}
+
+	function setDisponible($elm, dispo){
+		if(dispo){
+			$elm.show();
+			$elm.find("input").attr("disabled", null);
+		}else{
+			$elm.hide();
+			$elm.find("input").attr("disabled", "disabled");
+			$elm.find("input").each(function(){
+				verifyClear(this);
+			});
+
+		}
+	}
+
   </script>
 <?php		
 	}
 ?>
-
-</div>
-
-
  
 
 

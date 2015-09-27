@@ -1,7 +1,8 @@
-<div id="foot">
-	<div id="foot-inner">	
-		<div id="foot-area">
-			<span id="foot_name_1">
+<div class="total_container" id="container_footer">
+
+	<div id="foot-area">
+		<span class="tft">
+			<span id="foot_name_1" class="tred">
 			睿思国际
 			</span>
 
@@ -32,6 +33,7 @@
 			<span id="foot_contact">
 			<span class="bd">Email :</span> contact@iriso-service.com
 			</span>
-		</div>
+		</span>
 	</div>
+
 </div>

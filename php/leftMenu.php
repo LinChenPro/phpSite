@@ -9,6 +9,7 @@ if($leftMenu != null){
 ?>
 	</div>
 </div>
+
 <?php	
 }
 
@@ -20,7 +21,7 @@ function showSubMenu($subMenu, $level=2){
 		foreach($subMenu->articles as $itemArticle){
 			if($itemArticle->isCurrent){
 ?>
-			<li class="left_article_active" data-level="<?=$level?>">
+			<li class="left_article_active tblue" data-level="<?=$level?>">
 <?php
 			}else{
 ?>
@@ -44,7 +45,7 @@ function showSubMenu($subMenu, $level=2){
 		foreach($subMenu->menus as $itemMenu){
 			if($itemMenu->isCurrent){
 ?>
-			<li class="left_menu_active" data-level="<?=$level?>">
+			<li class="left_menu_active tblue" data-level="<?=$level?>">
 <?php
 			}else{
 ?>

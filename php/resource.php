@@ -3,8 +3,8 @@ $resource = array(
 	"cn"=>array(
 "company_name" => "睿思国际",
 "secteur_translate" => "口译和笔译服务",
-"company_name_lang2" => "<span>IRISO</span> <span>Service International</span>",
-"secteur_translate_lang2" => "Interprète et Tranduction",
+"company_name_lang2" => "<span class=\"tred\">IRISO</span> <span>Service International</span>",
+"secteur_translate_lang2" => "Services de Tranduction et d'Interprètariat",
 
 "translation_main" => "首页",
 "translation_main.title" => "睿思国际",
@@ -51,7 +51,7 @@ $resource = array(
 "translation_ourservices_exposition.keyswords" => "睿思国际,睿思,IRISO,专业,法国,巴黎,中法,法中,翻译,口译,展会",
 "translation_ourservices_exposition.description" => "展会翻译的质量对于企业的进一步开拓国际市场关系重大。我公司以合理的价格，提供优质的展会翻译服务。",
 
-"translation_ourservices_written" => "笔译",
+"translation_ourservices_written" => "笔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;译",
 "translation_ourservices_written.title" => "睿思国际-笔译",
 "translation_ourservices_written.keyswords" => "",
 "translation_ourservices_written.description" => "",
@@ -65,6 +65,21 @@ $resource = array(
 "translation_message.title" => "睿思国际-询价和留言",
 "translation_message.keyswords" => "",
 "translation_message.description" => "",
+
+"translation_message_inputtitle_name" => "联系人姓名",
+"translation_message_inputtitle_email" => "联系人邮箱",
+"translation_message_inputtitle_telephone" => "联系人电话",
+"translation_message_inputtitle_client_type" => "客户类型",
+"translation_message_inputtitle_company_name" => "公司名称",
+"translation_message_inputtitle_organization_name" => "部门或团体名称",
+"translation_message_inputtitle_service_type" => "业务类型",
+"translation_message_inputtitle_active_name" => "活动名称",
+"translation_message_inputtitle_active_location" => "活动地点",
+"translation_message_inputtitle_exposition_name" => "展会名称",
+"translation_message_inputtitle_exposition_location" => "展会地点",
+"translation_message_inputtitle_date_from" => "开始日期",
+"translation_message_inputtitle_date_to" => "结束日期",
+"translation_message_inputtitle_service_infos" => "其他信息",
 
 "translation_joinus" => "诚邀加盟",
 "translation_joinus.title" => "睿思国际-诚邀加盟",
