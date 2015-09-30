@@ -153,11 +153,20 @@
 	$(function() {
 		$.datepicker.regional["zh-CN"];
 	    $("#date_from").datepicker({
-		  minDate: 1
+		  numberOfMonths:2, minDate: 1
 		});
 	    $("#date_to").datepicker({
-		  minDate: 1
+		  numberOfMonths:2, minDate: 1
 		});
+	    $("#date_from").change(function(){
+	    	var date = $(this).datepicker("getDate");
+	    	$("#date_to").datepicker("option",{minDate: date});
+	    });
+	    $("#date_to").change(function(){
+	    	var date = $(this).datepicker("getDate");
+	    	$("#date_from").datepicker("option",{maxDate: date});
+	    });
+
 		$(".datepicker").attr("readonly","readonly");
 
 		initClientType();
