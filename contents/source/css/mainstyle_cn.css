@@ -483,9 +483,16 @@ form[id="message"] .datepicker{
 }
 
 .home_icon{
-	color:#333333;
-
 	display: inline-block;
+	position:relative;
+}
+
+.home_icon a{
+	color:#333333;
+	display: inline-block;
+	position:relative;
+	bottom:0px;
+
 	/* 3 icons */
 	/*margin:0 73px;*/
 
@@ -496,7 +503,6 @@ form[id="message"] .datepicker{
 	width:130px;
 	height:120px;
 	display:inline-block;
-	background-color: white;
 
 	/* cicle */
 	/*border-radius: 75px;*/
@@ -523,8 +529,12 @@ form[id="message"] .datepicker{
 	vertical-align: middle;
 }
 
-.home_icon:hover{
-	margin: -20px 30px 0 30px;
+.cssanime:hover a{
+	bottom:20px;
+	background-color:#F1F1F1;
+}
+
+.home_icon a:active{
 	background-color:#F1F1F1;
 }
 
@@ -535,7 +545,7 @@ form[id="message"] .datepicker{
 }
 	
 
-.home_icon:hover img{
+.cssanime:hover img{
 	background-color:#F1F1F1;
 }
 .home_icon span{
@@ -614,7 +624,7 @@ form[id="message"] .datepicker{
 	width:150px;
 	padding:10px;
 	text-align: center;
-	font-size: 150%;
+	font-size: 18px;
 	color:#333333;
 	border: 3px solid #55B2CD;
     box-shadow: 0 2px 20px 0 rgba(0,0,0,0.12),

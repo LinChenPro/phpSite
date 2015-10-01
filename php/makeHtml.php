@@ -246,8 +246,8 @@ if(isMobile()){
 <meta http-equiv="Content-Language" content="<?=$lang_client?>"/>
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
 
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <script src="/js/datepicker-zh-CN.js"></script>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">

@@ -5,22 +5,48 @@
 		<img id="sloganimg" src="/c.png"/>					
 	</div>
 	<div id="iconblock">
-		<a class="home_icon" href="/<?=$GLOBALS["lang_client"]?>/translation/ourteam.html">
-			<img src="/icon_team_small.png"/>
-			<span>翻译团队</span>
-		</a>
-		<a class="home_icon" href="/<?=$GLOBALS["lang_client"]?>/translation/simultaneous.html">
-			<img src="/icon_simultaneous_small.png"/>
-			<span>中法同传</span>
-		</a>
-		<a class="home_icon" href="/<?=$GLOBALS["lang_client"]?>/translation/consecutive.html">
-			<img src="/icon_consecutive_small.png"/>
-			<span>中法交传</span>
-		</a>
-		<a class="home_icon" href="/<?=$GLOBALS["lang_client"]?>/translation/written.html">
-			<img src="/icon_translation_small.png"/>
-			<span>中法笔译</span>
-		</a>
+		<span class="home_icon cssanime">
+			<a href="/<?=$GLOBALS["lang_client"]?>/translation/ourteam.html">
+				<img src="/icon_team_small.png"/>
+				<span>翻译团队</span>
+			</a>
+		</span>
+		<span class="home_icon cssanime">
+			<a href="/<?=$GLOBALS["lang_client"]?>/translation/simultaneous.html">
+				<img src="/icon_simultaneous_small.png"/>
+				<span>中法同传</span>
+			</a>
+		</span>
+		<span class="home_icon cssanime">
+			<a href="/<?=$GLOBALS["lang_client"]?>/translation/consecutive.html">
+				<img src="/icon_consecutive_small.png"/>
+				<span>中法交传</span>
+			</a>
+		</span>
+		<span class="home_icon cssanime">
+			<a href="/<?=$GLOBALS["lang_client"]?>/translation/written.html">
+				<img src="/icon_translation_small.png"/>
+				<span>中法笔译</span>
+			</a>
+		</span>
 	</div>
 
 </div>
+
+<script>
+$(function(){
+		$(".home_icon").attr("class", "home_icon");
+		$(".home_icon").hover(
+			function(){
+				$(this).find( "a" ).animate({ "bottom":  "20px" ,"backgroundColor":["#F1F1F1", "swing"]}, "100" , "easeOutExpo");
+				$(this).find( "img" ).animate({"backgroundColor":["#F1F1F1", "swing"]}, "100" , "swing");
+			},
+			function(){
+				$(this).find( "a" ).animate({ "bottom":  "0px" ,"backgroundColor":["#55B2CD", "swing"]}, "fast" , "easeOutBounce");
+				$(this).find( "img" ).animate({"backgroundColor":["#55B2CD", "swing"]}, "fast" , "swing");
+			}
+		);
+});
+
+</script>
+
