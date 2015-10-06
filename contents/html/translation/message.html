@@ -181,6 +181,7 @@
 	  		if(verifyErrElm!=null && verifyErrMsg!=''){
 	  			alert(verifyErrMsg);
 	  			$(verifyErrElm).focus();
+				verifyClear(verifyErrElm);
 		  		return false;
 	  		}
 
@@ -223,7 +224,7 @@
 	function verifyBreak(element, msg, otherElms){
 		verifyErrElm = element;
 		verifyErrMsg = msg;
-		verifyErrElm.setCustomValidity(verifyErrMsg);
+		setCustomValidity(verifyErrElm,verifyErrMsg);
 		verifyErrElm.oninput=function(){verifyClear(this);};
 		for(var i=0; otherElms!=null && i<otherElms.length; i++){
 			var elm = otherElms[i];
@@ -246,31 +247,38 @@
 			verifyErrElm = null;
 			verifyErrMsg = "";
 		}
-		element.setCustomValidity('');
+		setCustomValidity(element,'');
 	}
+
+	function setCustomValidity(elm, msg){
+		if(elm.setCustomValidity){
+			elm.setCustomValidity(msg);
+		}
+	}
+
 	function initEmailInput(){
 		$("[name='email']").each(function(){
 			if(jQuery.trim($(this).val())+jQuery.trim($("[name='telephone']").val())==''){
-				this.setCustomValidity($(this).data("requiredmsg"));
+				setCustomValidity(this,$(this).data("requiredmsg"));
 			}
 			
 			this.oninput=function(){
-				this.setCustomValidity('');
+				setCustomValidity(this,'');
 				if(!isEmail(jQuery.trim($(this).val()))){
-					this.setCustomValidity($(this).data("emailmsg"));
+					setCustomValidity(this,$(this).data("emailmsg"));
 				}else if(jQuery.trim($(this).val())+jQuery.trim($("[name='telephone']").val())==''){
-					this.setCustomValidity($(this).data("requiredmsg"));
+					setCustomValidity(this,$(this).data("requiredmsg"));
 				}
 			};
 		});
 		$("[name='telephone']").each(function(){
 			this.oninput=function(){
 				var email = $("[name='email']")[0];
-				email.setCustomValidity('');
+				setCustomValidity(email,'');
 				if(!isEmail(jQuery.trim($(email).val()))){
-					email.setCustomValidity($(email).data("emailmsg"));
+					setCustomValidity(email,$(email).data("emailmsg"));
 				}if(jQuery.trim($(this).val())+jQuery.trim($(email).val())==''){
-					email.setCustomValidity($(email).data("requiredmsg"));
+					setCustomValidity(email,$(email).data("requiredmsg"));
 				}
 			};
 		});
@@ -299,11 +307,11 @@
 			$(".required").each(function(){
 				if(!this.disabled){
 					$(this).attr("required", "required");
-					this.oninvalid=function(){this.setCustomValidity($(this).data("requiredmsg"));};
-					this.oninput=function(){this.setCustomValidity('');};
+					this.oninvalid=function(){setCustomValidity(this, $(this).data("requiredmsg"));};
+					this.oninput=function(){setCustomValidity(this, '');};
 				}else{
 					$(this).attr("required", null);
-					this.setCustomValidity('');
+					setCustomValidity(this,'');
 				}
 			});
 
@@ -311,15 +319,15 @@
 	function initServiceType(){
 			var serviceType=$("[name='service_type']:checked").val();
 			setDisponible
-				($("#message_optional_activename"), ["simultaneous","consecutive","accompany"].indexOf(serviceType)!=-1);
+				($("#message_optional_activename"), $.inArray(serviceType, ["simultaneous","consecutive","accompany"])!=-1);
 			setDisponible
-				($("#message_optional_activelocation"), ["simultaneous","consecutive","accompany"].indexOf(serviceType)!=-1);
+				($("#message_optional_activelocation"), $.inArray(serviceType, ["simultaneous","consecutive","accompany"])!=-1);
 			setDisponible
-				($("#message_optional_expositionname"), ["exposition"].indexOf(serviceType)!=-1);
+				($("#message_optional_expositionname"), $.inArray(serviceType, ["exposition"])!=-1);
 			setDisponible
-				($("#message_optional_expositionlocation"), ["exposition"].indexOf(serviceType)!=-1);
+				($("#message_optional_expositionlocation"), $.inArray(serviceType, ["exposition"])!=-1);
 			setDisponible
-				($("#message_optional_activedate"), ["simultaneous","consecutive","exposition","accompany"].indexOf(serviceType)!=-1);
+				($("#message_optional_activedate"), $.inArray(serviceType, ["simultaneous","consecutive","exposition","accompany"])!=-1);
 	}
 	function initClientType(){
 			var clientType=$("[name='client_type']:checked").val();
