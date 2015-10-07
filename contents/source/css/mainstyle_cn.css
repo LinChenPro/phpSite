@@ -12,6 +12,10 @@ a{
 	text-decoration: none;
 }
 
+img{
+	border:none;
+}
+
 h1{
 	font-size:120%;
 	color: white;
@@ -511,11 +515,9 @@ form[id="message"] .datepicker{
 	/*border-radius: 30px;*/
 
 	/* carre slide */
-	border-top-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 50px;
-	border-bottom-left-radius: 50px;
-
+	-webkit-border-radius:10px 50px 10px 50px;
+	-moz-border-radius:10px 50px 10px 50px;
+	border-radius:10px 50px 10px 50px;
 
     border: 3px solid #55B2CD;
 	box-shadow: 
@@ -527,6 +529,8 @@ form[id="message"] .datepicker{
 
 	background-color:#55B2CD;
 	vertical-align: middle;
+
+/*	behavior: url(/htc/PIE.htc);*/
 }
 
 .cssanime:hover a{
@@ -597,11 +601,15 @@ form[id="message"] .datepicker{
 	height:44px;
 	top: -7px;
     left: -7px;
-	border-radius: 22px;
 	background-repeat:no-repeat;
 	background-size: 30px auto;
 	background-position: center center;
 	background-color:#55B2CD;
+
+	-webkit-border-radius: 22px;
+	-moz-border-radius: 22px;
+	border-radius: 22px;
+	behavior: url(/htc/PIE.htc);
 }
 
 .addr{

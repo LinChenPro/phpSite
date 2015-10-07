@@ -15,8 +15,12 @@ if($contentSuffix=="html"){
 	}
 }else{
 	if($contentFilePath != null){
-		Header ( "Content-type: text/css" );  
-		Header ( "Accept-Ranges: bytes" );
+		if($contentSuffix=="htc"){
+			header( 'Content-type: text/x-component' );
+		}else{
+			Header ( "Content-type: text/css" );  
+			Header ( "Accept-Ranges: bytes" );
+		}
 		include $contentFilePath;
 	}
 	exit();
