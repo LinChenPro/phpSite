@@ -473,6 +473,36 @@ form[id="message"] .datepicker{
     left: 50px;
 }
 
+#slogantxt_ie_1, #slogantxt_ie_2, #slogantxt_ie_3, #slogantxt_ie_4{
+    color: gray;
+    font-size: 180%;
+    font-weight: bold;
+    margin: 0 20px;
+    display: inline-block;
+    width: 300px;
+    position: absolute;
+}
+
+#slogantxt_ie_1{
+    top: 64px;
+    left: 49px;
+}
+
+#slogantxt_ie_2{
+    top: 67px;
+    left: 52px;
+}
+
+#slogantxt_ie_3{
+    top: 67px;
+    left: 49px;
+}
+
+#slogantxt_ie_4{
+    top: 64px;
+    left: 52px;
+}
+
 #sloganimg{
     margin-left: 200px;
     margin-top: -80px;
