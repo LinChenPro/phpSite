@@ -36,6 +36,13 @@ h2{
     box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.16),2px 3px 6px 0 rgba(0,0,0,0.12) !important;
 }
 
+h3{
+	font-size:105%;
+	color: #254B80;
+	margin: 10px 0 0 0;
+	border-bottom: 1px solid #55B2CD;
+}
+
 h2:first-child{
 	margin: 0 0 5px 0;
 }
@@ -43,6 +50,10 @@ h2:first-child{
 #content_right p:first-child{
 	padding-top: 0px;
 	margin-top: 0px;
+}
+
+#content_right li{
+	margin-bottom: 5px;
 }
 
 em{

@@ -114,8 +114,18 @@ $resource = array(
 "translation_contact.keyswords" => "睿思国际,睿思,IRISO,联系方式",
 "translation_contact.description" => "睿思国际联系方式"
 	),
+
+
 	"fr"=>array(
-"pageTitle" => "Iriso Service International"
+"company_name" => "睿思国际",
+"secteur_translate" => "口译和笔译服务",
+"company_name_lang2" => "<span class=\"tred\">IRISO</span> <span>Service International</span>",
+"secteur_translate_lang2" => "Services de Tranduction et d'Interprètariat",
+
+"translation_main" => "Page d'Accueil",
+"translation_main.title" => "IRISO Service International",
+"translation_main.keyswords" => "IRISO Service International,IRISO,Paris,Traduction,Interprètariat",
+"translation_main.description" => "睿思翻译是睿思国际服务有限公司下属的一个专业翻译团队。公司设于巴黎。我公司承接各类在法国及欧洲进行的中法同声传译，交替传译，中法商务会议翻译，法语展会翻译，法语陪同翻译等业务，以及来自世界各地的中英法文件的笔译业务。",
 	),
 );
 

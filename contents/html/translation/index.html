@@ -12,9 +12,9 @@
 	</div>
 	<div id="iconblock">
 		<span class="home_icon cssanime">
-			<a href="/<?=$GLOBALS["lang_client"]?>/translation/ourteam.html">
+			<a href="/<?=$GLOBALS["lang_client"]?>/translation/ourcompany.html">
 				<img src="/icon_team_small.png"/>
-				<span>翻译团队</span>
+				<span>公司 团队</span>
 			</a>
 		</span>
 		<span class="home_icon cssanime">
@@ -48,11 +48,10 @@ $(function(){
 				$(this).find( "img" ).animate({"backgroundColor":["#F1F1F1", "swing"]}, "100" , "swing");
 			},
 			function(){
-				$(this).find( "a" ).animate({ "bottom":  "0px" ,"backgroundColor":["#55B2CD", "swing"]}, "fast" , "easeOutBounce");
-				$(this).find( "img" ).animate({"backgroundColor":["#55B2CD", "swing"]}, "fast" , "swing");
+				$(this).find( "a" ).animate({ "bottom":  "0px" ,"backgroundColor":["#55B2CD", "swing"]}, "slow" , "easeOutBounce");
+				$(this).find( "img" ).animate({"backgroundColor":["#55B2CD", "swing"]}, "slow" , "swing");
 			}
 		);
 });
 
 </script>
-
