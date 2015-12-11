@@ -1,0 +1,153 @@
+#slogantxt{
+    font-size: 140%;
+    font-weight: bold;
+    color: white;
+    margin: 0px;
+    display: inline-block;
+    width: 600px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 2px 3px 8px rgba(0,0,0,0.5), -2px -3px 16px rgba(0,0,0,0.5) !important;
+    position: absolute;
+    top: 65px;
+    left: 0px;
+}
+
+#slogantxt_ie_1, #slogantxt_ie_2, #slogantxt_ie_3, #slogantxt_ie_4{
+    color: gray;
+    font-size: 140%;
+    font-weight: bold;
+    margin: 0 10px;
+    display: inline-block;
+    width: 600px;
+    position: absolute;
+}
+
+#slogantxt_ie_1{
+    top: 64px;
+    left: -1px;
+}
+
+#slogantxt_ie_2{
+    top: 67px;
+    left: 2px;
+}
+
+#slogantxt_ie_3{
+    top: 67px;
+    left: -1px;
+}
+
+#slogantxt_ie_4{
+    top: 64px;
+    left: 2px;
+}
+
+
+.home_icon span{
+    display: block;
+    font-size:90%;
+    font-weight: bold;
+}
+
+
+
+.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{
+    display:block;
+    font-size:100%;
+/*  font-weight:bold;*/
+    box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.16),2px 3px 8px 0 rgba(0,0,0,0.12) !important;
+    padding:9px 10px 8px 10px;
+    margin-bottom:10px;
+    width:210px;
+}
+
+
+.tmn{
+    font-size:115%;
+    font-weight:bold;
+    margin:0 0 0 20px;
+    padding:5px 0;
+    display: inline-block;
+}
+
+
+#part_right{
+    font-size: 110%;
+    width: 55%;
+    float:right;
+}
+
+form[id="message"] label{
+    display: inline-block;
+    width:62px;
+}
+
+form[id="message"] label[class="longlabel"]{
+    display: inline-block;
+    width:165px;
+}
+
+form[id="message"] .datepicker{
+    width:122px;
+    border:1px solid #55B2CD;
+    padding:1px;
+    margin-left: 3px;
+}
+
+#message_submit{
+    font-size: 110%;
+    font-weight: bold;
+    display:inline-block;
+    box-sizing: border-box; 
+    width: 100px;
+    height: 30px;
+    vertical-align: top;
+    margin:2px 0;
+}
+
+
+
+
+
+.contact_row{
+    margin-left:-40px;
+}
+
+.contact_cell{
+    width:313px;
+    min-height: 50px;
+    box-sizing:border-box;
+    padding-left:40px;
+    display: table-cell;
+}
+
+.contact_card{
+    position:relative;
+    padding:50px 25px 0px;
+    margin:50px auto;
+    min-height: 100px;
+    display:block;
+    border:1px solid #55B2CD;
+
+    background-color:#F3ED35;
+    background-color:#C8FBF8;
+    
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.16),2px 3px 6px 0 rgba(0,0,0,0.12) !important;
+}
+
+.contact_card .ttt{
+    padding:5px 20px 5px 45px;
+    background-color:#55B2CD;
+    color:white;
+    position:absolute;
+    display:block;
+    top: -15px;
+    left: 25px;
+    font-size: 110%;
+}
+
+.tel-title{
+    display: inline-block;
+    min-width:45px;
+    padding-right:5px;
+}
+

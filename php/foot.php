@@ -27,7 +27,10 @@
 			</span>
 			<wbr>
 			<span id="foot_tel">
-			<span class="bd">Tel :</span> (+33) 6 12 44 12 37
+			<span class="bd">Tel :</span> (+33) 1 79 06 03 75
+			</span>
+			<span id="foot_fax">
+			<span class="bd">Fax :</span> (+33) 1 79 06 03 75
 			</span>
 			<wbr>
 			<span id="foot_contact">

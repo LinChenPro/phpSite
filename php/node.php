@@ -15,6 +15,7 @@ class Node{
 	public $showInMenu = true;
 	public $menuNodes;
 	public $articleNodes;
+	public $supportLangs;
 
 	function __construct($type, $nodePosition, $pagePath=null, $isDefault=false, $showInMenu = true, $isCurrent=false){
 		
@@ -26,9 +27,31 @@ class Node{
 		$this->isDefault = $isDefault;
 		$this->isCurrent = $isCurrent;
 		$this->showInMenu = $showInMenu;
+		$this->supportLangs = $GLOBALS["lang_support"];
 		$this->updateRName();
 	}
-	
+
+	function setSupportLangs($langs){
+		$this->supportLangs = $langs;
+		return $this;
+	}
+
+	function setNoSupportLangs($langs){
+		$newLangs = array();
+		foreach($this->supportLangs as $lang){
+			if(!in_array($lang, $langs)){
+				$newLangs[] = $lang;
+			}
+		}
+		$this->supportLangs = $newLangs;
+
+		return $this;
+	}	
+
+	function isSupportLang($lang){
+		return in_array($lang, $this->supportLangs);
+	}
+
 	function toString(){
 		return $this->type.", ".$this->name.", ".$this->nodePosition.", ".$this->pagePath;
 	}

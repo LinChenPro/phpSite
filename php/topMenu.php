@@ -16,12 +16,12 @@ $topMenuItems = getTopMenu();
 				</span>
 			</a>
 			<div id="menuarea">
-						<ul id="topemenu_ui">
+				<ul id="topemenu_ui">
 <?php
 foreach($topMenuItems as $item){
 	if($item->isCurrent){
 ?>
-			<li class="tmn tblue crt">
+		<li class="tmn tblue crt">
 <?php
 	}else{
 ?>
@@ -34,7 +34,13 @@ foreach($topMenuItems as $item){
 <?php
 }
 ?>
-		</ul>
+				</ul>
+			</div>
+			<div id="topFunctionArea">
+				<span class="langlink">
+					<?=getLangLinks()?>
+				</span>
+				<?=getServiceTel()?>
 			</div>
 		</div>
 	</div>

@@ -10,11 +10,11 @@ $secteurTranslation->addSecteurNodes(array(
 	new Node("M","ourservices", "/translation/simultaneous"), // directly to simultaneous TODO: page ourservices
 	new Node("A","ourservices/simultaneous","/translation/simultaneous"),
 	new Node("A","ourservices/consecutive","/translation/consecutive"),
-	new Node("A","ourservices/accompany","/translation/accompany"),
-	new Node("A","ourservices/exposition","/translation/exposition"),
+	(new Node("A","ourservices/accompany","/translation/accompany"))->setSupportLangs(array("cn")),
+	(new Node("A","ourservices/exposition","/translation/exposition"))->setSupportLangs(array("cn")),
 	new Node("A","ourservices/written","/translation/written"),
 	new Node("M","message", "/translation/message"),
-	new Node("M","joinus", "/translation/joinus"),
+	(new Node("M","joinus", "/translation/joinus"))->setSupportLangs(array("cn")),
 	new Node("M","contact", "/translation/contact")
 ));
 
@@ -27,6 +27,36 @@ $currentMenu = getCurrentMenu();
 $currentArticle = getCurrentArticle();
 $currentNode = getCurrentNode();
 $currentNodePosition = $currentMenu->nodePosition;
+
+function getLangLink($langSelected){
+	if($GLOBALS["currentNode"]->isSupportLang($langSelected)){
+		return "/".$langSelected.$GLOBALS["currentNode"]->pagePath.".html";
+	}else{
+		return "/".$langSelected."/translation/index.html";
+	}
+}
+
+function getLangLinks(){
+	$lang_client = $GLOBALS["lang_client"];
+	$linksCode = "";
+	foreach($GLOBALS["lang_support"] as $lang_i){
+		if(true || $lang_client != $lang_i){ // TODO : do not show actuel lang link
+			$linksCode .= '<a class="langicon lg'.$lang_i.'" href="'.getLangLink($lang_i).'">'.$GLOBALS["lang_support_txt"][$lang_i].'</a>';
+		}
+	}
+	return $linksCode;
+}
+
+function getServiceTel(){
+	$lang_client = $GLOBALS["lang_client"];
+
+	if($lang_client=="cn" || $lang_client=="cnt"){
+		$TelCode = '<span class="tel400">国内客服热线<span class="tel400_number">4000 - 460 - 480</span></span>';
+		return $TelCode;
+	}else{
+		return "";
+	}
+}
 
 function searchItemByAtt($arr, $att, $value, $useDefault = false){
 	if($arr==null){
@@ -140,6 +170,10 @@ function getTopMenu(){
 	
 	$topMenus = array();
 	for($i = 0; $i<count($crtMenuNodes); $i++){
+		if(!$crtMenuNodes[$i]->isSupportLang($GLOBALS["lang_client"])){
+			continue;
+		}
+
 		$item = new Item();
 		$item->name = $crtMenuNodes[$i]->rName;
 		$item->type = $crtMenuNodes[$i]->type;
@@ -165,6 +199,10 @@ function getDeepMenu($node){
 	if($crtArticleNodes != null){
 		$articles = array();
 		for($i = 0; $i<count($crtArticleNodes); $i++){
+			if(!$crtArticleNodes[$i]->isSupportLang($GLOBALS["lang_client"])){
+				continue;
+			}
+
 			$item = new Item();
 			$item->name = $crtArticleNodes[$i]->rName;
 			$item->type = $crtArticleNodes[$i]->type;
@@ -178,6 +216,10 @@ function getDeepMenu($node){
 	if($crtMenuNodes != null){
 		$menus = array();
 		for($i = 0; $i<count($crtMenuNodes); $i++){
+			if(!$crtMenuNodes[$i]->isSupportLang($GLOBALS["lang_client"])){
+				continue;
+			}
+
 			$item = new Item();
 			$item->name = $crtMenuNodes[$i]->rName;
 			$item->type = $crtMenuNodes[$i]->type;
@@ -216,8 +258,12 @@ function getPageDescription(){
 	return getCrtNodeAttr("description");
 }
 
-function getCssFile(){
+function getCommonCssFile(){
 	return "/css/mainstyle.css";
+}
+
+function getLangueCssFile(){
+	return "/".$GLOBALS["lang_client"]."/css/languestyle.css";
 }
 ?>
 
@@ -247,11 +293,13 @@ if(isMobile()){
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
 
 <script src="/js/jquery.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/datepicker-zh-CN.js"></script>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<link href="<?=getCssFile()?>" rel="stylesheet" type="text/css" />
+<script src="/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<!--link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"-->
+
+<link href="<?=getCommonCssFile()?>" rel="stylesheet" type="text/css" />
+<link href="<?=getLangueCssFile()?>" rel="stylesheet" type="text/css" />
 
 </head>
 	<body>

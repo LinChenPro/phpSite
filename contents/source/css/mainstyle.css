@@ -4,8 +4,6 @@ body{
 	font-size:12px;
 	padding:0px; 
 	margin:0px;
-
-	background:transparent url(ic618.png) repeat 0 0;
 }
 
 a{
@@ -119,6 +117,72 @@ em:first-child{
 
 }
 
+/* function area */
+#topFunctionArea{
+	display: inline-block;
+	position:absolute;
+	right:40px;
+	top:10px;
+}
+
+.tel400{
+	font-size: 16px;
+	color:#254B80;
+
+	display: block;
+	margin-top: 5px;
+	text-align: right;
+}
+
+.tel400_number{
+	font-weight: bold;
+	color:#CC3300;
+
+	padding-left:25px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+	background-image:url(../tel400.png);
+}
+
+.langlink{
+	display: block;
+	width:100%;
+	text-align: right;
+	font-size: 80%;
+}
+
+.langicon{
+	color:#254B80;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left:5px;
+}
+
+.lgcn{
+	padding-right:25px;
+    background-position-x: 15px;
+	background-image:url(../lang_cn.png);
+}
+
+.lgcntr{
+	padding-right:25px;
+    background-position-x: 15px;
+	background-image:url(../lang_cntr.png);
+}
+
+.lgfr{
+	padding-right:25px;
+    background-position-x: 17px;
+	background-image:url(../lang_fr.png);
+}
+
+.lgen{
+	padding-right:25px;
+    background-position-x: 17px;
+	background-image:url(../lang_en.png);
+}
+
 /* company and secteur name */
 .tred, .tred *{
 	color:#CC3300 !important;
@@ -217,13 +281,7 @@ em:first-child{
 	font-size:180%;
 	color:rgb(84, 141,212);
 }
-.tmn{
-	font-size:125%;
-	font-weight:bold;
-	margin:0 0 0 20px;
-	padding:5px 0;
-	display: inline-block;
-}
+
 .tmn:hover, .tmn a:hover, .tmn:active, .tmn a:active{
 	color:#55B2CD;
 }
@@ -315,16 +373,6 @@ em:first-child{
 	text-align: center;
 }
 
-.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{
-	display:block;
-	font-size:130%;
-/*	font-weight:bold;*/
-    box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.16),2px 3px 8px 0 rgba(0,0,0,0.12) !important;
-	padding:5px 40px 5px 20px;
-	margin-bottom:10px;
-	width:170px;
-}
-
 .left_ui_article[data-level="3"]>li>a, .left_ui_menu[data-level="3"]>li>a{
 	display:block;
 	font-size:130%;
@@ -367,12 +415,6 @@ em:first-child{
 	background-color:#F4F6F5;
 	border:1px solid #E9E9E9;
 	text-align: justify;
-}
-
-#part_right{
-	font-size: 125%;
-	width: 55%;
-	float:right;
 }
 
 .clearfloat{
@@ -422,28 +464,6 @@ form[id="message"] #service_infos{
 	border:1px solid #55B2CD;
 }
 
-#message_submit{
-	font-size: 125%;
-	font-weight: bold;
-	display:inline-block;
-    box-sizing: border-box;	
-    width: 100px;
-    height: 30px;
-    vertical-align: top;
-    margin:2px 0;
-}
-
-form[id="message"] label{
-	display: inline-block;
-	width:70px;
-}
-
-form[id="message"] .datepicker{
-	width:118px;
-	border:1px solid #55B2CD;
-	padding:1px;
-	margin-left: 3px;
-}
 
 #submit_div{
     padding:3px 0 0 0;
@@ -593,48 +613,8 @@ form[id="message"] .datepicker{
 .cssanime:hover img{
 	background-color:#F1F1F1;
 }
-.home_icon span{
-	display: block;
-	font-size:130%;
-}
+
 /********** content table **********/
-.contact_row{
-	margin-left:-40px;
-}
-
-.contact_cell{
-	width:313px;
-	min-height: 50px;
-	box-sizing:border-box;
-	padding-left:40px;
-	display: table-cell;
-}
-
-.contact_card{
-	position:relative;
-	padding:50px 25px 0px;
-	margin:50px auto;
-	min-height: 100px;
-	display:block;
-	border:1px solid #55B2CD;
-
-	background-color:#F3ED35;
-	background-color:#C8FBF8;
-    
-    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.16),2px 3px 6px 0 rgba(0,0,0,0.12) !important;
-}
-
-.contact_card .ttt{
-	padding:5px 20px 5px 45px;
-	background-color:#55B2CD;
-	color:white;
-	position:absolute;
-	display:block;
-	top: -15px;
-    left: 25px;
-    font-size: 110%;
-}
-
 .contact_icon{
 	position:absolute;
 	display:block;
@@ -661,6 +641,9 @@ form[id="message"] .datepicker{
 }
 .email{
 	background-image:url(../icon_email.png);
+}
+.wechat{
+	background-image:url(../icon_wechat.png);
 }
 
 /********** form message **********/
@@ -719,6 +702,13 @@ form[id="message"] .datepicker{
 	margin-left: 50px;
 }
 
+.ui-widget-header .ui-icon {
+    background-image: url("../ui-icons.png");
+}
+.ui-icon, .ui-widget-content .ui-icon {
+    background-image: url("../ui-icons.png");
+}
+
 /********** footer **********/
 #foot-area{
 	height:100px;
@@ -741,3 +731,7 @@ form[id="message"] .datepicker{
 /*	font-family:impact;*/
 }
 
+#foot_address span, #foot_tel span, #foot_fax span, #foot_contact span{
+	display:inline-block;
+	padding-left:5px;
+}	

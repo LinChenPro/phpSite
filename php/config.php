@@ -2,7 +2,9 @@
 $url_prefix = "/";
 
 // language
-$lang_support = array("cn","cnt","en","fr");
+//$lang_support = array("cn","cntr","fr","en");
+$lang_support = array("cn","fr");
+$lang_support_txt = array("cn"=>"中","cntr"=>"漢","en"=>"EN","fr"=>"FR");
 $lang_navi = "cn"; // TODO
 $lang_sys = "cn"; // TODO
 $lang_client = "cn";
