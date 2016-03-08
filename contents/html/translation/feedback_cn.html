@@ -1,0 +1,264 @@
+<?php
+	$clientInfos = array(
+		"7ndre96fl73dc"=>array(
+			"name"=>"",
+			"sex"=>"M",
+			"type"=>"company",
+			"start_date"=>"2016年2月15日",
+			"end_date"=>"2016年2月17日",
+			"service"=>"展会翻译服务",
+			"business_contactors"=>array(
+				array(
+					"name"=>"陈耘",
+					"sex"=>""
+				)
+			),
+			"traducteurs"=>array(
+				array(
+					"name"=>"刘璐",
+					"sex"=>""
+				),
+				array(
+					"name"=>"秦泉",
+					"sex"=>""
+				)
+			)
+		),
+		"23sgb632ioy79"=>array(
+			"name"=>"张",
+			"sex"=>"F",
+			"type"=>"company",
+			"start_date"=>"2016年2月20日",
+			"end_date"=>"2016年2月22日",
+			"service"=>"陪同翻译服务",
+			"business_contactors"=>array(
+				array(
+					"name"=>"陈耘",
+					"sex"=>""
+				)
+			),
+			"traducteurs"=>array(
+				array(
+					"name"=>"王小溪",
+					"sex"=>""
+				),
+			)
+		)
+	);
+
+	$tradu_questions = array(
+		"tradu_intime"=>"工作是否守时?",
+		"tradu_attitude"=>"工作态度是否积极?",
+		"tradu_behave"=>"商务礼仪水平如何?",
+		"tradu_relation"=>"与您的相处是否融洽?",
+		"tradu_fluent"=>"口语是否流利?",
+		"tradu_comunicate"=>"在翻译员的协助下，您与外方的沟通是否顺畅?",
+		"tradu_satisfy"=>"您对该翻译员的总体满意度?",
+	);
+
+	function getClientInfo(){
+		if(array_key_exists("client_id", $_GET)){
+			return $GLOBALS["clientInfos"][$_GET["client_id"]];
+		}else if(array_key_exists("client_id", $_POST)){
+			return $GLOBALS["clientInfos"][$_POST["client_id"]];
+		}else{
+			return null;
+		}
+	}
+
+	function getNameStr($name){
+		return $name["name"].($name["sex"]=="M"?"先生":($name["sex"]=="F"?"女士":""));
+	}
+
+	function getNamesStr($names){
+		$len = count($names);
+		$str = "";
+		$i = 0;
+		foreach($names as $name){
+			if($i==0){
+				$str .= getNameStr($name);
+			}else if($i>0){
+				if($i==$len-1){
+					$str .= "和".getNameStr($name);
+				}else{
+					$str .= "、".getNameStr($name);
+				}
+			}
+			$i++;
+		}
+		return $str;
+	}
+
+	function getMailContent(){
+		$txt = "";
+		foreach($_POST as $key => $value){
+			$txt .= $key .":".$value."\r\n"; // todo: 
+		}
+
+		return $txt;
+	}
+
+	$clientInfo = getClientInfo();
+	if($clientInfo==null){
+
+	}else{
+
+
+	if(array_key_exists("client_id", $_POST)){// todo : change this condition 
+		$to = "contact@iriso-service.com";
+		$client_name = $clientInfo["name"];
+		$subject = "客户反馈表 ".$client_name;
+		$from = "contact@iriso-service.com";
+		
+		$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
+		$client_name_utf = "=?UTF-8?B?".base64_encode($client_name)."?=";
+		$headers = "From:$client_name_utf <$from>\r\n";
+		$headers .= 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/plain; charset=uft-8' . "\r\n";
+		$headers .="Content-Transfer-Encoding: 8bit";
+
+		$mailContent = getMailContent();
+
+		//send mail
+		mail($to, $subject, $mailContent, $headers);
+?>
+			<div class="content_parts">
+				<div id="part_left">
+					<p>
+						你的表单已成功提交，再次衷心地感谢您的信任和支持，并期待与您的再次合作！
+					</p>
+				</div>
+
+				<div id="part_right">
+					<a class="big_button message_goto" href="index.html">回到首页</a>
+				</div>
+			</div>
+
+<?php
+	}else{
+?>
+			<div class="content_parts">
+				<div id="part_left">
+					<p>
+						尊敬的<?=$clientInfo["name"]==""?"客户":($clientInfo["name"].($clientInfo["sex"]=="M"?"先生":"女士"))?>:
+					</p>
+					<p>
+您好。我公司于<?=$clientInfo["start_date"]?><?=($clientInfo["end_date"]==""?"":"至".$clientInfo["end_date"])?>为<?=($clientInfo["type"]=="person"?"您":"贵公司")?>提供了<?=$clientInfo["service"]?>。和您联络的商务人员是<?=getNamesStr($clientInfo["business_contactors"])?>，翻译员是<?=getNamesStr($clientInfo["traducteurs"])?>。我们在此由衷地感谢您对睿思国际的信任。
+					</p>
+					<p>
+为了改进和提高我们的工作质量，为您提供更好的服务，我们希望您可以抽出一点时间，填写这份简短的客户反馈表，对我们的翻译工作进行评价，并欢迎您对我们的服务提出宝贵的意见或建议。
+					</p>
+					<p>
+再次衷心地感谢您的帮助和支持!
+					</p>
+					<p>
+睿思国际
+					</p>
+				</div>
+
+				<div id="part_right">
+					<form action="feedback.html" method="post" name="message" id="feedback">
+						<div>
+							<span class="formname">客户反馈表</span>
+							<span class="input_title_long">请您按照如下标准，对我们的服务质量打分：</span>
+							<span class="score_format"><b>1 很差，2 差 ，3 正常 ，4 好 ，5 很好</b></span>
+						</div>
+
+						<input type="hidden" name="client_id" value="<?=$_GET["client_id"]?>">
+				<?php
+					for($i=0; $i<count($clientInfo["business_contactors"]); $i++){
+							?>
+						<div><span class="employee_name">商务人员<?=getNameStr($clientInfo["business_contactors"][$i])?></span></div>
+
+					<div class="question_group">
+						<div><span class="input_title_long">服务态度</span></div>
+						<div>
+							<span>
+								<input type="radio" name="busi_att_<?=$i?>" value="1" id="busi_att_<?=$i?>_1"/> 
+								<label for="busi_att_<?=$i?>_1">1 很差</label>
+								<input type="radio" name="busi_att_<?=$i?>" value="2" id="busi_att_<?=$i?>_2"/> 
+								<label for="busi_att_<?=$i?>_2">2 差</label>
+								<input type="radio" name="busi_att_<?=$i?>" value="3" id="busi_att_<?=$i?>_3"/> 
+								<label for="busi_att_<?=$i?>_3">3 正常</label>
+								<input type="radio" name="busi_att_<?=$i?>" value="4" id="busi_att_<?=$i?>_4"/> 
+								<label for="busi_att_<?=$i?>_4">4 好</label>
+								<input type="radio" name="busi_att_<?=$i?>" value="5" id="busi_att_<?=$i?>_5"/> 
+								<label for="busi_att_<?=$i?>_5">5 很好</label>
+							</span>
+						</div>
+
+						<div><span class="input_title_long">效率和服务质量</span></div>
+						<div>
+							<span>
+								<input type="radio" name="busi_rst_<?=$i?>" value="1" id="busi_rst_<?=$i?>_1"/> 
+								<label for="busi_rst_<?=$i?>_1">1 很差</label>
+								<input type="radio" name="busi_rst_<?=$i?>" value="2" id="busi_rst_<?=$i?>_2"/> 
+								<label for="busi_rst_<?=$i?>_2">2 差</label>
+								<input type="radio" name="busi_rst_<?=$i?>" value="3" id="busi_rst_<?=$i?>_3"/> 
+								<label for="busi_rst_<?=$i?>_3">3 正常</label>
+								<input type="radio" name="busi_rst_<?=$i?>" value="4" id="busi_rst_<?=$i?>_4"/> 
+								<label for="busi_rst_<?=$i?>_4">4 好</label>
+								<input type="radio" name="busi_rst_<?=$i?>" value="5" id="busi_rst_<?=$i?>_5"/> 
+								<label for="busi_rst_<?=$i?>_5">5 很好</label>
+							</span>
+						</div>
+					</div>
+					<?php
+					}
+				?>
+
+
+				<?php
+					for($i=0; $i<count($clientInfo["traducteurs"]); $i++){
+							?>
+						<div><span class="employee_name">翻译员<?=getNameStr($clientInfo["traducteurs"][$i])?></span></div>
+
+						<div class="question_group">
+					<?php
+						foreach($tradu_questions as $inputname => $text){
+					?>
+							<div><span class="input_title_long"><?=$text?></span></div>
+							<div>
+								<span>
+									<input type="radio" name="<?=$inputname?>_<?=$i?>" value="1" id="<?=$inputname?>_<?=$i?>_1"/> 
+									<label for="<?=$inputname?>_<?=$i?>_1">1 很差</label>
+									<input type="radio" name="<?=$inputname?>_<?=$i?>" value="2" id="<?=$inputname?>_<?=$i?>_2"/> 
+									<label for="<?=$inputname?>_<?=$i?>_2">2 差</label>
+									<input type="radio" name="<?=$inputname?>_<?=$i?>" value="3" id="<?=$inputname?>_<?=$i?>_3"/> 
+									<label for="<?=$inputname?>_<?=$i?>_3">3 正常</label>
+									<input type="radio" name="<?=$inputname?>_<?=$i?>" value="4" id="<?=$inputname?>_<?=$i?>_4"/> 
+									<label for="<?=$inputname?>_<?=$i?>_4">4 好</label>
+									<input type="radio" name="<?=$inputname?>_<?=$i?>" value="5" id="<?=$inputname?>_<?=$i?>_5"/> 
+									<label for="<?=$inputname?>_<?=$i?>_5">5 很好</label>
+
+								</span>
+							</div>
+					<?php
+
+						}
+					?>
+						</div>
+					<?php
+					}
+				?>
+
+
+						<div>
+							<textarea name="infos" id="feedback_infos" placeholder="您如果有其它意见和建议，请写在这里"></textarea>
+						</div>
+
+						<div id="submit_div"><input type="submit" id="message_submit" class="small_button" value="提交"/></div>
+					</form>
+
+				</div>
+				<div class="clearfloat"></div>
+			</div>
+
+<?php		
+	}
+}
+?>
+ 
+
+
+

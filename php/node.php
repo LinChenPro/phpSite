@@ -16,6 +16,7 @@ class Node{
 	public $menuNodes;
 	public $articleNodes;
 	public $supportLangs;
+	public $showInSitemap = true;
 
 	function __construct($type, $nodePosition, $pagePath=null, $isDefault=false, $showInMenu = true, $isCurrent=false){
 		
@@ -33,6 +34,11 @@ class Node{
 
 	function setSupportLangs($langs){
 		$this->supportLangs = $langs;
+		return $this;
+	}
+
+	function setShowInSitemap($show){
+		$this->showInSitemap = $show;
 		return $this;
 	}
 

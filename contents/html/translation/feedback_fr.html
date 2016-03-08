@@ -1,0 +1,359 @@
+<?php
+	$msgFormInputs = array(
+		"name",
+		"email",
+		"telephone",
+		"client_type",
+		"company_name",
+		"organization_name",
+		"service_type",
+		"active_name",
+		"active_location",
+		"exposition_name",
+		"exposition_location",
+		"date_from",
+		"date_to",
+		"infos"
+	);
+
+	function getMailContent(){
+		$txt = "";
+		foreach($GLOBALS["msgFormInputs"] as $input){
+			if(array_key_exists($input, $_POST)){
+				$val = $_POST[$input];
+				if($val != null && $val != ""){
+					if($input == "client_type" || $input == "service_type"){
+						$val = srs("translation_message_radiovalue_".$val);
+					}
+					$txt .= srs("translation_message_inputtitle_".$input) .":".$val."\r\n"; // todo: replace @
+				}
+			}
+		}
+		return $txt;
+	}
+
+	if(array_key_exists("name", $_POST)){// todo : change this condition 
+		$to = "contact@iriso-service.com";
+		$client_name = $_POST["name"];
+		$subject = "官网询价信 ".$client_name;
+		$from = $_POST["email"];
+		if($from==""){
+			$from="unknown@unknown.com";
+		}
+		
+		$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
+		$client_name_utf = "=?UTF-8?B?".base64_encode($client_name)."?=";
+		$headers = "From:$client_name_utf <$from>\r\n";
+		$headers .= 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/plain; charset=uft-8' . "\r\n";
+		$headers .="Content-Transfer-Encoding: 8bit";
+
+		$mailContent = getMailContent();
+
+		//send mail
+		mail($to, $subject, $mailContent, $headers);
+?>
+			<div class="content_parts">
+				<div id="part_left">
+					<p>
+						Votre message a été bien retenu, merci!
+					</p>
+					<p>
+						nous vous répondrons dans les plus brefs délais.
+					</p>
+				</div>
+
+				<div id="part_right">
+					<a class="big_button message_goto" href="index.html">Retour au page d'accueil</a>
+					<a class="big_button message_goto" href="message.html">Demander un nouveau devis</a>
+				</div>
+			</div>
+
+<?php
+	}else{
+?>
+			<div class="content_parts">
+				<div id="part_left">
+					<p>
+						Remplissez le formulaire pour un devis gratuit, nous vous répondrons dans les plus brefs délais.
+					</p>
+					<p>
+						Vous pouvez également nous contacter par téléphone ou email. <br><a href="contact.html"><strong class="tblue"><u>Consultez nos coordonnées</u></strong></a>
+					</p>
+				</div>
+
+				<div id="part_right">
+					<form action="message.html" method="post" name="message" id="message">
+						<div><span class="input_title">Nom et prénom:</span><input type="text" name="name" class="long_text required" data-requiredmsg="Veuillez indiquer votre nom et votre prénom."/><span class="obli_star"> *</span></div>
+						<div><span class="input_title">Email:</span><input type="text" name="email" class="long_text required" data-requiredmsg="Veuillez renseigner l'adresse mail" data-emailmsg="Veuillez vérifier le format de votre adresse mail."/><span class="obli_star"> *</span></div>
+						<div><span class="input_title">Téléphone:</span><input type="text" name="telephone" class="long_text required" data-requiredmsg="Veuillez renseigner le numéro de téléphone." /><span class="obli_star"> *</span></div>
+						<div><span class="input_title">
+							Vous êtes：</span>
+							<span>
+								<input type="radio" name="client_type" value="person" id="person"/> 
+								<label for="person">Particulier</label>
+								<input type="radio" name="client_type" value="company" id="company"/>
+								<label for="company">Entreprise</label>
+								<input type="radio" name="client_type" value="organization" id="organization"/>
+								<label for="organization">Organisation</label>
+							</span>
+						</div>
+						<div id="message_optional_companyname">
+							<span class="input_title">Nom d'entreprise:</span><input type="text" name="company_name" class="long_text required" data-requiredmsg="Veuillez mentionner le nom de votre entreprise."/>
+							<span class="obli_star">*</span>
+						</div>
+						<div id="message_optional_organizationname">
+							<span class="input_title">Nom d'organisation</span><input type="text" name="organization_name" class="long_text required" data-requiredmsg="Veuillez mentionner le nom de votre organisation."/>
+							<span class="obli_star">*</span>
+						</div>
+						<div><span class="input_title">
+							Type de service:</span>
+							<span id="service_type_span">
+								<input type="radio" name="service_type" value="simultaneous" id="simultaneous"> 
+								<label for="simultaneous" class="longlabel">Interprétation simultanée</label>
+								<input type="radio" name="service_type" value="written" id="written">
+								<label for="written">Traduction</label>
+								<br>
+								<input type="radio" name="service_type" value="consecutive" id="consecutive"> 
+								<label for="consecutive" class="longlabel">Interprétation consécutive</label>
+								<input type="radio" name="service_type" value="other" id="other_service">
+								<label for="other_service">Autres</label>
+							</span>
+						</div>
+						<div id="message_optional_activename">
+							<span class="input_title">Événement:</span><input type="text" name="active_name" class="long_text"/>
+						</div>
+						<div id="message_optional_activelocation">
+							<span class="input_title">Adresse d'événement:</span><input type="text" name="active_location" class="long_text"/>
+						</div>
+						<div id="message_optional_expositionname">
+							<span class="input_title">Mon d'exposition</span><input type="text" name="exposition_name" class="long_text"/>
+						</div>
+						<div id="message_optional_expositionlocation">
+							<span class="input_title">Adresse d'exposition</span><input type="text" name="exposition_location" class="long_text"/>
+						</div>
+						<div id="message_optional_activedate">
+							<span class="input_title">Date:</span>
+							de<input type="text" name="date_from" id="date_from" class="datepicker"/>
+							à<input type="text" name="date_to" id="date_to" class="datepicker"/>
+						</div>
+						<div>
+							<textarea name="infos" id="service_infos" placeholder="Si vous avez d'autres choses à préciser, remplissez-le ci-dessous."></textarea>
+						</div>
+
+						<div id="submit_div"><input type="submit" id="message_submit" class="small_button" value="Envoyer"/></div>
+					</form>
+
+				</div>
+				<div class="clearfloat"></div>
+			</div>
+
+	<script src="/js/datepicker-fr.js"></script>
+	<script>
+	$(function() {
+		$.datepicker.regional["fr"];
+	    $("#date_from").datepicker({
+		  numberOfMonths:2, minDate: 1
+		});
+	    $("#date_to").datepicker({
+		  numberOfMonths:2, minDate: 1
+		});
+	    $("#date_from").change(function(){
+	    	var date = $(this).datepicker("getDate");
+	    	$("#date_to").datepicker("option",{minDate: date});
+	    });
+	    $("#date_to").change(function(){
+	    	var date = $(this).datepicker("getDate");
+	    	$("#date_from").datepicker("option",{maxDate: date});
+	    });
+
+		$(".datepicker").attr("readonly","readonly");
+
+		initClientType();
+		initServiceType();
+
+		$("[name='client_type']").change(initClientType);
+		$("[name='service_type']").change(initServiceType);
+
+	  	
+	  	$("#message").submit(function(){
+	  		// alert message 
+	  		if(verifyErrElm!=null && verifyErrMsg!=''){
+	  			alert(verifyErrMsg);
+	  			$(verifyErrElm).focus();
+				verifyClear(verifyErrElm);
+		  		return false;
+	  		}
+
+	  		// for required elm
+	  		var $requiredObjs = $(".required");
+			for(var i=0; i<$requiredObjs.size(); i++){
+				var elm = $requiredObjs[i];
+				if(!elm.disabled && !notEmpty($(elm).val())){
+					return verifyBreak(elm, $(elm).data("requiredmsg"));
+				}else{
+					verifyClear(elm);
+				}
+			}
+
+			// email and telephone
+			var emailInput = $("input[name='email']")[0];
+	  		var emailVal=trim($(emailInput).val());
+	  		var telephoneInput = $("input[name='telephone']")[0];
+	  		var telephoneVal=trim($(telephoneInput).val());
+
+	  		if(!notEmpty(emailVal) && !notEmpty(telephoneVal)){
+				return verifyBreak(emailInput, $(emailInput).data("requiredmsg"), [telephoneInput]);
+	  		}else if(!isEmail(emailVal)){
+				return verifyBreak(emailInput, $(emailInput).data("emailmsg"));
+	  		}else{
+				verifyClear(emailInput);
+	  		}
+
+			return true;
+	  	});
+
+	});
+
+	var verifyErrElm = null;
+	var verifyErrMsg = '';
+	function verifyBreak(element, msg){
+		return verifyBreak(element, msg, null);
+	}
+
+	function verifyBreak(element, msg, otherElms){
+		verifyErrElm = element;
+		verifyErrMsg = msg;
+		setCustomValidity(verifyErrElm,verifyErrMsg);
+		verifyErrElm.oninput=function(){verifyClear(this);};
+		for(var i=0; otherElms!=null && i<otherElms.length; i++){
+			var elm = otherElms[i];
+			elm.oninput=function(){
+				verifyClear(this);
+				var joinName = $(this).data("verify-joinname");
+				verifyClear($("[name='"+joinName+"']")[0]);
+			};
+		}
+
+		setTimeout(function(){
+	  		$("#message_submit").click();
+		}, 20);
+	  		
+		return false;
+	}
+
+	function verifyClear(element){
+		if(verifyErrElm==element){
+			verifyErrElm = null;
+			verifyErrMsg = "";
+		}
+		setCustomValidity(element,'');
+	}
+
+	function setCustomValidity(elm, msg){
+		if(elm.setCustomValidity){
+			elm.setCustomValidity(msg);
+		}
+	}
+
+	function initEmailInput(){
+		$("[name='email']").each(function(){
+			if(jQuery.trim($(this).val())+jQuery.trim($("[name='telephone']").val())==''){
+				setCustomValidity(this,$(this).data("requiredmsg"));
+			}
+			
+			this.oninput=function(){
+				setCustomValidity(this,'');
+				if(!isEmail(jQuery.trim($(this).val()))){
+					setCustomValidity(this,$(this).data("emailmsg"));
+				}else if(jQuery.trim($(this).val())+jQuery.trim($("[name='telephone']").val())==''){
+					setCustomValidity(this,$(this).data("requiredmsg"));
+				}
+			};
+		});
+		$("[name='telephone']").each(function(){
+			this.oninput=function(){
+				var email = $("[name='email']")[0];
+				setCustomValidity(email,'');
+				if(!isEmail(jQuery.trim($(email).val()))){
+					setCustomValidity(email,$(email).data("emailmsg"));
+				}if(jQuery.trim($(this).val())+jQuery.trim($(email).val())==''){
+					setCustomValidity(email,$(email).data("requiredmsg"));
+				}
+			};
+		});
+	}
+
+	var regemail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+	function isEmail(txt){
+		if(txt==""){
+			return true;
+		}
+		return regemail.test(txt);
+	}
+
+	function trim(txt){
+		if(txt==null){
+			return null;
+		}
+		return jQuery.trim(txt);
+	}
+
+	function notEmpty(txt){
+		return txt!=null && trim(txt)!='';
+	}
+
+	function initRequiredInputs(){
+			$(".required").each(function(){
+				if(!this.disabled){
+					$(this).attr("required", "required");
+					this.oninvalid=function(){setCustomValidity(this, $(this).data("requiredmsg"));};
+					this.oninput=function(){setCustomValidity(this, '');};
+				}else{
+					$(this).attr("required", null);
+					setCustomValidity(this,'');
+				}
+			});
+
+	}
+	function initServiceType(){
+			var serviceType=$("[name='service_type']:checked").val();
+			setDisponible
+				($("#message_optional_activename"), $.inArray(serviceType, ["simultaneous","consecutive","accompany"])!=-1);
+			setDisponible
+				($("#message_optional_activelocation"), $.inArray(serviceType, ["simultaneous","consecutive","accompany"])!=-1);
+			setDisponible
+				($("#message_optional_expositionname"), $.inArray(serviceType, ["exposition"])!=-1);
+			setDisponible
+				($("#message_optional_expositionlocation"), $.inArray(serviceType, ["exposition"])!=-1);
+			setDisponible
+				($("#message_optional_activedate"), $.inArray(serviceType, ["simultaneous","consecutive","exposition","accompany"])!=-1);
+	}
+	function initClientType(){
+			var clientType=$("[name='client_type']:checked").val();
+			setDisponible($("#message_optional_companyname"), clientType=="company");
+			setDisponible($("#message_optional_organizationname"), clientType=="organization");
+	}
+
+	function setDisponible($elm, dispo){
+		if(dispo){
+			$elm.show();
+			$elm.find("input").attr("disabled", null);
+		}else{
+			$elm.hide();
+			$elm.find("input").attr("disabled", "disabled");
+			$elm.find("input").each(function(){
+				verifyClear(this);
+			});
+
+		}
+	}
+
+  </script>
+<?php		
+	}
+?>
+ 
+
+
+

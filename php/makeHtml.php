@@ -2,12 +2,12 @@
 include "node.php";
 
 $secteurTranslation = new Node(Node::TYPE_SECTEUR, "translation", "/translation/index");
-$secteurTranslation->addSecteurNodes(array(
+$allNodes = array(
 	new Node("M","main","/translation/index"),
-	new Node("M","aboutus", "/translation/ourcompany"), // directly to ourcompany
+	(new Node("M","aboutus", "/translation/ourcompany"))->setShowInSitemap(false), // directly to ourcompany
 	new Node("A","aboutus/ourcompany","/translation/ourcompany"),
 	new Node("A","aboutus/ourteam","/translation/ourteam"),
-	new Node("M","ourservices", "/translation/simultaneous"), // directly to simultaneous TODO: page ourservices
+	(new Node("M","ourservices", "/translation/simultaneous"))->setShowInSitemap(false), // directly to simultaneous TODO: page ourservices
 	new Node("A","ourservices/simultaneous","/translation/simultaneous"),
 	new Node("A","ourservices/consecutive","/translation/consecutive"),
 	(new Node("A","ourservices/accompany","/translation/accompany"))->setSupportLangs(array("cn")),
@@ -15,9 +15,11 @@ $secteurTranslation->addSecteurNodes(array(
 	new Node("A","ourservices/written","/translation/written"),
 	new Node("M","message", "/translation/message"),
 	(new Node("M","joinus", "/translation/joinus"))->setSupportLangs(array("cn")),
-	new Node("M","contact", "/translation/contact")
-));
+	new Node("M","contact", "/translation/contact"),
+	(new Node("M","feedback", "/translation/feedback", false, false))->setSupportLangs(array("cn"))->setShowInSitemap(false)
+);
 
+$secteurTranslation->addSecteurNodes($allNodes);
 $secteurs = array(
 	$secteurTranslation
 );
@@ -29,10 +31,19 @@ $currentNode = getCurrentNode();
 $currentNodePosition = $currentMenu->nodePosition;
 
 function getLangLink($langSelected){
+	$link = getLangLinkWhenExit($langSelected);
+	if($link!=null){
+		return $link;
+	}else{
+		return "/".$langSelected."/translation/index.html";
+	}
+}
+
+function getLangLinkWhenExit($langSelected){
 	if($GLOBALS["currentNode"]->isSupportLang($langSelected)){
 		return "/".$langSelected.$GLOBALS["currentNode"]->pagePath.".html";
 	}else{
-		return "/".$langSelected."/translation/index.html";
+		return null;
 	}
 }
 
@@ -45,6 +56,22 @@ function getLangLinks(){
 		}
 	}
 	return $linksCode;
+}
+
+function getHrefLangLinkTags(){
+	$lang_client = $GLOBALS["lang_client"];
+	$tagsCode = "";
+	foreach($GLOBALS["lang_support"] as $lang_i){
+		$href = getLangLinkWhenExit($lang_i);
+		if($href != null){ // TODO : do not show actuel lang link
+			$tagsCode .= '<link rel="alternate" href="http://'.$_SERVER['HTTP_HOST'].$href.'" hreflang="'.$GLOBALS["lang_support_hreflang"][$lang_i].'" />'."\r\n";
+		}
+	}
+	if($GLOBALS["currentNode"]->nodePosition=="translation/main"){
+			$tagsCode .= '<link rel="alternate" href="http://'.$_SERVER['HTTP_HOST'].'/" hreflang="x-default" />'."\r\n";
+	}
+
+	return $tagsCode;
 }
 
 function getServiceTel(){
@@ -179,6 +206,8 @@ function getTopMenu(){
 		$item->type = $crtMenuNodes[$i]->type;
 		$item->isCurrent = $crtMenuNodes[$i]->isCurrent;
 		$item->href = $link.$crtMenuNodes[$i]->pagePath.".html";
+		$item->showInMenu = $crtMenuNodes[$i]->showInMenu;
+
 		array_push($topMenus, $item);
 	}
 	
@@ -271,6 +300,8 @@ function getLangueCssFile(){
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<?=$lang_client?>">
 <head>
 <title><?=getPageTitle()?></title>
+
+<?=getHrefLangLinkTags()?>
 
 <meta name="Keywords" content="<?=getPageKeywords()?>">
 <?php

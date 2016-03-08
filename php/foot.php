@@ -30,7 +30,7 @@
 			<span class="bd">Tel :</span> (+33) 1 79 06 03 75
 			</span>
 			<span id="foot_fax">
-			<span class="bd">Fax :</span> (+33) 1 79 06 03 75
+			<span class="bd">Fax :</span> (+33) 9 81 40 96 43
 			</span>
 			<wbr>
 			<span id="foot_contact">

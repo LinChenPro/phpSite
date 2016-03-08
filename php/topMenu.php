@@ -5,7 +5,7 @@ $topMenuItems = getTopMenu();
 	<div class="total_container" id="container_header">
 		<div id="header">
 			<!-- <span class="ticon">睿</span> -->
-			<a href="http://www.iriso-service.com/">
+			<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
 				<span id="logoarea">
 					<span id="company_name" class="tred"><?=srs("company_name")?></span>
 					<span id="sercteur_name" class="tblue" data-secteur="translate"><?=srs("secteur_translate")?></span>
@@ -19,6 +19,10 @@ $topMenuItems = getTopMenu();
 				<ul id="topemenu_ui">
 <?php
 foreach($topMenuItems as $item){
+	if(false == $item->showInMenu){
+		continue;
+	}
+
 	if($item->isCurrent){
 ?>
 		<li class="tmn tblue crt">

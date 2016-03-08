@@ -72,6 +72,11 @@ $resource = array(
 "translation_joinus.description" => "我公司诚邀巴黎以及法国各大城市的中、英、法翻译员的加盟与合作。欢迎您加入我们的翻译队伍。有兴趣加盟合作的翻译朋友们，请将您的简历发至我们的邮箱：cv@iriso-service.com 。我们会尽快与您联系。谢谢！
 ",
 
+"translation_feedback" => "客户反馈",
+"translation_feedback.title" => "睿思国际-客户反馈",
+"translation_feedback.keyswords" => "睿思国际,睿思,IRISO,法国,巴黎,翻译公司,中法,中英法,翻译,客户反馈",
+"translation_feedback.description" => "睿思国际,睿思,IRISO,法国,巴黎,翻译公司,中法,中英法,翻译,客户反馈",
+
 
 
 
@@ -95,7 +100,7 @@ $resource = array(
 "translation_main" => "ACCUEIL",
 "translation_main.title" => "IRISO Service International",
 "translation_main.keyswords" => "IRISO, IRISO Service International, France, Paris, agence de traduction, français, chinois, anglais, traduction, interprète, interprètariat, interprètation, consécutive, simultanée",
-"translation_main.description" => "IRISO vous offrons le service de traduction et d'interprétation chinois-anglais-français.",
+"translation_main.description" => "IRISO vous offre le service de traduction et d'interprétation chinois-anglais-français.",
 
 "translation_aboutus" => "QUI SOMMES NOUS",
 "translation_aboutus.title" => "IRISO Service International-Qui sommes nous",
@@ -141,6 +146,11 @@ $resource = array(
 "translation_message.title" => "IRISO-Devis",
 "translation_message.keyswords" => "IRISO, IRISO Service International, France, Paris, agence de traduction, français, chinois, anglais, traduction, interprète, interprètariat, interprètation, consécutive, simultanée, devis",
 "translation_message.description" => " Remplissez le formulaire pour un devis gratuit, nous vous répondrons dans les plus brefs délais. Vous pouvez également nous contacter par téléphone ou email. ",
+
+"translation_feedback" => "Feedback",
+"translation_feedback.title" => "IRISO-Feedback",
+"translation_feedback.keyswords" => "IRISO-Feedback",
+"translation_feedback.description" => "IRISO-Feedback",
 	),
 
 	"cntr"=>array(
