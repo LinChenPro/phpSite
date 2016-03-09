@@ -4,3 +4,5 @@ User-agent: bingbot
 Crawl-delay: 10
 User-agent: VoilaBot
 Crawl-delay: 10
+
+Sitemap: http://www.iriso-service.com/sitemap.xml

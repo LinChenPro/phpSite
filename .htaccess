@@ -7,7 +7,7 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .\.php /php/site.php [L]
-RewriteRule .\.html /php/site.php [L]
+RewriteRule .*/.*\.html /php/site.php [L]
 RewriteRule .\.png /contents/media/$1 [L]
 RewriteRule ^([a-z]+)/css/(.*)\.css /contents/source/css/$2_$1.css [L]
 RewriteRule ^css/(.*)\.css /contents/source/css/$1.css [L]

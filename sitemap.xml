@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>http://www.iriso-service.com/</loc>
+		<xhtml:link rel="alternate" hreflang="x-default" href="http://www.iriso-service.com/" />
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/index.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/index.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/index.html</loc>
+		<xhtml:link rel="alternate" hreflang="x-default" href="http://www.iriso-service.com/" />
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/index.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/index.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/index.html</loc>
+		<xhtml:link rel="alternate" hreflang="x-default" href="http://www.iriso-service.com/" />
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/index.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/index.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/ourcompany.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourcompany.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourcompany.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/ourcompany.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourcompany.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourcompany.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/ourteam.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourteam.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourteam.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/ourteam.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourteam.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourteam.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/simultaneous.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/simultaneous.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/simultaneous.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/simultaneous.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/simultaneous.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/simultaneous.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/consecutive.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/consecutive.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/consecutive.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/consecutive.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/consecutive.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/consecutive.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/accompany.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/accompany.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/exposition.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/exposition.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/written.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/written.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/written.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/written.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/written.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/written.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/message.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/message.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/message.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/message.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/message.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/message.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/joinus.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/joinus.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/cn/translation/contact.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/contact.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/contact.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/fr/translation/contact.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/contact.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/contact.html" />
+	</url>
+
+</urlset>
+

@@ -7,12 +7,7 @@ $topMenuItems = getTopMenu();
 			<!-- <span class="ticon">睿</span> -->
 			<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
 				<span id="logoarea">
-					<span id="company_name" class="tred"><?=srs("company_name")?></span>
-					<span id="sercteur_name" class="tblue" data-secteur="translate"><?=srs("secteur_translate")?></span>
-					<span id="company_name_lang2" class="tblue"><?=srs("company_name_lang2")?></span>
-					<span id="sercteur_name_lang2" class="tblue" data-secteur="translate">
-						<?=srs("secteur_translate_lang2")?>
-					</span>
+					<img src="/logoTop.png" class="logoTop"/>
 				</span>
 			</a>
 			<div id="menuarea">

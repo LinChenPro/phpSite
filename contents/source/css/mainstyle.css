@@ -110,11 +110,14 @@ em:first-child{
 #logoarea{
 	display:inline-block;
 	position:absolute;
-	bottom:15px;
+	bottom:5px;
 	left:20px;
 
     text-shadow: 0.2em 0.2em 0.3em rgba(0,0,0,0.2), 0.3em 0.3em 0.5em rgba(0,0,0,0.1) !important
+}
 
+#logoarea .logoTop{
+	width:280px;
 }
 
 /* function area */
