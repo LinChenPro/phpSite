@@ -4,7 +4,6 @@ $topMenuItems = getTopMenu();
 ?>
 	<div class="total_container" id="container_header">
 		<div id="header">
-			<!-- <span class="ticon">睿</span> -->
 			<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
 				<span id="logoarea">
 					<img src="/logoTop.png" class="logoTop"/>
