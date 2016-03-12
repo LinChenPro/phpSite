@@ -1,89 +1,18 @@
 #slogantxt{
-    font-size: 180%;
-    font-weight: bold;
-    color: white;
-    margin: 0 20px;
-    display: inline-block;
-    width: 300px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 2px 3px 8px rgba(0,0,0,0.5), -2px -3px 16px rgba(0,0,0,0.5) !important;
-    position: absolute;
-    top: 65px;
-    left: 50px;
+    font-size: 140%;
 }
 
-#slogantxt_ie_1, #slogantxt_ie_2, #slogantxt_ie_3, #slogantxt_ie_4{
-    color: gray;
-    font-size: 180%;
-    font-weight: bold;
-    margin: 0 20px;
-    display: inline-block;
-    width: 300px;
-    position: absolute;
+@media only screen and (min-width: 480px) {
+    #slogantxt{
+        font-size: 160%;
+    }
 }
 
-#slogantxt_ie_1{
-    top: 64px;
-    left: 49px;
+@media only screen and (min-width: 768px) {
+    #slogantxt{
+        font-size: 180%;
+    }
 }
-
-#slogantxt_ie_2{
-    top: 67px;
-    left: 52px;
-}
-
-#slogantxt_ie_3{
-    top: 67px;
-    left: 49px;
-}
-
-#slogantxt_ie_4{
-    top: 64px;
-    left: 52px;
-}
-#slogantxt{
-    font-size: 180%;
-    font-weight: bold;
-    color: white;
-    margin: 0 20px;
-    display: inline-block;
-    width: 300px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 2px 3px 8px rgba(0,0,0,0.5), -2px -3px 16px rgba(0,0,0,0.5) !important;
-    position: absolute;
-    top: 65px;
-    left: 50px;
-}
-
-#slogantxt_ie_1, #slogantxt_ie_2, #slogantxt_ie_3, #slogantxt_ie_4{
-    color: gray;
-    font-size: 180%;
-    font-weight: bold;
-    margin: 0 20px;
-    display: inline-block;
-    width: 300px;
-    position: absolute;
-}
-
-#slogantxt_ie_1{
-    top: 64px;
-    left: 49px;
-}
-
-#slogantxt_ie_2{
-    top: 67px;
-    left: 52px;
-}
-
-#slogantxt_ie_3{
-    top: 67px;
-    left: 49px;
-}
-
-#slogantxt_ie_4{
-    top: 64px;
-    left: 52px;
-}
-
-
 
 .home_icon span{
 	display: block;
@@ -106,7 +35,6 @@
 .tmn{
 	font-size:125%;
 	font-weight:bold;
-	margin:0 0 0 20px;
 	padding:5px 0;
 	display: inline-block;
 }
@@ -114,8 +42,6 @@
 
 #part_right{
 	font-size: 125%;
-	width: 55%;
-	float:right;
 }
 
 form[id="message"] label{
@@ -139,47 +65,6 @@ form[id="message"] .datepicker{
     height: 30px;
     vertical-align: top;
     margin:2px 0;
-}
-
-
-
-
-.contact_row{
-	margin-left:-90px;
-}
-
-.contact_cell{
-	width:495px;
-	min-height: 50px;
-	box-sizing:border-box;
-	padding-left:90px;
-	display: table-cell;
-}
-
-.contact_card{
-	position:relative;
-	padding:30px 25px 0px 60px;
-	margin:25px auto;
-	min-height: 120px;
-	display:block;
-	border:1px solid #55B2CD;
-
-	background-color:#F3ED35;
-	background-color:#C8FBF8;
-    
-    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.16),2px 3px 6px 0 rgba(0,0,0,0.12) !important;
-}
-
-.contact_card .ttt{
-	padding:5px 20px 5px 45px;
-	min-width: 65px;
-	background-color:#55B2CD;
-	color:white;
-	position:absolute;
-	display:block;
-	top: -15px;
-    left: 25px;
-    font-size: 110%;
 }
 
 .tel-title{

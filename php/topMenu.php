@@ -4,11 +4,17 @@ $topMenuItems = getTopMenu();
 ?>
 	<div class="total_container" id="container_header">
 		<div id="header">
-			<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
-				<span id="logoarea">
-					<img src="/logoTop.png" class="logoTop"/>
+			<span id="logoarea">
+				<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
+						<img src="/logoTop.png" class="logoTop"/>
+				</a>
+			</span>
+			<div id="topFunctionArea">
+				<span class="langlink">
+					<?=getLangLinks()?>
 				</span>
-			</a>
+				<?=getServiceTel()?>
+			</div>
 			<div id="menuarea">
 				<ul id="topemenu_ui">
 <?php
@@ -33,12 +39,6 @@ foreach($topMenuItems as $item){
 }
 ?>
 				</ul>
-			</div>
-			<div id="topFunctionArea">
-				<span class="langlink">
-					<?=getLangLinks()?>
-				</span>
-				<?=getServiceTel()?>
 			</div>
 		</div>
 	</div>
