@@ -90,6 +90,30 @@ em:first-child{
 	border-bottom:2px solid #55B2CD;
 }
 
+/* slide menu */
+#slide_menu{
+	position:fixed;
+	width:250px;
+	height:100%;
+	left:-250px;
+	background-color:#55B2CD;
+	z-index: 30;
+
+	-webkit-transition: left 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: left 0.5s;
+
+}
+
+#page_cover{
+	position:fixed;
+	display:none;
+	left:0;
+	background-color:rgba(153, 220, 241, 0.4);
+	z-index: 20;
+	width:100%;
+	height:100%;
+}
+
 /*********** mobile **********/
 /*head*/
 #header{
@@ -109,9 +133,8 @@ em:first-child{
     min-width: 280px;
     box-sizing:border-box;
 	padding:10px 0 0;
+	margin-top:35px;
     text-shadow: 0.2em 0.2em 0.3em rgba(0,0,0,0.2), 0.3em 0.3em 0.5em rgba(0,0,0,0.1) !important
-	-webkit-order: -1;
-    order: -1;
 }
 
 #logoarea>a{
@@ -125,11 +148,21 @@ em:first-child{
 #topFunctionArea{
 	display: inline-block;
 	width:100%;
+	min-height:35px;
 	min-width: 280px;
+    box-sizing:border-box;
 	padding:10px 5px;
 	background-color: #99DCF1;
-	-webkit-order: -2;
-    order: -2;
+
+    position:fixed;
+    top:0;
+    z-index: 10;
+}
+
+.slideopen img{
+	margin:5px;
+	height:20px;
+	width:20px;
 }
 
 .tel400{
@@ -288,6 +321,7 @@ em:first-child{
 @media only screen and (min-width: 600px) {
 	#logoarea{
 		display:inline-block;
+		margin-top:0;
 	    width:auto;
 	    text-shadow: 0.2em 0.2em 0.3em rgba(0,0,0,0.2), 0.3em 0.3em 0.5em rgba(0,0,0,0.1) !important
 		-webkit-order: -2;
@@ -309,6 +343,9 @@ em:first-child{
 		background-color: white;
 		-webkit-order: -1;
 	    order: -1;
+
+        position:static;
+
 	}
 
 	.tel400{

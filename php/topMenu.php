@@ -4,17 +4,20 @@ $topMenuItems = getTopMenu();
 ?>
 	<div class="total_container" id="container_header">
 		<div id="header">
-			<span id="logoarea">
-				<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
-						<img src="/logoTop.png" class="logoTop"/>
-				</a>
-			</span>
 			<div id="topFunctionArea">
+				<a href="#">
+					<img src="/slideMenuIcon.png" class="slideopen"/>
+				</a>
 				<span class="langlink">
 					<?=getLangLinks()?>
 				</span>
 				<?=getServiceTel()?>
 			</div>
+			<span id="logoarea">
+				<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
+						<img src="/logoTop.png" class="logoTop"/>
+				</a>
+			</span>
 			<div id="menuarea">
 				<ul id="topemenu_ui">
 <?php

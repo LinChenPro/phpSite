@@ -335,6 +335,8 @@ if(isMobile()){
 
 </head>
 	<body>
+	<div id="slide_menu"></div>
+	<div id="page_cover"></div>
 	<?php
 	include 'topMenu.php';
 	?>
@@ -351,5 +353,44 @@ if(isMobile()){
 	<?php
 	include 'foot.php';
 	?>
+
+	<script>
+		$(function(){
+			$(".home_icon").attr("class", "home_icon");
+			$(".home_icon").hover(
+				function(){
+					$(this).find( "a" ).animate({ "bottom":  "20px" ,"backgroundColor":["#F1F1F1", "swing"]}, "100" , "easeOutExpo");
+					$(this).find( "img" ).animate({"backgroundColor":["#F1F1F1", "swing"]}, "100" , "swing");
+				},
+				function(){
+					$(this).find( "a" ).animate({ "bottom":  "0px" ,"backgroundColor":["#55B2CD", "swing"]}, "slow" , "easeOutBounce");
+					$(this).find( "img" ).animate({"backgroundColor":["#55B2CD", "swing"]}, "slow" , "swing");
+				}
+			);
+
+			$("a").click(trogleSlideMenu);
+			$("#page_cover").click(trogleSlideMenu);
+
+			function trogleSlideMenu(evt){
+				evt.preventDefault();
+				var $cover = $("#page_cover");
+				var $slideMenu = $("#slide_menu");
+				if($cover.css("display")=="none"){
+					$("body").css("overflow", "hidden");
+					$cover.css("display", "block");
+
+					$slideMenu.css("left","0px");
+
+				}else{
+					$slideMenu.css("left","-250px");
+
+					$cover.css("display", "none");
+					$("body").css("overflow", "auto");
+				}
+
+			}
+	});
+	</script>
+
 	</body>
 </html>
