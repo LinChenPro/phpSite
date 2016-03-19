@@ -5,9 +5,10 @@ $topMenuItems = getTopMenu();
 	<div class="total_container" id="container_header">
 		<div id="header">
 			<div id="topFunctionArea">
-				<a href="#">
+				<a id="slideopen" href="#">
 					<img src="/slideMenuIcon.png" class="slideopen"/>
 				</a>
+				<img class="small_logo" src="/small_logo.jpg">
 				<span class="langlink">
 					<?=getLangLinks()?>
 				</span>
@@ -45,3 +46,18 @@ foreach($topMenuItems as $item){
 			</div>
 		</div>
 	</div>
+	<script>
+		$(function(){
+			$(".home_icon").attr("class", "home_icon");
+			$(".home_icon").hover(
+				function(){
+					$(this).find( "a" ).animate({ "bottom":  "20px" ,"backgroundColor":["#F1F1F1", "swing"]}, "100" , "easeOutExpo");
+					$(this).find( "img" ).animate({"backgroundColor":["#F1F1F1", "swing"]}, "100" , "swing");
+				},
+				function(){
+					$(this).find( "a" ).animate({ "bottom":  "0px" ,"backgroundColor":["#55B2CD", "swing"]}, "slow" , "easeOutBounce");
+					$(this).find( "img" ).animate({"backgroundColor":["#55B2CD", "swing"]}, "slow" , "swing");
+				}
+			);
+	});
+	</script>

@@ -180,6 +180,35 @@ $resource = array(
 
 );
 
+$common_var = array(
+	"translation_main.icon" => "/icon_addr.png",
+	"translation_aboutus.icon" => "/qui_sommes_nous_120_120.png",
+	"translation_aboutus_ourcompany.icon" => "/icon_team_small.png",
+	"translation_aboutus_ourteam.icon" => "/icon_team_small.png",
+//	"translation_ourservices.icon" => "/",
+	"translation_ourservices_simultaneous.icon" => "/icon_simultaneous_small.png",
+	"translation_ourservices_consecutive.icon" => "/icon_consecutive_small.png",
+	"translation_ourservices_accompany.icon" => "/icon_acompany_160_120.png",
+	"translation_ourservices_exposition.icon" => "/icon_expo_80_60.png",
+	"translation_ourservices_written.icon" => "/icon_translation_small.png",
+	"translation_message.icon" => "/icon_devis_small.png",
+	"translation_joinus.icon" => "/icon_join_us_160_120.png",
+	"translation_contact.icon" => "/icon_email.png",
+
+//	"translation_feedback.icon" => "/",
+);
+
+
+
+function getCommentResource($key, $default=null){
+	if(array_key_exists($key, $GLOBALS["common_var"])){
+		return $GLOBALS["common_var"][$key];
+	}
+
+	return $default;
+}
+
+
 function getResource($key){
 	if(array_key_exists($key, $GLOBALS["resource"][$GLOBALS["lang_client"]])){
 		return $GLOBALS["resource"][$GLOBALS["lang_client"]][$key];
@@ -194,5 +223,9 @@ function getResource($key){
 
 function srs($key){
 	return getResource($key);
+}
+
+function def($key, $def=null){
+	return getCommentResource($key, $def);
 }
 ?>

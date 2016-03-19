@@ -236,6 +236,7 @@ function getDeepMenu($node){
 			$item->name = $crtArticleNodes[$i]->rName;
 			$item->type = $crtArticleNodes[$i]->type;
 			$item->isCurrent = $crtArticleNodes[$i]->isCurrent;
+			$item->showInMenu = $crtArticleNodes[$i]->showInMenu;
 			$item->href = $link.$crtArticleNodes[$i]->pagePath.".html";
 			array_push($articles, $item);
 		}
@@ -253,6 +254,7 @@ function getDeepMenu($node){
 			$item->name = $crtMenuNodes[$i]->rName;
 			$item->type = $crtMenuNodes[$i]->type;
 			$item->isCurrent = $crtMenuNodes[$i]->isCurrent;
+			$item->showInMenu = $crtMenuNodes[$i]->showInMenu;
 			$item->href = $link.$crtMenuNodes[$i]->pagePath.".html";
 			$item->subItems = getDeepMenu($crtMenuNodes[$i]);
 			array_push($menus, $item);
@@ -321,7 +323,7 @@ if(isMobile()){
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="Content-Language" content="<?=$lang_client?>"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <script src="/js/jquery.js"></script>
 
@@ -335,62 +337,103 @@ if(isMobile()){
 
 </head>
 	<body>
-	<div id="slide_menu"></div>
-	<div id="page_cover"></div>
-	<?php
-	include 'topMenu.php';
-	?>
-	<div class="total_container" id="container_center">
-		<div id="center">
-		<?php
-		include 'leftMenu.php';
-		?>
-		<?php
-		include $contentFilePath;
-		?>
+	<div id="slide_menu">
+		<div class="slide_top">
+			<img class="small_logo" src="/small_logo.jpg"/>
+			<a href="#" id="slideclose">
+				<img src="/slideCloseIcon.png"/>
+			</a>
 		</div>
+
+		<?php include 'slideMenu.php'; ?>
+
+
 	</div>
-	<?php
-	include 'foot.php';
-	?>
+	<div id="page_cover"></div>
+	<div id="content_container">
+		<?php include 'topMenu.php'; ?>
 
-	<script>
-		$(function(){
-			$(".home_icon").attr("class", "home_icon");
-			$(".home_icon").hover(
-				function(){
-					$(this).find( "a" ).animate({ "bottom":  "20px" ,"backgroundColor":["#F1F1F1", "swing"]}, "100" , "easeOutExpo");
-					$(this).find( "img" ).animate({"backgroundColor":["#F1F1F1", "swing"]}, "100" , "swing");
-				},
-				function(){
-					$(this).find( "a" ).animate({ "bottom":  "0px" ,"backgroundColor":["#55B2CD", "swing"]}, "slow" , "easeOutBounce");
-					$(this).find( "img" ).animate({"backgroundColor":["#55B2CD", "swing"]}, "slow" , "swing");
+		<div class="total_container" id="container_center">
+			<div id="center">
+			<?php include 'leftMenu.php'; ?>
+			<?php include $contentFilePath; ?>
+			</div>
+		</div>
+		<?php include 'foot.php'; ?>
+
+		<script>
+			$(function(){
+				$("#slideopen").click(trogleSlideMenu);
+				$("#page_cover").click(trogleSlideMenu);
+				$("#slideclose").click(trogleSlideMenu);
+
+				$(window).scroll(bodyScroll);
+				$(window).on("orientationchange",windowResize);
+				$(window).resize(windowResize);
+
+				//traider window resize et orientation event
+				function windowResize(){
+					if($(window).width()<600){
+						bodyScroll();		
+					}else{
+						$("#topFunctionArea .small_logo").css("opacity","0");
+						hiddeSlideMenu();
+					}
 				}
-			);
 
-			$("a").click(trogleSlideMenu);
-			$("#page_cover").click(trogleSlideMenu);
+				// traiter scroll event
+				function bodyScroll(){
+					if($(window).width()<600){
+						var scrollTop = $("body").scrollTop();
+						var logoHeight = $("#logoarea").outerHeight();
+						var $smallLogo = $("#topFunctionArea .small_logo");
+						if(scrollTop<=logoHeight && $smallLogo.css("opacity")==1){
+							$smallLogo.css("opacity", "0");
+						}else if(scrollTop>logoHeight && $smallLogo.css("opacity")==0){
+							$smallLogo.css("opacity", 1);
+						}
+					}
+				}
 
-			function trogleSlideMenu(evt){
-				evt.preventDefault();
 				var $cover = $("#page_cover");
 				var $slideMenu = $("#slide_menu");
-				if($cover.css("display")=="none"){
-					$("body").css("overflow", "hidden");
-					$cover.css("display", "block");
+				// affiche et cache slide menu
+				function trogleSlideMenu(evt){
+					evt.preventDefault();
+					if($cover.css("display")=="none"){
+						$slideMenu.css("visibility", "visible");
+						$cover.css("display", "block");
+						$slideMenu.css("left","0px");
 
-					$slideMenu.css("left","0px");
+						setTimeout(function(){
+	//						$("html").css("overflow", "hidden");
+						},500);
 
-				}else{
-					$slideMenu.css("left","-250px");
 
-					$cover.css("display", "none");
-					$("body").css("overflow", "auto");
+					}else{
+						hiddeSlideMenu();
+					}
+
 				}
 
-			}
-	});
-	</script>
+				function hiddeSlideMenu(){
+					if($cover.css("display")=="none"){
+						return;
+					}
 
+					$slideMenu.css("left","-250px");
+//					$slideMenu.css("display", "none");
+
+					$cover.css("display", "none");
+					setTimeout(function(){
+						//$("body").css("overflow", "auto");
+						$slideMenu.css("visibility", "hidden");
+//						$("html").css("overflow", "auto");
+					},500);
+				}
+
+		});
+		</script>
+		</div>
 	</body>
 </html>
