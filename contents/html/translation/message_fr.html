@@ -16,6 +16,8 @@
 		"infos"
 	);
 
+	$clentDocs = null;
+
 	function getMailContent(){
 		$txt = "";
 		foreach($GLOBALS["msgFormInputs"] as $input){
@@ -29,10 +31,40 @@
 				}
 			}
 		}
+		if($GLOBALS["clentDocs"] != null && count($GLOBALS["clentDocs"]) > 0){
+			$txt .= srs("translation_message_docs").":"."\r\n";
+			foreach($GLOBALS["clentDocs"] as $docName){
+				$txt .= "\t".$docName."\r\n"; // 
+			}
+		}
+
+		echo $txt;
 		return $txt;
 	}
 
 	if(array_key_exists("name", $_POST)){// todo : change this condition 
+
+		// upload files
+		if(count($_FILES)>0){
+			$clentDocs = array();
+			$prefixDate = date("Ymd_hi_");
+			$userFolder = "../userUploads/";
+			foreach ($_FILES as $inputName => $fileObj){
+				if($fileObj["name"] != null){
+					$target_file = $prefixDate.$fileObj["name"];
+					$i=0;
+					while(file_exists($userFolder.$target_file) || $i>50){
+						$i++;
+						$target_file = $prefixDate.$i."_".$fileObj["name"];
+					}
+
+					if(move_uploaded_file($fileObj["tmp_name"], $userFolder.$target_file)){
+						$clentDocs[] = $target_file;
+					}
+				}
+			}
+		}
+
 		$to = "contact@iriso-service.com";
 		$client_name = $_POST["name"];
 		$subject = "官网询价信 ".$client_name;
@@ -132,6 +164,14 @@
 						<div id="message_optional_expositionlocation">
 							<span class="input_title">Adresse d'exposition</span><input type="text" name="exposition_location" class="long_text"/>
 						</div>
+						<div id="message_optional_file">
+							<span class="input_title">Veuillez joindre vos documents à traduire:</span><br>
+							<input type="file" name="message_optional_file_0" class="file"/>
+							<input type="file" name="message_optional_file_1" class="file"/>
+							<input type="file" name="message_optional_file_2" class="file"/>
+							<input type="file" name="message_optional_file_3" class="file"/>
+							<input type="file" name="message_optional_file_4" class="file"/>
+						</div>
 						<div id="message_optional_activedate">
 							<span class="input_title">Date:</span>
 							de<input type="text" name="date_from" id="date_from" class="datepicker"/>
@@ -177,6 +217,10 @@
 
 	  	
 	  	$("#message").submit(function(){
+			checkFileUploaders();
+
+			return ture;
+
 	  		// alert message 
 	  		if(verifyErrElm!=null && verifyErrMsg!=''){
 	  			alert(verifyErrMsg);
@@ -284,6 +328,24 @@
 		});
 	}
 
+	function checkFileUploaders(){
+		var fileNumber = 0;
+		var sizeTotal = 0;
+		$("[type='file']").each(function(){
+			if(this.files.length>0){
+				fileNumber	+= this.files.length;
+				sizeTotal	+= this.files[0].size;
+  			}
+  		});
+
+  		if(fileNumber > 0){
+  			$("#message").attr("enctype", "multipart/form-data");
+  			alert(fileNumber + "   " + sizeTotal);
+  		}else{
+  			$("#message").attr("enctype", "application/x-www-form-urlencoded");
+  		}
+	}
+
 	var regemail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
 	function isEmail(txt){
 		if(txt==""){
@@ -326,6 +388,8 @@
 				($("#message_optional_expositionname"), $.inArray(serviceType, ["exposition"])!=-1);
 			setDisponible
 				($("#message_optional_expositionlocation"), $.inArray(serviceType, ["exposition"])!=-1);
+			setDisponible
+				($("#message_optional_file"), $.inArray(serviceType, ["written"])!=-1);
 			setDisponible
 				($("#message_optional_activedate"), $.inArray(serviceType, ["simultaneous","consecutive","exposition","accompany"])!=-1);
 	}
