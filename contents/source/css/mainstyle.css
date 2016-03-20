@@ -91,6 +91,10 @@ em:first-child{
     border-color: transparent transparent transparent #0F2340;
 }
 
+.icon_white{
+    border-color: transparent transparent transparent white;
+}
+
 #content_container{
 	width:100%;
 	min-height: 100%;
@@ -160,7 +164,7 @@ em:first-child{
     width:100%;
     min-width: 280px;
     box-sizing:border-box;
-	padding:10px 0 0;
+	padding:10px 5px;
 	margin-top:35px;
 	text-align: center;
 }
@@ -180,7 +184,7 @@ em:first-child{
 	min-height:35px;
 	min-width: 280px;
     box-sizing:border-box;
-	padding:12px 5px;
+	padding:12px 10px;
 	background-color: white;
 
     box-shadow: 0 0 2px 3px rgba(0,0,0,0.16), 0 0 3px 5px rgba(0,0,0,0.12) !important;
@@ -194,7 +198,7 @@ em:first-child{
 #topFunctionArea .small_logo{
 	opacity:0;
 	position:absolute;
-	left:30px;
+	left:40px;
 	top:0px;
 
 	-webkit-transition: opacity 0.5s; /* For Safari 3.1 to 6.0 */
@@ -235,7 +239,7 @@ em:first-child{
 }
 
 #slideopen img, #slideclose img{
-	padding:9px 7px 5px 7px;
+	padding:9px 10px 5px 10px;
 	height:21px;
 	width:21px;
 }
@@ -359,8 +363,9 @@ em:first-child{
 
 #content_right{
 	box-sizing:border-box;
-	padding:40px 10px 20px 10px;
+	padding:20px 10px 20px 10px;
 	width:100%;
+	max-width:600px;
 	margin:0 auto;
 	font-size:125%;
 	text-align: justify;
@@ -492,10 +497,15 @@ em:first-child{
 
 
 /* tablet */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 700px) {
+	.total_container>*{
+		padding:10px 10px 0 10px;
+	}
+
 	#logoarea{
 		display:inline-block;
 		margin-top:0;
+		padding:0;
 		width:280px;
 		-webkit-order: -2;
 	    order: -2;
@@ -510,7 +520,7 @@ em:first-child{
 	}
 
 	#topFunctionArea{
-		padding:5px;
+		padding:0 0 5px 0;
 		display: inline-block;
 		width: auto;
 		background-color: white;
@@ -521,6 +531,26 @@ em:first-child{
 	    box-shadow: none !important;
         position:static;
 
+	}
+
+	#menuarea{
+		display:inline-block;
+		width:auto;
+		text-align: right;
+		background-color: white;
+	}
+
+	.tmn{
+		margin:0 0 0 10px;
+	}
+
+	#header{
+	    -webkit-flex-flow: column wrap;
+	    flex-flow: column wrap;
+	    -webkit-justify-content: space-between;
+	    justify-content: space-between;
+
+	    height:100px;
 	}
 
 	#sloganblock{
@@ -537,17 +567,6 @@ em:first-child{
 
 	.tel400{
 		display:block;
-	}
-
-	#menuarea{
-		display:block;
-		width:100%;
-		text-align: center;
-		background-color: #99DCF1;
-	}
-
-	.tmn{
-		margin:0 0 0 20px;
 	}
 
 	#content_right{
@@ -575,6 +594,30 @@ em:first-child{
 	#iconblock{
 		margin-bottom: 20px;
 	}
+
+	/* middle */
+	#left_area{
+		display:block;
+		padding:20px 5px;
+	}
+
+	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+	    background-size: 25px;
+	    background-position: 10px 50%;
+
+    	width: 200px;
+	    height:50px;
+	    padding:2px 0 2px 10px;
+    }
+
+    .icon_white{
+		right:5px;    
+    }
+
+	#content_right{
+		margin:0;
+		padding:20px 0 20px 20px;
+	}
 }
 
 
@@ -582,46 +625,6 @@ em:first-child{
 @media only screen and (min-width: 768px) {
 	.total_container>*{
 		padding:10px 10px 0 10px;
-	}
-
-	#header{
-	    -webkit-flex-flow: column wrap;
-	    flex-flow: column wrap;
-	    -webkit-justify-content: space-between;
-	    justify-content: space-between;
-
-	    height:100px;
-	}
-
-	#logoarea{
-		display:inline-block;
-	    text-shadow: 0.2em 0.2em 0.3em rgba(0,0,0,0.2), 0.3em 0.3em 0.5em rgba(0,0,0,0.1) !important
-	}
-
-	#logoarea>a{
-		width:auto;
-	}
-
-	#logoarea .logoTop{
-		width:280px;
-	}
-
-	#topFunctionArea{
-		display: inline-block;
-		width: auto;
-		padding:0 0 5px 0;
-	}
-
-	#menuarea{
-		display:inline-block;
-		width:auto;
-		text-align: right;
-		margin-left:-10px;	
-		background-color: white;
-	}
-
-	.tmn{
-		margin:0 0 0 10px;
 	}
 
 	.contact_cell{
@@ -656,11 +659,46 @@ em:first-child{
 	#iconblock{
 		margin-top: -50px;
 	}
+
+	/* middle */
+	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+    	width: 250px;
+	    height:50px;
+	    padding:2px 0;
+
+	    background-size: 30px;
+	    background-position: 15px 50%;
+    }
+
+    .icon_white{
+		right:10px;    
+    }
+
 }
 
 @media only screen and (min-width: 800px) {
 	.tmn{
 		margin:0 0 0 20px;
+	}
+
+	/* middle */
+	#left_area{
+		display:block;
+		padding:20px 5px;
+	}
+
+	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+    	width: 250px;
+	    height:50px;
+    }
+
+    .icon_white{
+		right:10px;    
+    }
+
+	#content_right{
+		margin:0;
+		padding:20px 0 20px 20px;
 	}
 }
 
@@ -668,12 +706,25 @@ em:first-child{
 	/* middle */
 	#left_area{
 		display:block;
-		padding:40px 5px;
+		padding:20px 5px;
 	}
+
+	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+    	width: 275px;
+	    height:60px;
+	    background-size: 35px;
+	    background-position: 15px 50%;
+
+
+    }
+
+    .icon_white{
+		right:16px;    
+    }
 
 	#content_right{
 		margin:0;
-		padding:40px 0 20px 20px;
+		padding:20px 0 20px 20px;
 	}
 
 	.content_parts{
@@ -932,6 +983,30 @@ em:first-child{
 	margin:0px;
 	padding:0px;
 	text-align: center;
+}
+
+.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+	position: relative;
+
+    background-repeat: no-repeat;
+
+	box-sizing: border-box;
+    margin-bottom:10px;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    
+}
+
+.item-txt{
+	display: block;
+	width:140px;
 }
 
 .left_ui_article[data-level="3"]>li>a, .left_ui_menu[data-level="3"]>li>a{

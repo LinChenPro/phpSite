@@ -2,6 +2,13 @@
     font-size: 100%;
 }
 
+.tmn{
+    font-size:100%;
+    font-weight:bold;
+    padding:5px 0;
+    display: inline-block;
+}
+
 @media only screen and (min-width: 480px) {
     #slogantxt{
         font-size: 120%;
@@ -11,6 +18,10 @@
 @media only screen and (min-width: 768px) {
     #slogantxt{
         font-size: 140%;
+    }
+
+    .tmn{
+        font-size:115%;
     }
 }
 
@@ -23,21 +34,9 @@
 
 
 .left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{
-    display:block;
-    font-size:100%;
+    font-size:120%;
 /*  font-weight:bold;*/
     box-shadow: 2px 2px 6px 0 rgba(0,0,0,0.16),2px 3px 8px 0 rgba(0,0,0,0.12) !important;
-    padding:9px 10px 8px 10px;
-    margin-bottom:10px;
-    width:210px;
-}
-
-
-.tmn{
-    font-size:115%;
-    font-weight:bold;
-    padding:5px 0;
-    display: inline-block;
 }
 
 

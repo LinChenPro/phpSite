@@ -364,7 +364,8 @@ if(isMobile()){
 		<script>
 			$(function(){
 				$("#slideopen").click(trogleSlideMenu);
-				$("#page_cover").click(trogleSlideMenu);
+				$("#page_cover").click(trogleSlideMenu)
+				$("#page_cover").on("touchstart",trogleSlideMenu);
 				$("#slideclose").click(trogleSlideMenu);
 
 				$(window).scroll(bodyScroll);
@@ -373,7 +374,7 @@ if(isMobile()){
 
 				//traider window resize et orientation event
 				function windowResize(){
-					if($(window).width()<600){
+					if($(window).width()<700){
 						bodyScroll();		
 					}else{
 						$("#topFunctionArea .small_logo").css("opacity","0");
@@ -383,7 +384,7 @@ if(isMobile()){
 
 				// traiter scroll event
 				function bodyScroll(){
-					if($(window).width()<600){
+					if($(window).width()<700){
 						var scrollTop = $("body").scrollTop();
 						var logoHeight = $("#logoarea").outerHeight();
 						var $smallLogo = $("#topFunctionArea .small_logo");
