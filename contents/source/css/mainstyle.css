@@ -49,6 +49,10 @@ h2:first-child{
 	margin: 0 0 5px 0;
 }
 
+.inl_blc{
+	display: inline-block;
+}
+
 #content_right p:first-child{
 	padding-top: 0px;
 	margin-top: 0px;
@@ -585,7 +589,7 @@ form[id="message"] .obli_star{
 
 	form[id="message"] .input_group, form[id="message"] .long_text{
 	    box-sizing: border-box;
-		width:299px;
+		width:298px;
 	}
 
 }
@@ -852,6 +856,11 @@ form[id="message"] .obli_star{
 	width:100%;
 }
 
+#foot_copyright, #foot_address, #foot_contact{
+	display: inline-block;
+}
+
+
 /* function area */
 .tel400{
 	font-size: 16px;
@@ -1009,7 +1018,8 @@ form[id="message"] .obli_star{
 	font-size:80%;
 	color:#F1F1F1;
 	padding:20px 0 0 0;
-	display:inline-block;
+    display: inline-block;
+    max-width: 600px;
 }
 
 .card{

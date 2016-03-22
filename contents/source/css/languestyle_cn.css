@@ -9,21 +9,33 @@
 	display: inline-block;
 }
 
+form[id="message"] label{
+    display: inline-block;
+    box-sizing: border-box;
+    height: 30px;
+    padding: 7px 0;
+    width: 65px;
+}
+
+form[id="message"] .datepicker{
+    width:41%;
+    margin-left: 3px;
+}
+
 @media only screen and (min-width: 480px) {
+    form[id="message"] label{
+        margin-left: 0px;    
+        width:70px;
+    }
+
     #slogantxt{
         font-size: 160%;
     }
 }
 
-form[id="message"] .datepicker{
-	width:118px;
-	margin-left: 3px;
-}
-
 @media only screen and (min-width: 520px) {
 	form[id="message"] .datepicker{
-		width:118px;
-		margin-left: 3px;
+		width:126px;
 	}
 }
 
@@ -56,23 +68,19 @@ form[id="message"] .datepicker{
 	font-size: 125%;
 }
 
-form[id="message"] label{
-    display: inline-block;
-    box-sizing: border-box;
-    height: 30px;
-    padding: 7px 0;
-    width:70px;
+.input_title{
+    font-size: 92%;
 }
 
 #message_submit{
-	font-size: 125%;
+	font-size: 115%;
 	font-weight: bold;
 	display:inline-block;
     box-sizing: border-box;	
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 50px;
     vertical-align: top;
-    margin:2px 0;
+    margin-top:5px;
 }
 
 .tel-title{
