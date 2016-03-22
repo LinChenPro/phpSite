@@ -14,3 +14,7 @@ RewriteRule ^([a-z]+)/css/(.*)\.css /contents/source/css/$2_$1.css [L]
 RewriteRule ^css/(.*)\.css /contents/source/css/$1.css [L]
 RewriteRule ^([a-z]+)/js/(.*)\.js /contents/source/js/$2_$1.js [L]
 RewriteRule ^js/(.*)\.js /contents/source/js/$1.js [L]
+
+#php_value memory_limit 30M
+#php_value post_max_size 100M
+#php_value upload_max_filesize 30M

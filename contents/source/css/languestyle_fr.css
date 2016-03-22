@@ -9,10 +9,49 @@
     display: inline-block;
 }
 
+form[id="message"] label[class="longlabel"] {
+    display: inline-block;
+    width: 160px;
+}
+
+form[id="message"] label{
+    margin-left: -5px;
+}
+
+form[id="message"] label[class="longlabel"]{
+    display: inline-block;
+    width:155px;
+}
+
+@media only screen and (min-width: 320px) {
+    form[id="message"] label{
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 360px) {
+    form[id="message"] label[class="longlabel"]{
+        width:165px;
+    }
+}
+
 @media only screen and (min-width: 480px) {
     #slogantxt{
         font-size: 120%;
     }
+}
+
+form[id="message"] .datepicker{
+    width:40%;
+    margin-left: 3px;
+}
+
+@media only screen and (min-width: 520px) {
+    form[id="message"] .datepicker{
+        width:122px;
+        margin-left: 3px;
+    }
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -46,19 +85,10 @@
 
 form[id="message"] label{
     display: inline-block;
+    box-sizing: border-box;
+    height: 30px;
+    padding: 7px 0;
     width:62px;
-}
-
-form[id="message"] label[class="longlabel"]{
-    display: inline-block;
-    width:165px;
-}
-
-form[id="message"] .datepicker{
-    width:122px;
-    border:1px solid #55B2CD;
-    padding:1px;
-    margin-left: 3px;
 }
 
 #message_submit{
@@ -66,10 +96,10 @@ form[id="message"] .datepicker{
     font-weight: bold;
     display:inline-block;
     box-sizing: border-box; 
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 50px;
     vertical-align: top;
-    margin:2px 0;
+    margin-top:5px;
 }
 
 .tel-title{

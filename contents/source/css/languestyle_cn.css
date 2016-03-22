@@ -15,6 +15,18 @@
     }
 }
 
+form[id="message"] .datepicker{
+	width:118px;
+	margin-left: 3px;
+}
+
+@media only screen and (min-width: 520px) {
+	form[id="message"] .datepicker{
+		width:118px;
+		margin-left: 3px;
+	}
+}
+
 @media only screen and (min-width: 768px) {
     #slogantxt{
         font-size: 180%;
@@ -45,15 +57,11 @@
 }
 
 form[id="message"] label{
-	display: inline-block;
-	width:70px;
-}
-
-form[id="message"] .datepicker{
-	width:118px;
-	border:1px solid #55B2CD;
-	padding:1px;
-	margin-left: 3px;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 30px;
+    padding: 7px 0;
+    width:70px;
 }
 
 #message_submit{

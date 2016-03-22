@@ -87,7 +87,8 @@ em:first-child{
     right: 16px;
     top: 50%;
     margin-top: -5px;
-    border: 5px solid;
+    border-width: 5px 5px;
+    border-style: solid;
     border-color: transparent transparent transparent #0F2340;
 }
 
@@ -275,8 +276,12 @@ em:first-child{
 	border-bottom: 1px solid #68D4F5;
 }
 
-.slide_li.active[data-level="1"]{
-	background-color: #28B6E2;
+.slide_item.active:only-child{
+	background-color: #D1F4FF;/*#BCEFFF;/*#9EE8FF;/*swhite;/*#28B6E2;*/
+}
+
+.slide_li[data-level="1"]:first-child>.slide_item.active:only-child{
+	background-color: #0E91B9;
 }
 
 .slide_item[data-level="1"]{
@@ -287,7 +292,7 @@ em:first-child{
 }
 
 .slide_li[data-level="1"]:first-child{
-	border-top: 1px solid #044A5F;
+/*	border-top: 1px solid #044A5F;*/
 }
 
 .slide_li[data-level="1"]:first-child>.slide_item[data-level="1"]{
@@ -295,7 +300,7 @@ em:first-child{
 }
 
 .slide_li[data-level="1"]>*:last-child{
-	border-bottom: 1px solid #044A5F;
+/*	border-bottom: 1px solid #044A5F;*/
 }
 
 .slide_ul[data-level="2"]{
@@ -310,26 +315,26 @@ em:first-child{
 
 .slide_li[data-level="2"]{
 	margin:0px;
-	border-top: 1px solid #1E738E;
+/*	border-top: 1px solid #1E738E; */
 }
 
 .slide_item[data-level="2"]{
 	margin:0px;
-	border-top: 1px solid #1FB2E0;
+/*	border-top: 1px solid #1FB2E0; */
 }
 
 .active .slide_item[data-level="2"]{
 	margin:0px;
-	border-top: 1px solid #31CEFF;
+/*	border-top: 1px solid #31CEFF; */
 }
 
 .slide_item.active[data-level="2"]{
 	margin:0px;
-	border-top: 1px solid #E5F9FF;
+/*	border-top: 1px solid #E5F9FF; */
 }
 
 .slide_li.active[data-level="2"]{
-	background-color: #78E1FF;
+/*	background-color: #78E1FF; */
 }
 
 
@@ -437,8 +442,7 @@ em:first-child{
 	display:block;
 	border:1px solid #55B2CD;
 
-	background-color:#F3ED35;
-	background-color:#C8FBF8;
+	background-color:#B8EFFF;
     
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.16),2px 3px 6px 0 rgba(0,0,0,0.12) !important;
 }
@@ -495,6 +499,96 @@ em:first-child{
 	margin-bottom: 20px;
 }
 
+
+/* form devis */
+form[id="message"]{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 0 auto;
+    padding: 10px 5px;
+    border: 1px solid #55B2CD;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.16),2px 3px 6px 0 rgba(0,0,0,0.12) !important;
+
+    color:white;
+    background-color:#55B2CD;
+
+}
+
+form[id="message"]>div{
+    padding: 3px 2px;
+    border-bottom: 1px solid #C2E5F0;
+	border-bottom: 1px solid white;
+    position: relative;
+}
+
+form[id="message"] .obli_star{
+	color:#55B2CD;
+	position:absolute;
+	right:5%;
+	bottom:8px;
+}
+
+.input_title{
+	display:inline-block;
+	width:100%;
+	padding: 4px 0;
+	font-weight: bold;
+}
+
+form[id="message"] .input_group{
+    display: block;
+}
+
+form[id="message"] .long_text{
+    box-sizing: border-box;
+	width:100%;
+}
+
+form[id="message"] .obli_star{
+	right:5%;
+}	
+
+@media only screen and (min-width: 320px) {
+	form[id="message"]{
+	    padding: 10px;
+	}
+}
+
+@media only screen and (min-width: 400px) {
+	form[id="message"]>div{
+	    padding: 3px 10%;
+	}
+
+	form[id="message"] .obli_star{
+		color:white;
+	}
+}
+
+@media only screen and (min-width: 520px) {
+	form[id="message"]>div{
+	    padding: 3px 20px;
+	}
+
+	form[id="message"] .obli_star{
+		right:10px;
+		bottom:8px;
+	}
+
+	.input_title{
+		width:135px;
+	}
+
+	form[id="message"] .input_group{
+	    display: inline-block;
+	    vertical-align: middle;
+	}
+
+	form[id="message"] .input_group, form[id="message"] .long_text{
+	    box-sizing: border-box;
+		width:299px;
+	}
+
+}
 
 /* tablet */
 @media only screen and (min-width: 700px) {
@@ -1047,48 +1141,30 @@ em:first-child{
 }
 
 /* form message*/
-form[id="message"]{
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0 0 0 auto;
-    padding: 5px 15px 5px 15px;
-    border: 1px solid #55B2CD;
-    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.16),2px 3px 6px 0 rgba(0,0,0,0.12) !important;
+form[id="message"] .alTop{
+    vertical-align: top;	
 }
 
-form[id="message"]>div{
-    padding: 2px 0px 2px 20px;
-    border-bottom: 1px solid #C2E5F0;
-}
-
-form[id="message"] .obli_star{
-	color:#CC3300
-}
-
-.input_title{
-	display:inline-block;
-	width:135px;
-}
-
-form[id="message"] .long_text{
+form[id="message"] .long_text, form[id="message"] .datepicker{
 	border:1px solid #55B2CD;
-	padding:1px;
-	width:284px;
-}
-
-form[id="message"] #service_type_span{
-	display: inline-block;
-	vertical-align:top;
+	padding:4px 0;
+	margin:2px 0;
 }
 
 form[id="message"] #service_infos{
 	display: inline-block;
-	width:417px;
+	box-sizing: border-box;
+	width:100%;
 	height:70px;
 	resize: vertical;
 	border:1px solid #55B2CD;
 }
 
+form[id="message"] input[type="file"]{
+    box-sizing: border-box;
+    padding: 2px;
+    margin: 2px 0;
+}
 
 #submit_div{
     padding:3px 0 0 0;
@@ -1299,15 +1375,18 @@ form[id="feedback"] label{
 	border-bottom-left-radius: 15px;
 
 }
-.big_button:hover{
-    background-color: #F1F1F1;
+
+.small_button:hover{
+    background-color: #C2E5F0;
 }
 
-.small_button{
+form[id="message"] .small_button{
 	display:inline-block;
-	color:#254B80;
-	background-color:#55B2CD;
+	color:#2E849E;
+	background-color:white;
 	border:1px solid #2E849E;
+	width:50%;
+
     box-shadow: 0 2px 6px 0 rgba(0,0,0,0.12),
  		2px 0 6px 0 rgba(0,0,0,0.12),
  		0 -1px 1px 0 rgba(0,0,0,0.12),
@@ -1318,10 +1397,14 @@ form[id="feedback"] label{
 	border-bottom-right-radius: 3px;
 	border-top-right-radius: 3px;
 	border-bottom-left-radius: 3px;
-
 }
-.small_button:hover{
+
+form[id="message"] .small_button:hover{
     background-color: #C2E5F0;
+}
+
+.big_button:hover{
+    background-color: #F1F1F1;
 }
 
 .message_goto{
