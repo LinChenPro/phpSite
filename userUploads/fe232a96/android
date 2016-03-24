@@ -1,0 +1,120 @@
+1) quel est le nom du fichier par defaut de préférence partagé quand on appelle Activity.getPreferences(int)?
+ a) Default.xml
+ b) Settings.xml
+*c) <Nom_de_Activity>.xml
+ d) Preferences.xml
+
+2) peut on créer un TextView customié dans android?
+ a) oui, utilise TextView t = new TextView(this);
+ b) non, on ne peut pas.
+*c) oui, par créer un nouveau class hérité de TextView.
+ d) oui, utilise TextView t = findViewById(R.id.newTextView);
+
+3) dans android, quelles sont des différentes types de dialogue?
+ a) AlertDialog, Context Dialog, Date & time picker dialog
+*b) AlertDialog, Progressdialog, date & time picker dialog
+ c) items dialog, progress dialog, date & time picker dialog
+ d) menu dialog, progress dialog, date & time picker dialog
+
+4) dans android, quelles sont des différentes types de menu? 
+ a) ContextMenu, OptionsMenu
+*b) SubMenu, OptionsMenu, ContextMenu
+ c) SubMenu, DialogMenu, ContextMenu
+ d) OptionsMenu, ContextMenu, DialogMenu
+
+5) Si certains grandes images a été téléchargé par internet dans onCreate() d'un Activity, comment peut-on les sauvegarder quand la configuration a été changé (rotation de mobile par exemple)?
+ a) utiliser des static variables qui pointent vers les images.
+ b) utiliser onRetainNonConfigurationInstances() function pour les sauvegarder.
+ c) sauvegrader les images dans des fichiers ou base de données, pour qu'on puis les récupère dans onCreate().
+*d) on peut utiliser a) et b).
+
+6) Supposons que MyView est une classe dérivée de View et mView est une instance de MyView. Quel response ci-dessous pourrais être utiliser pour que mView s'affiche quand l'application a été lancé?
+ a) appeler setContentView(mView) dans la fonction onStart() du main class d'application.
+ b) appeler setCurrentView(mView) dans la fonction onCreate() du main class d'application.
+*c) appeler setContentView(mView) dans la fonction onCreate() du main class d'application.
+ d) appeler setCurrentView(mView) dans la fonction startApp() du main class d'application.
+
+7) parmi les fonctions suivantes, la quelle est la plus approprié pour sauvegrader les states d'une application android?
+ a) Activity.onFreeze()
+ b) Activity.onStop()
+*c) Activity.onPause()
+ d) Activity.onDestroy()
+
+8) quelle méthode est utilisé pour arrêter un activity lui-même?
+ a) onDestroy()
+*b) finish()
+ c) finishActivity()
+ d) aucune réponse ci-desus est correcte
+
+9) comment créer un service avec un thread dedans?
+ a) créer le service avec un thread dans OnCreate().
+ b) Utiliser Intent Service
+*c) a et b sont tous correctes
+ d) par défaut il existe un worker thread dans chaque service, donc pas besoin de le creer.
+
+10) est-que android supporte multi-tasking et multi-threading?
+*a) il supporte le multi-tasking et multi-threading.
+ b) il supporte que le multi-tasking.
+ c) il supporte le multi-threading mais supporte pas le multi-tasking
+ d) aucune réponse ci-desus est correcte
+
+11) un thread a été crée dans un activity. que-est qui ce passera une fois que cet activity est stoppé?
+*a) le thread vivra indépendamment mais sa priorité sera plus bas que le thread dans un service.
+ b) le thread crée par un activity sera tué immédiatement quand l'activity perdra son focus ou sa vie.
+ c) le thread existera encore quelque moment, avant que le GC lui récupère.
+ d) le thread vivra toujours et cela cause une fuite de mémoire.
+
+12) pour partager un fonctionalité d'une application à une autre, on peut utiliser
+ a) un startedService
+*b) un bindedservice
+ c) un startedService ou un bindedservice
+ d) un content provider
+
+13) quelle est la cycle de vie d'un "started service"?
+ a) oncreate -> onstart() -> onBind() -> onUnbind() -> onDestroy()
+ b) oncreate -> onstart() -> onDestroy()
+*c) oncreate -> onstartCommand() -> onDestroy()
+ d) oncreate -> onstartCommand() -> onBind() -> onUnbind() -> onDestroy()
+
+14) comment mettre un service en "foreground"?
+ a) un service est toujour en "background", il n'existe pas de service "foreground"
+*b) appeller la fonction startForeground(int id, Notification notification);
+ c) appeller la fonction startService(Intent intent)
+ d) aucune ci-desus est correcte
+
+15) quelle est la cycle de vie d'un broadcast receiver?
+*a) onReceive()
+ b) onCreate() -> onReceive()
+ c) onCreate() -> onReceive() -> onDestroy()
+ d) onReceive() -> onDestroy()
+
+16) par défaut le broadcast receiver roule dans quel thread?
+ a) Worker thread
+ b) Kernel thread
+*c) Main Thread
+ d) No thread
+
+17) comment peut on créer un receiver sans le enregistrer dans le fichier de manifestation?
+ a) on ne peut pas chaque component doit être enregisté dans le fichier de manifestation
+*b) on peut enregistrer dynamiquement un receiver dans le code.
+ c) on peut enregistrer statiquement un receiver dans le code.
+ d) aucune ci-desus est correcte
+
+18) "Tween animation" est une parti de quel package?
+ a) android.graphics.drawable package
+*b) view package
+ c) 3D graphics library (open GLES)
+ d) kernel
+
+19) quel tag est utilisé dans le fichier de manifest pour créer un widget?
+ a) Service tag
+ b) Activity tag
+*c) Receiver tag
+ d) Widget tag
+
+20) qu'est-que c'est un ANR? quel est la cause de ANR et comment peut on le éviter?
+
+* ANR se signifie "application not responding". Généralement ça arrive quand le programme éffectue un lourde opération dans le main thread de UI. with UI in single Main Thread.  Dans ce cas la réponse d'action d'utilisateur peut être ralenti, ou en pire, le processus d'app peut être stopé.
+Solution : utiliser main thread que pour les UI components.
+
+

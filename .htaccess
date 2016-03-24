@@ -6,15 +6,17 @@ RewriteBase /
 # RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .\.php /php/site.php [L]
+#RewriteRule .\.php /php/site.php [L]
+RewriteRule commerce/docs/(.*) /commerce/sendDoc.php [L]
 RewriteRule .*/.*\.html /php/site.php [L]
 RewriteRule .\.png /contents/media/$1 [L]
 RewriteRule .\.jpg /contents/media/$1 [L]
+RewriteRule .\.gif /contents/media/$1 [L]
 RewriteRule ^([a-z]+)/css/(.*)\.css /contents/source/css/$2_$1.css [L]
 RewriteRule ^css/(.*)\.css /contents/source/css/$1.css [L]
 RewriteRule ^([a-z]+)/js/(.*)\.js /contents/source/js/$2_$1.js [L]
 RewriteRule ^js/(.*)\.js /contents/source/js/$1.js [L]
 
-#php_value memory_limit 30M
-#php_value post_max_size 100M
-#php_value upload_max_filesize 30M
+#php_value memory_limit 300M
+#php_value post_max_size 125M
+#php_value upload_max_filesize 125M

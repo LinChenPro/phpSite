@@ -3,7 +3,7 @@
 	<div id="foot-area">
 		<span class="tft">
 			<span class="inl_blc">
-				<span id="foot_name_2">
+				<span id="foot_name_1">
 				睿思国际
 				</span>
 
@@ -31,6 +31,7 @@
 			<span class="inl_blc">
 				<span id="foot_tel">
 					<span class="bd">Tel :</span> (+33) 1 79 06 03 75
+				</span>
 				<span id="foot_fax">
 					<span class="bd">Fax :</span> (+33) 9 81 40 96 43
 				</span>

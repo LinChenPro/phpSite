@@ -1,4 +1,6 @@
 <?php
+	require_once('../libs/MailSender.php');
+
 	$msgFormInputs = array(
 		"name",
 		"email",
@@ -16,10 +18,12 @@
 		"infos"
 	);
 
-	$clentDocs = null;
+	$clientDocs = null;
+	$userSubfolder = null;
 
 	function getMailContent(){
 		$txt = "";
+		$html = "";
 		foreach($GLOBALS["msgFormInputs"] as $input){
 			if(array_key_exists($input, $_POST)){
 				$val = $_POST[$input];
@@ -28,62 +32,89 @@
 						$val = srs("translation_message_radiovalue_".$val);
 					}
 					$txt .= srs("translation_message_inputtitle_".$input) .":".$val."\r\n"; // todo: replace @
+					$html .= srs("translation_message_inputtitle_".$input).":<b>".$val."</b><br>";
 				}
 			}
 		}
-
-		if($GLOBALS["clentDocs"] != null && count($GLOBALS["clentDocs"]) > 0){
+		if($GLOBALS["clientDocs"] != null && count($GLOBALS["clientDocs"]) > 0){
 			$txt .= "\r\n".srs("translation_message_docs").":";
-			foreach($GLOBALS["clentDocs"] as $docName){
-				$txt .= "\r\n\t".$docName;
+			$html .= "<br>".srs("translation_message_docs").":";
+
+			$i = 0;
+			foreach($GLOBALS["clientDocs"] as $docName){
+				$txt .= "\r\n\t".$docName; // 
+				$html .= "<br><span style=\"padding-left:15px;font-weight:bold;\">".$docName."</span>";// 
+				if("(failed)" != substr($docName, -8)){
+					$i++;
+				}
 			}
+			if($i>0){
+				$txt .= "\r\n\Get docs : http://www.iriso-service.com/commerce/docs/$userSubfolder";
+				$html .= "<br>Get docs : <a href=\"http://www.iriso-service.com/commerce/docs/".$GLOBALS["userSubfolder"]."\">http://www.iriso-service.com/commerce/docs/".$GLOBALS["userSubfolder"]."</a>";
+			}
+
 		}
-		return $txt;
+		$html = "<html><body>$html</body></html>";
+
+		return array("txt" => $txt, "html" => $html);
 	}
 
-	if(array_key_exists("name", $_POST)){// todo : change this condition
+	if(array_key_exists("name", $_POST)){// todo : change this condition 
+
 		// upload files
 		if(count($_FILES)>0){
-			$clentDocs = array();
+			$clientDocs = array();
 			$prefixDate = date("Ymd_his_");
 			$userFolder = "../userUploads/";
+
+			// unique subfolder
+			$userSubfolderOrig = substr(md5(rand()), -8);
+			$userSubfolder = $userSubfolderOrig;
+			$i=0;
+			while(file_exists($userFolder.$userSubfolder) && $i<50){
+				$i++;
+				$userSubfolder = $userSubfolderOrig.$i;
+			}
+			mkdir($userFolder.$userSubfolder, 0777);
+			chmod($userFolder.$userSubfolder, 0777);
+
+			$userFullSubfolder = $userFolder.$userSubfolder."/";
+
 			foreach ($_FILES as $inputName => $fileObj){
 				if($fileObj["name"] != null){
-					$target_file = $prefixDate.$fileObj["name"];
-					
-					// get nom unique
-					$i=0;
-					while(file_exists($userFolder.$target_file) || $i>50){
-						$i++;
-						$target_file = $prefixDate.$i."_".$fileObj["name"];
+					$target_file = $fileObj["name"];
+
+					$j=0;
+					while(file_exists($userFullSubfolder.$target_file) && $j<50){
+						$j++;
+						$target_file = "m_".$j."_".$fileObj["name"];
 					}
 
-					if(move_uploaded_file($fileObj["tmp_name"], $userFolder.$target_file)){
-						$clentDocs[] = $target_file;
+					if(move_uploaded_file($fileObj["tmp_name"], $userFullSubfolder.$target_file)){
+						$clientDocs[] = $target_file;
+					}else{
+						$clientDocs[] = $target_file." (failed)";
 					}
 				}
 			}
 		}
 
-		$to = "contact@iriso-service.com";
+		$mailContent = getMailContent();
 		$client_name = $_POST["name"];
-		$subject = "官网询价信 ".$client_name;
 		$from = $_POST["email"];
 		if($from==""){
 			$from="unknown@unknown.com";
 		}
 		
-		$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
-		$client_name_utf = "=?UTF-8?B?".base64_encode($client_name)."?=";
-		$headers = "From:$client_name_utf <$from>\r\n";
-		$headers .= 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/plain; charset=uft-8' . "\r\n";
-		$headers .="Content-Transfer-Encoding: 8bit";
-
-		$mailContent = getMailContent();
-
-		//send mail
-		mail($to, $subject, $mailContent, $headers);
+		$sender = new MailSender();
+		$sender->setSenderName($client_name);
+		$sender->setSender($from);
+		$sender->setReseiver("contact@iriso-service.com");
+		$sender->setTitle("官网询价信 DEVIS QUOTE ".$client_name);
+		$sender->setTextContent($mailContent["txt"]);
+		$sender->setHtmlContent($mailContent["html"]);
+		$sender->setAttachementPaths(null);
+		$sender->sendMail();
 ?>
 			<div class="content_parts">
 				<div id="part_left">
@@ -204,11 +235,11 @@
 						<div id="message_optional_file">
 							<span class="input_title">需要翻译的文件：</span>
 							<span class="input_group alTop">
-								<input class="long_text" type="file" name="message_optional_file_0" class="file" size="50"/>
-								<input class="long_text" type="file" name="message_optional_file_1" class="file" size="50"/>
-								<input class="long_text" type="file" name="message_optional_file_2" class="file" size="50"/>
-								<input class="long_text" type="file" name="message_optional_file_3" class="file" size="50"/>
-								<input class="long_text" type="file" name="message_optional_file_4" class="file" size="50"/>
+								<input class="long_text file" type="file" name="message_optional_file_0" size="50"/>
+								<input class="long_text file" type="file" name="message_optional_file_1" size="50"/>
+								<input class="long_text file" type="file" name="message_optional_file_2" size="50"/>
+								<input class="long_text file" type="file" name="message_optional_file_3" size="50"/>
+								<input class="long_text file" type="file" name="message_optional_file_4" size="50"/>
 							</span>
 						</div>
 						<div id="message_optional_activedate">
@@ -228,6 +259,16 @@
 				</div>
 				
 			</div>
+
+			<div id="uploadAnimation">
+				<div id="uploadCenter">
+					<img src="/uploadAnimation.gif"/>
+					<div id="uploadPercent">0%</div>
+					文件正在上传<br>请耐心等待...
+				</div>
+			</div>
+
+
 
 	<script src="/js/datepicker-zh-CN.js"></script>
 	<script>
@@ -296,6 +337,24 @@
 				verifyClear(emailInput);
 	  		}
 
+			if(!checkFileUploaders()){
+				return false;
+			}
+
+			// add waitting animation
+			if($("#message").attr("enctype") == "multipart/form-data"){
+				$("#uploadAnimation").show();
+
+				var percent = 0;
+				function changePercent(){
+					percent += (9976-percent)/400;
+			  		$("#uploadPercent").html((percent/100).toFixed(2)+"%");
+					setTimeout(changePercent, 100);
+				} 
+				setTimeout(changePercent, 100);
+
+			}
+			
 			return true;
 	  	});
 
@@ -379,8 +438,7 @@
 		if(serviceType=="written"){
 			$("[type='file']").each(function(){
 				if(this.files.length>0){
-//					if(this.files[0].size > 20000000){
-					if(this.files[0].size > 500){
+					if(this.files[0].size > 20000000){
 						alert("很抱歉， 文件\""+this.files[0].name+"\"太大(超过20M). 请尝试通过邮件或电话和我们联系");
 						this.value = null;
 						returnValue = false;
