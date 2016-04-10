@@ -184,7 +184,7 @@ em:first-child{
 }
 
 #topFunctionArea{
-	display: inline-block;
+	display: block;
 	width:100%;
 	min-height:35px;
 	min-width: 280px;
@@ -364,8 +364,8 @@ em:first-child{
 #center{
 	display: -webkit-flex;
     display: flex;
-    -webkit-flex-flow: row no-wrap;
-    flex-flow: row no-wrap;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
     -webkit-justify-content: space-between;
     justify-content: space-between;
 }
@@ -557,6 +557,100 @@ form[id="message"] .obli_star{
 	margin-left: 35%;
 }
 
+/* promotion */
+#promo_container{
+    position: absolute;
+    top: 1px;
+
+    right: 1px;
+    width: 193px;
+    height: 195px;
+
+    background-color: rgba(255, 255, 255, 0);
+    overflow: hidden;
+}
+
+#promo_shadowtop{
+	display: none;
+}
+
+#promo_shadowright{
+	display: none;
+}
+
+#promo_content{
+    background-color: rgb(247, 76, 20);
+
+	height: 47px;
+    padding: 2px 65px;
+    font-size: 90%;
+    left: -61px;
+
+    width: 280px;
+    text-align: center;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.8), 2px 3px 7px rgba(0,0,0,0.5), -2px -3px 20px rgba(0,0,0,0.5) !important;
+    position: absolute;
+    top: 25px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50),0 4px 8px 0 rgba(0,0,0,0.25) !important;
+}
+
+@media only screen and (min-width: 500px) {
+	{
+	    height: 50px;
+	    padding: 5px 65px;
+	    font-size: 100%;
+	    left: -65px;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	#promo_shadowtop{
+		display: block;
+	    width: 30px;
+	    height: 9px;
+	    background-color: #942703;
+	    position: relative;
+	    left: 0px;
+	}
+
+	#promo_shadowright{
+		display: block;
+	    width: 10px;
+	    height: 30px;
+
+	    background-color: #942703;
+	    position: absolute;
+	    bottom: 0px;
+	    right: 0px;
+	}
+
+	#promo_content{
+	    height: 64px;
+	    padding: 10px 65px;
+	    font-size: 120%;
+	    left: -79px;
+	}
+}
+
+@media only screen and (min-width: 980px) {
+	#promo_container{
+	    right: -7px;
+	    width: 190px;
+	    height: 191px;
+	}
+
+	#promo_shadowright{
+	    width: 17px;
+	}
+}
+
 @media only screen and (min-width: 320px) {
 	form[id="message"]{
 	    padding: 10px;
@@ -641,7 +735,7 @@ form[id="message"] .obli_star{
 	#topFunctionArea{
 		padding:0 0 5px 0;
 		display: inline-block;
-		width: auto;
+		width:50%;
 		background-color: white;
 		-webkit-order: -1;
 	    order: -1;
@@ -649,14 +743,14 @@ form[id="message"] .obli_star{
 	    border-bottom: none;
 	    box-shadow: none !important;
         position:static;
-
+        align-self:flex-end;
 	}
 
 	#menuarea{
 		display:inline-block;
-		width:auto;
 		text-align: right;
 		background-color: white;
+        align-self:flex-end;
 	}
 
 	.tmn{
@@ -720,7 +814,7 @@ form[id="message"] .obli_star{
 		padding:20px 5px;
 	}
 
-	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+	.left_ui_article[data-level="2"]>li>*, .left_ui_menu[data-level="2"]>li>*{ 
 	    background-size: 25px;
 	    background-position: 10px 50%;
 
@@ -772,7 +866,7 @@ form[id="message"] .obli_star{
 	}
 	
 	#sloganimg:after{
-		clean:both;
+		clear:both;
 	}
 
 	#iconblock{
@@ -780,7 +874,7 @@ form[id="message"] .obli_star{
 	}
 
 	/* middle */
-	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+	.left_ui_article[data-level="2"]>li>*, .left_ui_menu[data-level="2"]>li>*{ 
     	width: 250px;
 	    height:50px;
 	    padding:2px 0;
@@ -796,29 +890,6 @@ form[id="message"] .obli_star{
 }
 
 @media only screen and (min-width: 800px) {
-	body::-webkit-scrollbar-thumb{
-		border-radius: 3px;
-		background-color:#c8c8c8;
-	}
-
-	body::-webkit-scrollbar-thumb:hover{
-		border-radius: 3px;
-		background-color:#C6DAE0;
-	}
-
-	body::-webkit-scrollbar {
-	    height: 6px;
-	    width: 6px;
-	}
-
-	body::-webkit-scrollbar-track{
-		border-radius: 4px;
-		margin:10px 0;
-		height:8px;
-		width: 8px;
-		background-color: #E8E8E8;
-	}
-
 	.tmn{
 		margin:0 0 0 20px;
 	}
@@ -829,7 +900,7 @@ form[id="message"] .obli_star{
 		padding:20px 5px;
 	}
 
-	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+	.left_ui_article[data-level="2"]>li>*, .left_ui_menu[data-level="2"]>li>*{ 
     	width: 250px;
 	    height:50px;
     }
@@ -851,7 +922,7 @@ form[id="message"] .obli_star{
 		padding:20px 5px;
 	}
 
-	.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+	.left_ui_article[data-level="2"]>li>*, .left_ui_menu[data-level="2"]>li>*{ 
     	width: 275px;
 	    height:60px;
 	    background-size: 35px;
@@ -925,7 +996,7 @@ form[id="message"] .obli_star{
 	padding-left:25px;
     background-size: 16px 16px;
     background-repeat: no-repeat;
-    background-position-x: 5px;
+    background-position: 5px 50%;
 	background-image:url(../tel400.png);
 }
 
@@ -948,22 +1019,22 @@ form[id="message"] .obli_star{
 }
 
 .lgcn{
-	padding-right:26px;
+	padding-right:27px;
 	background-image:url(../lang_cn.png);
 }
 
 .lgcntr{
-	padding-right:26px;
+	padding-right:27px;
 	background-image:url(../lang_cntr.png);
 }
 
 .lgfr{
-	padding-right:26px;
+	padding-right:27px;
 	background-image:url(../lang_fr.png);
 }
 
 .lgen{
-	padding-right:26px;
+	padding-right:27px;
 	background-image:url(../lang_en.png);
 }
 
@@ -1028,24 +1099,6 @@ form[id="message"] .obli_star{
 .crt{
 	/*background-color: #55B2CD;*/
 	border-top: 3px solid #CC3300;
-}
-
-.ticon{
-	font-weight:bold;
-	font-size:250%;
-	background-color:#254B80;
-	color:white;
-	align-vertical:middle;
-	text-align:center;
-	display:inline-block;
-	width:40px;
-	padding:10px;
-	border-radius: 40px;
-	margin:-40px 10px 0 0;
-
-	position: absolute;
-	bottom:20px;
-	left:20px;
 }
 
 .tnc{
@@ -1137,7 +1190,7 @@ form[id="message"] .obli_star{
 	text-align: center;
 }
 
-.left_ui_article[data-level="2"]>li>a, .left_ui_menu[data-level="2"]>li>a{ 
+.left_ui_article[data-level="2"]>li>*, .left_ui_menu[data-level="2"]>li>*{ 
 	position: relative;
 
     background-repeat: no-repeat;
@@ -1180,6 +1233,7 @@ form[id="message"] .obli_star{
 
 .left_article_active, .left_menu_active{
     box-shadow: 0 -1px 0 0 #E6E6E6, -1px 0 0 0 #EEEEEE !important;
+    font-weight: bold;
 }
 
 .left_article>a, .left_menu>a{
@@ -1419,7 +1473,6 @@ form[id="feedback"] label{
 	-webkit-border-radius: 22px;
 	-moz-border-radius: 22px;
 	border-radius: 22px;
-	behavior: url(/htc/PIE.htc);
 }
 
 .addr{

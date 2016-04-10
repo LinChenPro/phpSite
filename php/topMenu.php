@@ -6,9 +6,9 @@ $topMenuItems = getTopMenu();
 		<div id="header">
 			<div id="topFunctionArea">
 				<a id="slideopen" href="#">
-					<img src="/slideMenuIcon.png" class="slideopen"/>
+					<img alt="slide menu" src="/slideMenuIcon.png" class="slideopen"/>
 				</a>
-				<img class="small_logo" src="/small_logo.jpg">
+				<img class="small_logo" alt="iriso" src="/small_logo.jpg">
 				<span class="langlink">
 					<?=getLangLinks()?>
 				</span>
@@ -16,7 +16,7 @@ $topMenuItems = getTopMenu();
 			</div>
 			<span id="logoarea">
 				<a href="http://<?=$_SERVER['HTTP_HOST']?>/">
-						<img src="/logoTop.png" class="logoTop"/>
+						<img alt="IRISO Traduction" src="/logoTop.png" class="logoTop"/>
 				</a>
 			</span>
 			<div id="menuarea">

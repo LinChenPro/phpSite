@@ -23,15 +23,17 @@ function showSubMenu($subMenu, $level=2){
 			if($itemArticle->isCurrent){
 ?>
 			<li class="left_article_active tblue" data-level="<?=$level?>">
+				<span style="background-image:url('<?=$icon?>')"><span class="item-txt"><?=srs($itemArticle->name)?></span><span class="icon_arrow icon_white"></span></span>
+			</li>
 <?php
 			}else{
 ?>
 			<li class="left_article" data-level="<?=$level?>">
+				<a href="<?=$itemArticle->href?>" style="background-image:url('<?=$icon?>')"><span class="item-txt"><?=srs($itemArticle->name)?></span><span class="icon_arrow icon_white"></span></a>
+			</li>
 <?php
 			}
 ?>
-				<a href="<?=$itemArticle->href?>" style="background-image:url('<?=$icon?>')"><span class="item-txt"><?=srs($itemArticle->name)?></span><span class="icon_arrow icon_white"></a>
-			</li>
 <?php
 		}
 ?>

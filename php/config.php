@@ -6,6 +6,7 @@ $url_prefix = "/";
 $lang_support = array("cn", "fr");
 $lang_support_txt = array("cn"=>"中","cntr"=>"漢","en"=>"EN","fr"=>"FR");
 $lang_support_hreflang = array("cn"=>"zh-Hans","cntr"=>"zh-Hant","en"=>"en","fr"=>"fr");
+$lang_support_htmllang = array("cn"=>"zh-CN","cntr"=>"zh-CN","en"=>"en","fr"=>"fr");
 $lang_navi = getNaviLang();
 $lang_sys = getSysLang();
 $lang_client = getClientLang();

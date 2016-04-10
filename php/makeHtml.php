@@ -7,12 +7,12 @@ $allNodes = array(
 	(new Node("M","aboutus", "/translation/ourcompany"))->setShowInSitemap(false), // directly to ourcompany
 	new Node("A","aboutus/ourcompany","/translation/ourcompany"),
 	new Node("A","aboutus/ourteam","/translation/ourteam"),
-	(new Node("M","ourservices", "/translation/simultaneous"))->setShowInSitemap(false), // directly to simultaneous TODO: page ourservices
+	(new Node("M","ourservices", "/translation/written"))->setShowInSitemap(false), // directly to simultaneous TODO: page ourservices
+	new Node("A","ourservices/written","/translation/written"),
 	new Node("A","ourservices/simultaneous","/translation/simultaneous"),
 	new Node("A","ourservices/consecutive","/translation/consecutive"),
 	(new Node("A","ourservices/accompany","/translation/accompany"))->setSupportLangs(array("cn")),
 	(new Node("A","ourservices/exposition","/translation/exposition"))->setSupportLangs(array("cn")),
-	new Node("A","ourservices/written","/translation/written"),
 	new Node("M","message", "/translation/message"),
 	(new Node("M","joinus", "/translation/joinus"))->setSupportLangs(array("cn")),
 	new Node("M","contact", "/translation/contact"),
@@ -299,7 +299,7 @@ function getLangueCssFile(){
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="<?=$lang_client?>">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<?=$lang_support_htmllang[$lang_client]?>">
 <head>
 <title><?=getPageTitle()?></title>
 
@@ -338,9 +338,9 @@ if(isMobile()){
 	<body>
 	<div id="slide_menu">
 		<div class="slide_top">
-			<img class="small_logo" src="/small_logo.jpg"/>
+			<img class="small_logo" alt="iriso" src="/small_logo.jpg"/>
 			<a href="#" id="slideclose">
-				<img src="/slideCloseIcon.png"/>
+				<img alt="slide close" src="/slideCloseIcon.png"/>
 			</a>
 		</div>
 
