@@ -336,6 +336,7 @@ if(isMobile()){
 
 </head>
 	<body>
+	<?php include_once("stats.php") ?>
 	<div id="slide_menu">
 		<div class="slide_top">
 			<img class="small_logo" alt="iriso" src="/small_logo.jpg"/>
