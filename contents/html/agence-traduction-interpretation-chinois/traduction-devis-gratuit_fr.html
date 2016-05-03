@@ -127,8 +127,8 @@
 				</div>
 
 				<div id="part_right">
-					<a class="big_button message_goto" href="index.html">Retour au page d'accueil</a>
-					<a class="big_button message_goto" href="message.html">Demander un nouveau devis</a>
+					<a class="big_button message_goto" href="<?=getNodeLink('translation/main')?>">Retour au page d'accueil</a>
+					<a class="big_button message_goto" href="<?=getNodeLink('translation/message')?>">Demander un nouveau devis</a>
 				</div>
 			</div>
 
@@ -141,7 +141,7 @@
 						Remplissez le formulaire pour un devis gratuit, nous vous répondrons dans les plus brefs délais.
 					</p>
 					<p>
-						Vous pouvez également nous contacter par téléphone ou email. <br><a href="contact.html"><strong class="tblue"><u>Consultez nos coordonnées</u></strong></a>
+						Vous pouvez également nous contacter par téléphone ou email. <br><a href="<?=getNodeLink('translation/contact')?>"><strong class="tblue"><u>Consultez nos coordonnées</u></strong></a>
 					</p>
 
 					<p>
@@ -155,7 +155,7 @@
 				</div>
 
 				<div id="part_right">
-					<form action="message.html" method="post" name="message" id="message">
+					<form action="<?=getNodeLink('translation/message')?>" method="post" name="message" id="message">
 						<div>
 							<span class="input_title">Nom et prénom:</span>
 							<input type="text" name="name" class="long_text required" data-requiredmsg="Veuillez indiquer votre nom et votre prénom."/>

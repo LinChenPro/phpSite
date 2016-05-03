@@ -1,5 +1,6 @@
 <?php
 $url_prefix = "/";
+$TRANSLATION_FOLDER = "agence-traduction-interpretation-chinois";
 
 // language
 //$lang_support = array("cn","cntr","fr","en");
@@ -16,13 +17,13 @@ $source_support = array("js","css","htc");
 $media_support = array("jpg","jpeg","png","gif","bmp", "ico");
 $doc_support = array("doc","docx","pdf");
 
-$urlOrigine = "/translation/index.html";
+$urlOrigine = "/$TRANSLATION_FOLDER/index.html";
 
 $contentPosition = array();
 $contentType = "html";
 $contentName = "index";
 $contentSuffix = "html";
-$pagePath = "/translation/index";
+$pagePath = "/$TRANSLATION_FOLDER/index";
 
 function getNaviLang(){
 	$lang = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']);

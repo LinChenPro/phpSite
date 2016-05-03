@@ -3,113 +3,112 @@
 	<url>
 		<loc>http://www.iriso-service.com/</loc>
 		<xhtml:link rel="alternate" hreflang="x-default" href="http://www.iriso-service.com/" />
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/index.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/index.html" />
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_fr.html" />
 	</url>
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/index.html</loc>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_cn.html</loc>
 		<xhtml:link rel="alternate" hreflang="x-default" href="http://www.iriso-service.com/" />
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/index.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/index.html" />
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_fr.html" />
 	</url>
 	<url>
-		<loc>http://www.iriso-service.com/fr/translation/index.html</loc>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_fr.html</loc>
 		<xhtml:link rel="alternate" hreflang="x-default" href="http://www.iriso-service.com/" />
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/index.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/index.html" />
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/index_fr.html" />
 	</url>
 
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/ourcompany.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourcompany.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourcompany.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/agence-traduction-france_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/agence-traduction-france_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/agence-traduction-france_fr.html" />
 	</url>
 	<url>
-		<loc>http://www.iriso-service.com/fr/translation/ourcompany.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourcompany.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourcompany.html" />
-	</url>
-
-	<url>
-		<loc>http://www.iriso-service.com/cn/translation/ourteam.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourteam.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourteam.html" />
-	</url>
-	<url>
-		<loc>http://www.iriso-service.com/fr/translation/ourteam.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/ourteam.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/ourteam.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/agence-traduction-france_fr.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/agence-traduction-france_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/agence-traduction-france_fr.html" />
 	</url>
 
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/simultaneous.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/simultaneous.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/simultaneous.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/traducteurs-interpretes-professionnels_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traducteurs-interpretes-professionnels_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traducteurs-interpretes-professionnels_fr.html" />
 	</url>
 	<url>
-		<loc>http://www.iriso-service.com/fr/translation/simultaneous.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/simultaneous.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/simultaneous.html" />
-	</url>
-
-	<url>
-		<loc>http://www.iriso-service.com/cn/translation/consecutive.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/consecutive.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/consecutive.html" />
-	</url>
-	<url>
-		<loc>http://www.iriso-service.com/fr/translation/consecutive.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/consecutive.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/consecutive.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/traducteurs-interpretes-professionnels_fr.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traducteurs-interpretes-professionnels_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traducteurs-interpretes-professionnels_fr.html" />
 	</url>
 
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/accompany.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/accompany.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-chinois-anglais-francais_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-chinois-anglais-francais_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-chinois-anglais-francais_fr.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-chinois-anglais-francais_fr.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-chinois-anglais-francais_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-chinois-anglais-francais_fr.html" />
 	</url>
 
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/exposition.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/exposition.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-simultanee_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-simultanee_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-simultanee_fr.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-simultanee_fr.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-simultanee_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-simultanee_fr.html" />
 	</url>
 
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/written.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/written.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/written.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-consecutive_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-consecutive_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-consecutive_fr.html" />
 	</url>
 	<url>
-		<loc>http://www.iriso-service.com/fr/translation/written.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/written.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/written.html" />
-	</url>
-
-	<url>
-		<loc>http://www.iriso-service.com/cn/translation/message.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/message.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/message.html" />
-	</url>
-	<url>
-		<loc>http://www.iriso-service.com/fr/translation/message.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/message.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/message.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-consecutive_fr.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-consecutive_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-consecutive_fr.html" />
 	</url>
 
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/joinus.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/joinus.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-accompagnement_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-accompagnement_cn.html" />
 	</url>
 
 	<url>
-		<loc>http://www.iriso-service.com/cn/translation/contact.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/contact.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/contact.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-exposition_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/interpretation-exposition_cn.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-devis-gratuit_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-devis-gratuit_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-devis-gratuit_fr.html" />
 	</url>
 	<url>
-		<loc>http://www.iriso-service.com/fr/translation/contact.html</loc>
-		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/cn/translation/contact.html" />
-		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/fr/translation/contact.html" />
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-devis-gratuit_fr.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-devis-gratuit_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/traduction-devis-gratuit_fr.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/espace-traducteurs-interpretes_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/espace-traducteurs-interpretes_cn.html" />
+	</url>
+
+	<url>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/contact_cn.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/contact_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/contact_fr.html" />
+	</url>
+	<url>
+		<loc>http://www.iriso-service.com/agence-traduction-interpretation-chinois/contact_fr.html</loc>
+		<xhtml:link rel="alternate" hreflang="zh-Hans" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/contact_cn.html" />
+		<xhtml:link rel="alternate" hreflang="fr" href="http://www.iriso-service.com/agence-traduction-interpretation-chinois/contact_fr.html" />
 	</url>
 
 </urlset>
-

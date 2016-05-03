@@ -64,8 +64,8 @@
 				</div>
 
 				<div id="part_right">
-					<a class="big_button message_goto" href="index.html">Retour au page d'accueil</a>
-					<a class="big_button message_goto" href="message.html">Demander un nouveau devis</a>
+					<a class="big_button message_goto" href="index_<?=$lang_client?>.html">Retour au page d'accueil</a>
+					<a class="big_button message_goto" href="message_<?=$lang_client?>.html">Demander un nouveau devis</a>
 				</div>
 			</div>
 
@@ -78,12 +78,12 @@
 						Remplissez le formulaire pour un devis gratuit, nous vous répondrons dans les plus brefs délais.
 					</p>
 					<p>
-						Vous pouvez également nous contacter par téléphone ou email. <br><a href="contact.html"><strong class="tblue"><u>Consultez nos coordonnées</u></strong></a>
+						Vous pouvez également nous contacter par téléphone ou email. <br><a href="contact_<?=$lang_client?>.html"><strong class="tblue"><u>Consultez nos coordonnées</u></strong></a>
 					</p>
 				</div>
 
 				<div id="part_right">
-					<form action="message.html" method="post" name="message" id="message">
+					<form action="message_<?=$lang_client?>.html" method="post" name="message" id="message">
 						<div><span class="input_title">Nom et prénom:</span><input type="text" name="name" class="long_text required" data-requiredmsg="Veuillez indiquer votre nom et votre prénom."/><span class="obli_star"> *</span></div>
 						<div><span class="input_title">Email:</span><input type="text" name="email" class="long_text required" data-requiredmsg="Veuillez renseigner l'adresse mail" data-emailmsg="Veuillez vérifier le format de votre adresse mail."/><span class="obli_star"> *</span></div>
 						<div><span class="input_title">Téléphone:</span><input type="text" name="telephone" class="long_text required" data-requiredmsg="Veuillez renseigner le numéro de téléphone." /><span class="obli_star"> *</span></div>

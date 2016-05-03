@@ -11,11 +11,8 @@ $url_segms = explode("/", $urlValid);
 
 if(count($url_segms)>0){
 	// language
-	if(in_array($url_segms[0], $lang_support)){
-		$lang_client = $url_segms[0];
-		array_shift($url_segms);
-	}
-	
+	getLangByUrlSegms($url_segms);
+
 	if(count($url_segms)>0){
 		// content path
 		$file = array_pop($url_segms);
@@ -59,6 +56,29 @@ if(count($url_segms)>0){
 
 $pagePath = "/".implode("/", $contentPosition)."/".$contentName;
 
+// by url /fr/translation/abc.html
+function oldfonction_getLangByUrlSegms(&$url_segms){
+	if(in_array($url_segms[0], $GLOBALS["lang_support"])){
+		$GLOBALS["lang_client"] = $url_segms[0];
+		array_shift($url_segms);
+	}
+
+	return $GLOBALS["lang_client"];
+}
+
+// by url /translation/abc_fr.html
+function getLangByUrlSegms(&$url_segms){
+	$fileNameInUrl = $url_segms[count($url_segms)-1];
+	preg_match('/(?<=_)[A-Za-z0-9_]+(?=\.[A-Za-z0-9_]+)/', $fileNameInUrl, $match);
+	if(count($match)==1){
+		if(in_array($match[0], $GLOBALS["lang_support"])){
+			$GLOBALS["lang_client"] = $match[0];
+			$url_segms[count($url_segms)-1] = str_replace("_".$GLOBALS["lang_client"].".", ".", $fileNameInUrl);
+		}
+	}
+	return $GLOBALS["lang_client"];
+}
+
 // content file
 function getContentFilePath(){
 	$typeDirPath = "contents/".$GLOBALS["contentType"]."/";
@@ -71,6 +91,8 @@ function getContentFilePath(){
 		$fileByLang = getFileByLang($fileDirPath, $GLOBALS["contentName"], "html");
 		if($fileByLang == null){
 			$fileByLang = getFileByLang($fileDirPath, "error", "html");
+			header("location:/");
+			exit; 
 			if($fileByLang == null){
 				$fileByLang = getFileByLang($typeDirPath, "error", "html");
 			}

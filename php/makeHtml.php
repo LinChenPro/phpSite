@@ -1,22 +1,22 @@
 <?php
 include "node.php";
 
-$secteurTranslation = new Node(Node::TYPE_SECTEUR, "translation", "/translation/index");
+$secteurTranslation = new Node(Node::TYPE_SECTEUR, "translation", "/$TRANSLATION_FOLDER/index");
 $allNodes = array(
-	new Node("M","main","/translation/index"),
-	(new Node("M","aboutus", "/translation/ourcompany"))->setShowInSitemap(false), // directly to ourcompany
-	new Node("A","aboutus/ourcompany","/translation/ourcompany"),
-	new Node("A","aboutus/ourteam","/translation/ourteam"),
-	(new Node("M","ourservices", "/translation/written"))->setShowInSitemap(false), // directly to simultaneous TODO: page ourservices
-	new Node("A","ourservices/written","/translation/written"),
-	new Node("A","ourservices/simultaneous","/translation/simultaneous"),
-	new Node("A","ourservices/consecutive","/translation/consecutive"),
-	(new Node("A","ourservices/accompany","/translation/accompany"))->setSupportLangs(array("cn")),
-	(new Node("A","ourservices/exposition","/translation/exposition"))->setSupportLangs(array("cn")),
-	new Node("M","message", "/translation/message"),
-	(new Node("M","joinus", "/translation/joinus"))->setSupportLangs(array("cn")),
-	new Node("M","contact", "/translation/contact"),
-	(new Node("M","feedback", "/translation/feedback", false, false))->setSupportLangs(array("cn"))->setShowInSitemap(false)
+	new Node("M","main","/$TRANSLATION_FOLDER/index"),
+	(new Node("M","aboutus", "/$TRANSLATION_FOLDER/agence-traduction-france"))->setShowInSitemap(false), // directly to ourcompany
+	new Node("A","aboutus/ourcompany","/$TRANSLATION_FOLDER/agence-traduction-france"),
+	new Node("A","aboutus/ourteam","/$TRANSLATION_FOLDER/traducteurs-interpretes-professionnels"),
+	(new Node("M","ourservices", "/$TRANSLATION_FOLDER/traduction-chinois-anglais-francais"))->setShowInSitemap(false), // directly to simultaneous TODO: page ourservices
+	new Node("A","ourservices/written","/$TRANSLATION_FOLDER/traduction-chinois-anglais-francais"),
+	new Node("A","ourservices/simultaneous","/$TRANSLATION_FOLDER/interpretation-simultanee"),
+	new Node("A","ourservices/consecutive","/$TRANSLATION_FOLDER/interpretation-consecutive"),
+	(new Node("A","ourservices/accompany","/$TRANSLATION_FOLDER/interpretation-accompagnement"))->setSupportLangs(array("cn")),
+	(new Node("A","ourservices/exposition","/$TRANSLATION_FOLDER/interpretation-exposition"))->setSupportLangs(array("cn")),
+	new Node("M","message", "/$TRANSLATION_FOLDER/traduction-devis-gratuit"),
+	(new Node("M","joinus", "/$TRANSLATION_FOLDER/espace-traducteurs-interpretes"))->setSupportLangs(array("cn")),
+	new Node("M","contact", "/$TRANSLATION_FOLDER/contact"),
+	(new Node("M","feedback", "/$TRANSLATION_FOLDER/feedback", false, false))->setSupportLangs(array("cn"))->setShowInSitemap(false)
 );
 
 $secteurTranslation->addSecteurNodes($allNodes);
@@ -30,18 +30,35 @@ $currentArticle = getCurrentArticle();
 $currentNode = getCurrentNode();
 $currentNodePosition = $currentMenu->nodePosition;
 
+function getNodeLink($nodePosition){
+	foreach($GLOBALS["allNodes"] as $node_i){
+		if($nodePosition == $node_i->nodePosition){
+			return $node_i->pagePath."_".$GLOBALS["lang_client"].".html";
+		}
+	}
+	return "/".$GLOBALS["TRANSLATION_FOLDER"]."/index_".$GLOBALS["lang_client"].".html";
+}
+
 function getLangLink($langSelected){
 	$link = getLangLinkWhenExit($langSelected);
 	if($link!=null){
 		return $link;
 	}else{
-		return "/".$langSelected."/translation/index.html";
+		// old
+		//return "/".$langSelected."/".$GLOBALS["TRANSLATION_FOLDER"]."/index.html";
+
+		// now
+		return "/".$GLOBALS["TRANSLATION_FOLDER"]."/index_".$langSelected.".html";
 	}
 }
 
 function getLangLinkWhenExit($langSelected){
 	if($GLOBALS["currentNode"]->isSupportLang($langSelected)){
-		return "/".$langSelected.$GLOBALS["currentNode"]->pagePath.".html";
+		// old
+		//return "/".$langSelected.$GLOBALS["currentNode"]->pagePath.".html";
+
+		// now
+		return $GLOBALS["currentNode"]->pagePath."_".$langSelected.".html";
 	}else{
 		return null;
 	}
@@ -113,7 +130,7 @@ function searchItemObjectByAtt($arr, $att, $value, $useDefault = false){
 
 // get current menuNode by level (0:secteur  1:topmenu  ... -1:last level)
 function getCurrentMenu($level = -1){
-	if($GLOBALS["currentMenuNodes"] = null){
+	if(false){
 		$menus = $GLOBALS["$currentMenuNodes"];
 		$deeth = count($menus);
 		if($level==-1){
@@ -193,7 +210,7 @@ function getTopMenu(){
 	$crtMenuNodes = $crtSecteur->menuNodes;
 	$crtMenuItem = getCurrentMenu(1);
 
-	$link = "/".$GLOBALS["lang_client"];
+	$link = "";
 	
 	$topMenus = array();
 	for($i = 0; $i<count($crtMenuNodes); $i++){
@@ -205,7 +222,7 @@ function getTopMenu(){
 		$item->name = $crtMenuNodes[$i]->rName;
 		$item->type = $crtMenuNodes[$i]->type;
 		$item->isCurrent = $crtMenuNodes[$i]->isCurrent;
-		$item->href = $link.$crtMenuNodes[$i]->pagePath.".html";
+		$item->href = $link.$crtMenuNodes[$i]->pagePath."_".$GLOBALS["lang_client"].".html";
 		$item->showInMenu = $crtMenuNodes[$i]->showInMenu;
 
 		array_push($topMenus, $item);
@@ -222,7 +239,7 @@ function getLeftMenu(){
 function getDeepMenu($node){
 	$crtMenuNodes = $node->menuNodes;
 	$crtArticleNodes = $node->articleNodes;
-	$link = "/".$GLOBALS["lang_client"];
+	$link = "";
 	
 	$articles = null;
 	if($crtArticleNodes != null){
@@ -237,7 +254,7 @@ function getDeepMenu($node){
 			$item->type = $crtArticleNodes[$i]->type;
 			$item->isCurrent = $crtArticleNodes[$i]->isCurrent;
 			$item->showInMenu = $crtArticleNodes[$i]->showInMenu;
-			$item->href = $link.$crtArticleNodes[$i]->pagePath.".html";
+			$item->href = $link.$crtArticleNodes[$i]->pagePath."_".$GLOBALS["lang_client"].".html";
 			array_push($articles, $item);
 		}
 	}
@@ -255,7 +272,7 @@ function getDeepMenu($node){
 			$item->type = $crtMenuNodes[$i]->type;
 			$item->isCurrent = $crtMenuNodes[$i]->isCurrent;
 			$item->showInMenu = $crtMenuNodes[$i]->showInMenu;
-			$item->href = $link.$crtMenuNodes[$i]->pagePath.".html";
+			$item->href = $link.$crtMenuNodes[$i]->pagePath."_".$GLOBALS["lang_client"].".html";
 			$item->subItems = getDeepMenu($crtMenuNodes[$i]);
 			array_push($menus, $item);
 		}
@@ -294,10 +311,9 @@ function getCommonCssFile(){
 }
 
 function getLangueCssFile(){
-	return "/".$GLOBALS["lang_client"]."/css/languestyle.css";
+	return "/css/languestyle_".$GLOBALS["lang_client"].".css";
 }
 ?>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<?=$lang_support_htmllang[$lang_client]?>">
 <head>

@@ -130,7 +130,7 @@
 				</div>
 
 				<div id="part_right">
-					<a class="big_button message_goto" href="index.html">回到首页</a>
+					<a class="big_button message_goto" href="<?=getNodeLink('translation/main')?>">回到首页</a>
 				</div>
 			</div>
 
@@ -157,7 +157,7 @@
 				</div>
 
 				<div id="part_right">
-					<form action="feedback.html" method="post" name="message" id="feedback">
+					<form action="<?=getNodeLink('translation/feedback')?>" method="post" name="message" id="feedback">
 						<div>
 							<span class="formname">客户反馈表</span>
 							<span class="input_title_long">请您按照如下标准，对我们的服务质量打分：</span>

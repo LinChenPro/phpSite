@@ -127,8 +127,8 @@
 				</div>
 
 				<div id="part_right">
-					<a class="big_button message_goto" href="index.html">回到首页</a>
-					<a class="big_button message_goto" href="message.html">发送新的询价表单</a>
+					<a class="big_button message_goto" href="<?=getNodeLink('translation/main')?>">回到首页</a>
+					<a class="big_button message_goto" href="<?=getNodeLink('translation/message')?>">发送新的询价表单</a>
 				</div>
 			</div>
 
@@ -141,12 +141,12 @@
 						请根据您的情况填写表单，我们会尽快和您联系。
 					</p>
 					<p>
-						您也可以直接通过电话、邮件、微信等方式联系我们。 <a href="contact.html"><strong class="tblue"><u>查看联系方式</u></strong></a>
+						您也可以直接通过电话、邮件、微信等方式联系我们。 <a href="<?=getNodeLink('translation/contact')?>"><strong class="tblue"><u>查看联系方式</u></strong></a>
 					</p>
 				</div>
 
 				<div id="part_right">
-					<form action="message.html" method="post" name="message" id="message">
+					<form action="<?=getNodeLink('translation/message')?>" method="post" name="message" id="message">
 						<div>
 							<span class="input_title">您的姓名：</span>
 							<input type="text" name="name" class="long_text required" data-requiredmsg="请填写您的姓名。"/>

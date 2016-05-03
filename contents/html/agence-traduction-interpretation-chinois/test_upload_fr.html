@@ -1,0 +1,64 @@
+			<div class="content_parts">
+<form action="/contents/ajax/uploadReceiver.php">
+<input id="fileSelector" type="file" multiple ></input>
+
+<button id="a_upload">upload</button>
+<form>
+<div id="percent">--</div>
+</div>
+	<script>
+	$(function() {
+		$("#a_upload").click(showFileSelector);
+		$("#fileSelector").change(uploadFile);
+	});
+
+	function showFileSelector(evt){
+		$("#fileSelector").click();
+	}
+
+	function uploadFile(evt){
+		$("#fileSelector").each(function(){
+			for(var i=0; i< this.files.length; i++){
+				var file = this.files[i];
+
+				var formData = new FormData();
+				formData.append("file_"+i, file);
+				$.ajax({
+				        url: '/contents/ajax/uploadReceiver.php',
+				        type: 'POST',
+				        data: formData,
+				        cache: false,
+				        dataType: 'json',
+				        processData: false,
+				        contentType: false,
+						success: function(data, textStatus, jqXHR)
+				        {
+				        	alert("success "+data.a);
+				        },
+				        error: function(jqXHR, textStatus, errorThrown)
+				        {
+				        	alert("error "+textStatus);
+				        },
+				        xhr: function(){
+						    // get the native XmlHttpRequest object
+						    var xhr = $.ajaxSettings.xhr() ;
+						    // set the onprogress event handler
+						    xhr.upload.onprogress = function(evt){
+					            var percentage = Math.floor((evt.loaded/evt.total) * 100);
+					            $("#percent").html(percentage+"%");
+						 	};
+						    // set the onload event handler
+						    xhr.upload.onload = function(){$("#percent").html("done");} ;
+						    // return the customized object
+						    return xhr ;
+						}
+				    });
+
+
+
+			}
+		});
+
+	}
+
+	</script>
